@@ -1,0 +1,36 @@
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  background: white;
+  border: 1px solid #E9EAEB;
+  border-radius: 8px;
+}
+
+thead {
+  background-color: #FAFAFA;
+}
+
+th {
+  text-align: left;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #667085;
+  border-bottom: 1px solid #E9EAEB
+}
+
+td {
+  padding: 12px 24px;
+  font-size: 14px;
+  color: #101828;
+  border-bottom: 1px solid #E9EAEB
+}
+
+tbody tr:hover {
+  background-color: #F9FAFB;
+}

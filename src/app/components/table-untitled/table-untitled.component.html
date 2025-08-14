@@ -1,0 +1,56 @@
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th
+          *ngFor="let col of columns"
+          (click)="onSort(col)"
+          [class.cursor-pointer]="col.sortable"
+        >
+          {{ col.label }}
+          <span *ngIf="col.sortable">
+            <ng-container *ngIf="sortKey === col.key">
+              <span *ngIf="sortDirection === 'asc'">▲</span>
+              <span *ngIf="sortDirection === 'desc'">▼</span>
+            </ng-container>
+            <span *ngIf="sortKey !== col.key" class="opacity-30">▲</span>
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data">
+        <td *ngFor="let col of columns">
+          <ng-container [ngSwitch]="true">
+            <!-- Badge cell -->
+            <ng-container *ngSwitchCase="col.type === 'badge'">
+              <span
+                class="px-2 py-1 text-xs font-medium border-1 rounded-2xl"
+                [ngClass]="{
+                  'bg-[#ECFDF3] border-[#ABEFC6] text-[#067647]':
+                    row[col.key] === 'Active',
+                  'bg-[#FEF3F2] border-[#FECDCA] text-[#B42318]':
+                    row[col.key] === 'Inactive'
+                }"
+              >
+                {{ row[col.key] }}
+              </span>
+            </ng-container>
+
+            <!-- Action cell -->
+            <ng-container *ngSwitchCase="col.isAction">
+              <ng-container
+                *ngTemplateOutlet="tableActionTpl; context: { $implicit: row }"
+              ></ng-container>
+            </ng-container>
+
+            <!-- Default cell -->
+            <ng-container *ngSwitchDefault>
+              {{ row[col.key] }}
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

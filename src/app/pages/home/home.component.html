@@ -1,28 +1,37 @@
 <breadcrums-component />
-<div class="card bg-white border border-[#D2D6DB] rounded-2xl">
+<div class="card bg-white border border-[#D2D6DB] rounded-2xl mt-10">
   <div class="card-header flex items-center justify-between p-6">
     <div class="title">
-      <h2 class="text-xl font-semibold">Home</h2>
-      <span class="text-[#535862]"
+      <h5 class="text-xl font-semibold">Home</h5>
+      <span class="text-[#535862] text-sm"
         >Dibawah ini merupakan list role untuk user</span
       >
     </div>
-    <button class="btn btn-primary">Action</button>
+    <button type="submit" class="btn-bsi btn-success-bsi">
+      <div class="flex items-center">
+        <span class="material-icons" style="font-size: large">add</span>
+        <span class="text-center"> Tambah Role </span>
+      </div>
+    </button>
   </div>
-  <table class="table-auto w-full">
-    <thead class="bg-[#FAFAFA] border-y border-[#E9EAEB]">
-      <th>No</th>
-      <th>No</th>
-      <th>No</th>
-      <th>No</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>test</td>
-        <td>test</td>
-        <td>test</td>
-        <td>test</td>
-      </tr>
-    </tbody>
-  </table>
+  <app-table-untitled
+    [columns]="tableCols"
+    [data]="tableData"
+    (sortChange)="onSortChange($event)"
+  >
+    <ng-template #tableAction let-row>
+      <div class="flex items-center gap-2">
+        <button
+          class="px-2 py-1 bg-white text-black border-1 border-[#D5D7DA] rounded flex items-center gap-1"
+        >
+          <span class="material-icons">visibility</span> Lihat
+        </button>
+        <button
+          class="px-2 py-1 bg-[#00C3B2] text-white rounded flex items-center gap-1"
+        >
+          <span class="material-icons">draw</span> Edit
+        </button>
+      </div>
+    </ng-template>
+  </app-table-untitled>
 </div>
