@@ -1,0 +1,26 @@
+<div class="relative w-full max-w-sm">
+  <!-- Icon Search -->
+  <svg
+    class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.6 3.6a7.5 7.5 0 0013.05 13.05z"
+    />
+  </svg>
+
+  <!-- Input -->
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="onInputChange($event)"
+    class="pl-10 pr-3 py-2 w-full border border-gray-300 focus:ring-2 focus:ring-[#00C3B2] focus:border-[#00C3B2] outline-none rounded-[10px] bg-white text-md"
+  />
+</div>

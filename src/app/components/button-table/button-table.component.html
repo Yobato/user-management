@@ -1,0 +1,15 @@
+<button
+[disabled]="disabled"
+[ngClass]="[
+  'btn',
+  'btn-' + variant,
+  'btn-' + size,
+  'gap-1',
+  fullWidth ? 'btn-full' : ''
+]"
+>
+<span *ngIf="actionType" [ngClass]="['material-icons', 'icon-' + size]">
+  {{ getIconForAction(actionType) }}
+</span>
+<ng-content></ng-content>
+</button>

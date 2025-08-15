@@ -3,6 +3,8 @@ import { BreadcrumsComponent } from "../../components/breadcrums/breadcrums.comp
 import { NgClass } from "@angular/common";
 import { cx } from "../../utils/cx";
 import { TableColumn, TableUntitledComponent } from "../../components/table-untitled/table-untitled.component";
+import { ButtonTable } from "../../components/button-table/button-table.component";
+import { SearchTable } from "../../components/search-table/search-table.component";
 
 type TableRow = {
   name: string;
@@ -17,9 +19,10 @@ type TableRow = {
   styleUrl: './home.component.css',
   imports: [
     BreadcrumsComponent,
-    TableUntitledComponent
-    // NgClass,
-  ]
+    TableUntitledComponent,
+    ButtonTable,
+    SearchTable
+]
 })
 
 
@@ -42,6 +45,8 @@ export class HomeComponent {
     { name: 'Jane Smith', email: 'jane@example.com', status: 'Inactive' }
 
   ];
+
+  searchQuery: string = '';
 
 
   onSortChange(e: { key: string; direction: 'asc' | 'desc' }) {

@@ -1,5 +1,11 @@
-<breadcrums-component />
-<div class="card bg-white border border-[#D2D6DB] rounded-2xl mt-10">
+<div class="flex w-full justify-between">
+  <breadcrums-component />
+  <app-search-table
+    placeholder="Search articles..."
+    [(value)]="searchQuery"
+  ></app-search-table>
+</div>
+<div class="card bg-white border border-[#D2D6DB] rounded-2xl mt-6">
   <div class="card-header flex items-center justify-between p-6">
     <div class="title">
       <h5 class="text-xl font-semibold">Home</h5>
@@ -21,16 +27,17 @@
   >
     <ng-template #tableAction let-row>
       <div class="flex items-center gap-2">
-        <button
+        <!-- <button
           class="px-2 py-1 bg-white text-black border-1 border-[#D5D7DA] rounded flex items-center gap-1"
         >
-          <span class="material-icons">visibility</span> Lihat
-        </button>
-        <button
-          class="px-2 py-1 bg-[#00C3B2] text-white rounded flex items-center gap-1"
+      </button> -->
+        <app-button-table size="md" variant="secondary" actionType="view"
+          >Lihat</app-button-table
         >
-          <span class="material-icons">draw</span> Edit
-        </button>
+        <app-button-table size="md" variant="primary" actionType="edit"
+          >Edit</app-button-table
+        >
+        <!-- </button> -->
       </div>
     </ng-template>
   </app-table-untitled>
