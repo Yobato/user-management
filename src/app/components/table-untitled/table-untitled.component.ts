@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 
 export interface TableColumn {
@@ -7,6 +7,8 @@ export interface TableColumn {
   sortable?: boolean;
   type?: 'badge' | 'text';
   isAction?: boolean;
+  customClass?: string;
+  customStyle?: {[key:string]:string};
 }
 
 @Component({
@@ -37,5 +39,39 @@ export class TableUntitledComponent {
     }
 
     this.sortChange.emit({ key: this.sortKey, direction: this.sortDirection})
+  }
+
+  getBadgeClass(status: string): {[key: string]: boolean}{
+    switch(status){
+      case 'Active':
+        case 'Approved':
+          return {
+            'bg-[#ECFDF3]': true,
+            'border-[#ABEFC6]': true,
+            'text-[#067647]': true,
+          };
+
+      case 'Inactive':
+        case 'Rejected':
+          return {
+            'bg-[#FEF3F2]': true,
+            'border-[#FECDCA]': true,
+            'text-[#B42318]': true,
+          };
+
+      case 'Pending':
+        return{
+          'bg-[#F0F9FF]': true,
+          'border-[#B9E6FE]': true,
+          'text-[#026AA2]': true,
+        };
+
+      default:
+        return {
+          'bg-[#F5F5F5]': true,
+          'border-[#E5E7EB]': true,
+          'text-[#717680]': true,
+        };
+    }
   }
 }

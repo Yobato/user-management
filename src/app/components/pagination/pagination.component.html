@@ -1,0 +1,46 @@
+<div class="flex items-center justify-between py-4 px-6">
+  <button
+    (click)="handlePrev()"
+    [disabled]="currentPage === 1"
+    class="flex items-center gap-2 border bg-white border-[#D2D6DB] rounded-md px-3 py-1.5 text-sm hover:bg-[#e6e7e7] disabled:opacity-50 disabled:hover:bg-white cursor-pointer"
+    >
+    <!-- <i-lucide name="arrow-left" [size]="16"></i-lucide> -->
+    Prev
+  </button>
+
+  <div class="flex items-center gap-2">
+    @for (page of pages; track page) {
+      @if (page === '...') {
+        <span class="px-2 text-[#717680]">
+          ...
+        </span>
+      } @else {
+        <button
+          (click)="onPageClick(page)"
+          [ngClass]="{
+            'bg-[#FAFAFA] text-[#414651] font-bold': page === currentPage,
+            'text-[#717680] hover:bg-[#F9FAFB]': page !== currentPage
+          }"
+          class="px-3 py-1.5 rounded-md text-sm cursor-pointer"
+          >
+          {{ page }}
+        </button>
+      }
+    }
+      <!-- <div style="color:red">
+        DEBUG: {{ pages | json }}
+      </div> -->
+    <!-- <div *ngFor="let page of pages" style="padding: 5px; border: 2px solid red">
+    INI ADALAH HALAMAN: {{ page }}
+  </div> -->
+</div>
+
+<button
+  (click)="handleNext()"
+  [disabled]="currentPage === totalPage"
+  class="flex items-center gap-2 border bg-white border-[#D2D6DB] rounded-md px-3 py-1.5 text-sm hover:bg-[#e6e7e7] disabled:opacity-50 disabled:hover:bg-white cursor-pointer"
+  >
+  <!-- <i-lucide name="arrow-right" [size]="16"></i-lucide> -->
+  Next
+</button>
+</div>

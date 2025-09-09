@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-table',
+  standalone: true,
   imports: [],
   templateUrl: './search-table.component.html',
   styleUrl: './search-table.component.css'

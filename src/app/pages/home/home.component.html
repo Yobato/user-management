@@ -2,7 +2,7 @@
   <breadcrums-component />
   <app-search-table
     placeholder="Search articles..."
-    [(value)]="searchQuery"
+    [(value)]="query"
   ></app-search-table>
 </div>
 <div class="card bg-white border border-[#D2D6DB] rounded-2xl mt-6">
@@ -22,23 +22,32 @@
   </div>
   <app-table-untitled
     [columns]="tableCols"
-    [data]="tableData"
+    [data]="paginatedData"
     (sortChange)="onSortChange($event)"
   >
     <ng-template #tableAction let-row>
       <div class="flex items-center gap-2">
-        <!-- <button
-          class="px-2 py-1 bg-white text-black border-1 border-[#D5D7DA] rounded flex items-center gap-1"
-        >
-      </button> -->
-        <app-button-table size="md" variant="secondary" actionType="view"
-          >Lihat</app-button-table
-        >
-        <app-button-table size="md" variant="primary" actionType="edit"
-          >Edit</app-button-table
-        >
-        <!-- </button> -->
+        @if ( row.status_approval.trim().toLowerCase() === 'pending' ||
+        row.status_approval.trim().toLowerCase() === 'rejected' ) {
+        <app-button-table size="md" variant="secondary" actionType="view">
+          Lihat
+        </app-button-table>
+        } @if (row.status_approval.trim().toLowerCase() === 'sendback') {
+        <app-button-table size="md" variant="primary" actionType="document">
+          Tinjau
+        </app-button-table>
+        } @if (row.status_approval.trim().toLowerCase() === 'approved') {
+        <app-button-table size="md" variant="primary" actionType="edit">
+          Edit
+        </app-button-table>
+        }
       </div>
     </ng-template>
   </app-table-untitled>
+  <app-pagination
+    [currentPage]="page"
+    [totalPage]="totalPages"
+    (pageChange)="onPageChange($event)"
+  >
+  </app-pagination>
 </div>

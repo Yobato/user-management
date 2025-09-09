@@ -3,7 +3,7 @@ import { Component, input, Input } from '@angular/core';
 
 type ButtonVariant = 'primary' | 'secondary' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg';
-type ActionType = 'view' | 'edit' | 'delete' | 'null';
+type ActionType = 'view' | 'edit' | 'delete' | 'null' | 'document';
 
 @Component({
   selector: 'app-button-table',
@@ -26,6 +26,8 @@ export class ButtonTable {
         return 'draw';
       case 'delete':
         return 'delete';
+      case 'document':
+        return 'assignment';
       default:
         return '';
     }
