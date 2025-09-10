@@ -1,5 +1,27 @@
 <div class="content flex items-center gap-1">
-  <a class="text-[#878787]">Dashboard</a>
-  <img src="/image/breadcrums.svg" alt="arrow-right" class="h-6 w-6">
-  <a class="text-black font-bold">Role Management</a>
+  <a routerLink="/dashboard" class="text-black font-bold">
+    Dashboard
+  </a>
+  <!-- <span class="text-gray-400">/</span> -->
+  <span class="material-icons text-gray-400" style="font-size:28px">chevron_right</span>
+
+  @for (item of breadcrumbItems; track item; let isLast = $last) { @if (!isLast
+  && item.path) {
+  <a [routerLink]="item.path" class="text-gray-500 hover:underline">
+    {{ item.title }}
+  </a>
+  } @if (isLast || !item.path) {
+  <span
+    [class.font-bold]="isLast"
+    [class.text-black]="isLast"
+    [class.text-gray-500]="!isLast"
+  >
+    {{ item.title }}
+  </span>
+  } @if (!isLast) {
+  <!-- <span class="text-gray-400">/</span> -->
+  <span class="material-icons text-gray-400" style="font-size:28px">chevron_right</span>
+  } } @if (breadcrumbItems.length === 0) {
+  <div class="content flex items-center gap-1"></div>
+  }
 </div>

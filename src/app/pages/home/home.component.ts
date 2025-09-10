@@ -45,7 +45,7 @@ export interface DataItem {
 export class HomeComponent {
   public page: number = 1;
   public query: string = ''; // State untuk menampung teks pencarian
-  public itemsPerPage: number = 3;
+  public itemsPerPage: number = 7;
 
   disabled = false; // nggak usah @Input kalau ini internal
 
