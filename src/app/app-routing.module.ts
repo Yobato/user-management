@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Import komponen yang Anda buat
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
-import { HomeComponent } from './pages/home/home.component';
-import { UsersComponent } from './pages/users/users.component';
+import { HomePage } from './pages/home/home.component';
+import { UsersPage } from './pages/users/users.component';
+import { CreatePage } from './pages/home/create/create';
 
 export const routes: Routes = [
   {
@@ -12,8 +13,9 @@ export const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
-      { path: 'users', component: UsersComponent },
+      { path: 'home', component: HomePage },
+      { path: 'home/create', component: CreatePage },
+      { path: 'users', component: UsersPage },
     ]
   },
   // Jika ada halaman tanpa layout, bisa ditambahkan di luar children

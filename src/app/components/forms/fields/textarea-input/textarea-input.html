@@ -1,0 +1,33 @@
+<div class="flex flex-col">
+  <label class="font-semibold text-gray-700 flex gap-0" [for]="label"
+    >{{ label }} @if (isRequired()) {
+    <lucide-icon
+      [img]="AsteriskIcon"
+      class="relative top-0 my-icon"
+      size="12"
+      color="red"
+    ></lucide-icon>
+    }
+  </label>
+  <textarea
+    type="type"
+    [id]="label"
+    [placeholder]="placeholder"
+    class="border border-gray-300 placeholder:text-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-[#00BFB2] rounded-[10px]"
+    [class.border-red-500]="ngControl.invalid && ngControl.touched"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onInputChange($event)"
+    (blur)="onTouched()"
+    [rows]="rows"
+  >
+  </textarea>
+  @if (ngControl.invalid && ngControl.touched) {
+  <div class="text-red-500 text-xs mt-1">
+    @for (validation of validations; track validation.name) { @if
+    (ngControl.control?.hasError(validation.name)) {
+    <div>{{ validation.message }}</div>
+    } }
+  </div>
+  }
+</div>

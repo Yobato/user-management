@@ -6,7 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrl: './users.component.css'
 })
 
-export class UsersComponent implements OnInit {
+export class UsersPage implements OnInit {
 
   ngOnInit(): void {
 

@@ -42,7 +42,7 @@ export interface DataItem {
 
 
 
-export class HomeComponent {
+export class HomePage {
   public page: number = 1;
   public query: string = ''; // State untuk menampung teks pencarian
   public itemsPerPage: number = 7;
