@@ -4,7 +4,7 @@ export interface Option{
 }
 
 export interface ValidatorConfig{
-  name: 'required' | 'email' | 'minLength' | 'maxLength' | 'pattern';
+  name: 'required' | 'requiredTrue' | 'email' | 'minLength' | 'maxLength' | 'pattern';
   value?: any;
   message: string;
 }

@@ -1,0 +1,29 @@
+<div class="flex items-center">
+  <label [for]="label" class="flex items-center cursor-pointer">
+    <div class="relative">
+      <input
+        type="checkbox"
+        [id]="label"
+        class="sr-only"
+        [checked]="value"
+        [disabled]="disabled"
+        (change)="onToggleChange($event)"
+        (blur)="onTouched()"
+      />
+      <div class="block bg-gray-200 w-14 h-8 rounded-full"></div>
+      <div
+        class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition-transform"
+      ></div>
+    </div>
+    <div class="ml-3 font-semibold text-gray-700 cursor-pointer">{{ label }}</div>
+  </label>
+</div>
+
+<style>
+  input:checked ~ .dot {
+    transform: translateX(100%);
+  }
+  input:checked ~ .block {
+    background-color: #00bfb2; /* Ganti dengan warna tema Anda */
+  }
+</style>

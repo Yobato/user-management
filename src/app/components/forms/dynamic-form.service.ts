@@ -15,20 +15,34 @@ export class DynamicFormService{
     config.forEach(field => {
       const control = this.fb.control(
         field.initialValue !== undefined ? field.initialValue : '',
-        this.bindValidators(field.validations || [])
+        this.bindValidators(field)
       );
       group.addControl(field.name, control);
     });
     return group;
   }
 
-  private bindValidators(validations: ValidatorConfig[]): ValidatorFn[]{
+  private bindValidators(field: FieldConfig): ValidatorFn[]{
     const angularValidators: ValidatorFn[] = [];
-    validations.forEach(validator => {
+    const validations = field.validations || [];
+      validations.forEach(validator => {
       switch (validator.name) {
-        case 'required': angularValidators.push(Validators.required); break;
+        // LOGIKA KECERDASAN ADA DI SINI
+        case 'required':
+          if (field.type === 'checkbox' || field.type === 'toggle') {
+            angularValidators.push(Validators.requiredTrue);
+          } else {
+            angularValidators.push(Validators.required);
+          }
+          break;
+
+        case 'requiredTrue':
+          angularValidators.push(Validators.requiredTrue);
+          break;
+
         case 'email': angularValidators.push(Validators.email); break;
         case 'minLength': angularValidators.push(Validators.minLength(validator.value)); break;
+
         case 'maxLength': angularValidators.push(Validators.maxLength(validator.value)); break;
         case 'pattern': angularValidators.push(Validators.pattern(validator.value)); break;
       }

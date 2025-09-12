@@ -7,11 +7,13 @@ import { TextInputComponent } from "./fields/text-input/text-input";
 import { TextAreaInputComponent } from "./fields/textarea-input/textarea-input";
 import { SelectInputComponent } from "./fields/select-input/select-input";
 import { CalendarInputComponent } from "./fields/calendar-input/calendar-input";
+import { CheckboxInputComponent } from "./fields/checkbox-input/checkbox-input";
+import { ToggleInputComponent } from "./fields/toggle-input/toggle-input";
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  imports: [ReactiveFormsModule, TextInputComponent, TextAreaInputComponent, SelectInputComponent, CalendarInputComponent],
+  imports: [ReactiveFormsModule, TextInputComponent, TextAreaInputComponent, SelectInputComponent, CalendarInputComponent, CheckboxInputComponent, ToggleInputComponent],
 })
 
 export class DynamicFormComponent implements OnInit {

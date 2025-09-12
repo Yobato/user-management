@@ -65,6 +65,19 @@ export class CreatePage {
     validations: [
       { name: 'required', message: 'Tanggal publikasi wajib diisi.' }
     ]
+  },
+  {
+    type: 'checkbox',
+    name: 'acceptTerms',
+    label: 'Dengan ini saya menyetujui syarat dan ketentuan yang berlaku',
+    validations: [
+      { name: 'required', message: 'Anda wajib mencentang bagian ini.' }
+    ]
+  },
+  {
+    type: 'toggle',
+    name: 'isActive',
+    label: 'Is active',
   }
     // Anda bisa tambahkan field lain di sini
   ];

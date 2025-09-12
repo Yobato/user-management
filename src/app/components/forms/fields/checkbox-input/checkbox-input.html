@@ -1,0 +1,50 @@
+<div class="flex items-center gap-2">
+  <label class="flex items-center cursor-pointer relative" [for]="label">
+    <input
+      [id]="label"
+      type="checkbox"
+      class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded-sm border border-gray-300 checked:bg-[#00BFB2] checked:border-[#00BFB2]"
+      [class.border-red-500]="ngControl.invalid && ngControl.touched"
+      [checked]="value"
+      [disabled]="disabled"
+      (change)="onCheckboxChange($event)"
+      (blur)="onTouched()"
+    />
+    <span
+      class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-3.5 w-3.5"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        stroke="currentColor"
+        stroke-width="1"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </span>
+  </label>
+
+  <div>
+    <label
+      class="font-semibold text-gray-700 flex gap-0 cursor-pointer"
+      [for]="label"
+    >
+      {{ label }}
+    </label>
+
+    @if (ngControl.invalid && ngControl.touched) {
+    <div class="text-red-500 text-xs mt-1">
+      @for (validation of validations; track validation.name) { @if
+      (ngControl.control?.hasError(validation.name)) {
+      <div>{{ validation.message }}</div>
+      } }
+    </div>
+    }
+  </div>
+</div>

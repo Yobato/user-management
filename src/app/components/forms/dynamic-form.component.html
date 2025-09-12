@@ -30,16 +30,24 @@
       [validations]="field.validations || []"
     >
     </app-select-input>
-    }
-    @case('date'){
+    } @case('date'){
     <app-calendar-input
       [formControlName]="field.name"
       [label]="field.label"
       [validations]="field.validations || []"
     >
     </app-calendar-input>
-    }
-   }
+    } @case('checkbox'){
+    <app-checkbox-input
+      [formControlName]="field.name"
+      [label]="field.label"
+      [validations]="field.validations || []"
+    >
+    </app-checkbox-input>
+    } @case('toggle'){
+    <app-toggle-input [formControlName]="field.name" [label]="field.label">
+    </app-toggle-input>
+    } }
   </div>
   }
   <button
