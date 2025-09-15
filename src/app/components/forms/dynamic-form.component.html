@@ -47,6 +47,17 @@
     } @case('toggle'){
     <app-toggle-input [formControlName]="field.name" [label]="field.label">
     </app-toggle-input>
+    } @case('file'){
+    <app-file-input
+      [formControlName]="field.name"
+      [label]="field.label"
+      [validations]="field.validations || []"
+      [accept]="field.accept || ''"
+      [note]="field.note || ''"
+      [boxed]="field.boxed || false"
+      [keterangan]="field.keterangan || ''"
+    >
+    </app-file-input>
     } }
   </div>
   }

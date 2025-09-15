@@ -9,11 +9,12 @@ import { SelectInputComponent } from "./fields/select-input/select-input";
 import { CalendarInputComponent } from "./fields/calendar-input/calendar-input";
 import { CheckboxInputComponent } from "./fields/checkbox-input/checkbox-input";
 import { ToggleInputComponent } from "./fields/toggle-input/toggle-input";
+import { FileInputComponent } from "./fields/file-input/file-input";
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  imports: [ReactiveFormsModule, TextInputComponent, TextAreaInputComponent, SelectInputComponent, CalendarInputComponent, CheckboxInputComponent, ToggleInputComponent],
+  imports: [ReactiveFormsModule, TextInputComponent, TextAreaInputComponent, SelectInputComponent, CalendarInputComponent, CheckboxInputComponent, ToggleInputComponent, FileInputComponent],
 })
 
 export class DynamicFormComponent implements OnInit {

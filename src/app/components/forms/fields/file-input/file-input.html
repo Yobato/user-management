@@ -1,0 +1,80 @@
+<div
+  [ngClass]="{
+    'border border-[#D2D6DB] bg-[#F3F4F6] rounded-xl p-3 flex flex-col': boxed
+  }"
+>
+  @if (boxed) {
+  <span>{{ keterangan }}</span>
+  <hr class="border border-gray-300 w-full !my-4" />
+  }
+
+  <div class="flex justify-between items-start">
+    <div class="grid grid-cols-2 items-start w-full">
+      <div class="flex gap-3 items-start pt-1 justify-self-start">
+        <img src="/image/Upload.png" class="w-6 h-6" alt="icon-upload" />
+        <div class="flex flex-col">
+          <label class="font-semibold text-gray-700 flex items-center gap-1">
+            <span>{{ label }}</span>
+            @if (isRequired()) { <span class="text-red-500 font-bold">*</span> }
+          </label>
+          @if (note) {
+          <span class="font-normal text-gray-400 text-sm">{{ note }}</span>
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col w-full justify-self-end max-w-sm">
+        <div class="relative flex items-center">
+          <div class="relative w-full">
+            <lucide-icon
+              [img]="FileIcon"
+              class="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+              [size]="18"
+            ></lucide-icon>
+            <input
+              #fileInput
+              type="file"
+              [id]="label"
+              [accept]="accept"
+              [disabled]="disabled"
+              (change)="handleFileChange($event)"
+              style="padding-left: 36px"
+              class="block w-full text-sm text-gray-500 rounded-[10px] border border-gray-300 cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#00BFB2] py-3"
+              [class.border-red-500]="ngControl.invalid && ngControl.touched"
+              [class.bg-gray-100]="disabled"
+              [class.bg-white]="boxed"
+            />
+          </div>
+
+          @if (currentValue) {
+          <div class="flex items-center gap-2 pl-3">
+            <lucide-icon
+              [img]="EyeIcon"
+              [size]="18"
+              class="cursor-pointer text-gray-500 hover:text-gray-700"
+              (click)="handleViewFile()"
+            ></lucide-icon>
+            <lucide-icon
+              [img]="XIcon"
+              [size]="18"
+              class="cursor-pointer text-gray-500 hover:text-gray-700"
+              (click)="handleClearFile()"
+            ></lucide-icon>
+          </div>
+          }
+        </div>
+
+        @if (displayFileName) {
+        <small class="text-gray-500 mt-1">{{ displayFileName }}</small>
+        } @if (ngControl.invalid && ngControl.touched) {
+        <div class="text-red-500 text-xs mt-1">
+          @for (validation of validations; track validation.name) { @if
+          (ngControl.control?.hasError(validation.name)) {
+          <div>{{ validation.message }}</div>
+          } }
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

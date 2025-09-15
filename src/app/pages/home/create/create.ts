@@ -78,7 +78,30 @@ export class CreatePage {
     type: 'toggle',
     name: 'isActive',
     label: 'Is active',
-  }
+  },
+  {
+    type: 'file',
+    name: 'imageUpload',
+    label: 'Image',
+    validations: [
+      { name: 'required', message: 'Gambar harus diisi.' }
+    ],
+    accept: 'image/*', // Hanya terima file gambar,
+    note: 'Maksimum ukuran file 2MB. Format yang diterima: JPG, PNG.'
+  },
+  {
+    type: 'file',
+    name: 'imageUpload',
+    label: 'Image',
+    validations: [
+      { name: 'required', message: 'Gambar harus diisi.' }
+    ],
+    accept: 'image/*', // Hanya terima file gambar,
+    note: 'Maksimum ukuran file 2MB. Format yang diterima: JPG, PNG.',
+    boxed: true,
+    keterangan: 'Pastikan resolusi gambar 1920x1080'
+  },
+
     // Anda bisa tambahkan field lain di sini
   ];
 

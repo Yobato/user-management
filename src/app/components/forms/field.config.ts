@@ -25,4 +25,8 @@ export interface FieldConfig{
   options?: Option[];
   validations?: ValidatorConfig[];
   rows?: number;
+  note?: string;
+  accept?: string;
+  boxed?: boolean;
+  keterangan?: string;
 }
