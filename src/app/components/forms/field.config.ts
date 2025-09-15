@@ -30,3 +30,7 @@ export interface FieldConfig{
   boxed?: boolean;
   keterangan?: string;
 }
+
+export interface FormRow{
+  fields: FieldConfig[];
+}

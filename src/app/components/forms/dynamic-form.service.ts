@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
-import { FieldConfig, ValidatorConfig } from './field.config';
+import { FieldConfig, FormRow, ValidatorConfig } from './field.config';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +9,18 @@ import { FieldConfig, ValidatorConfig } from './field.config';
 export class DynamicFormService{
   constructor(private fb: FormBuilder){}
 
-  public createFormGroup(config: FieldConfig[]): FormGroup{
+  public createFormGroup(config: FormRow[]): FormGroup{
     const group = this.fb.group({});
 
-    config.forEach(field => {
-      const control = this.fb.control(
-        field.initialValue !== undefined ? field.initialValue : '',
-        this.bindValidators(field)
-      );
-      group.addControl(field.name, control);
-    });
+    config.forEach(row=>{
+      row.fields.forEach(field => {
+        const control = this.fb.control(
+          field.initialValue !== undefined ? field.initialValue : '',
+          this.bindValidators(field)
+        );
+        group.addControl(field.name, control);
+      });
+    })
     return group;
   }
 
@@ -27,7 +29,6 @@ export class DynamicFormService{
     const validations = field.validations || [];
       validations.forEach(validator => {
       switch (validator.name) {
-        // LOGIKA KECERDASAN ADA DI SINI
         case 'required':
           if (field.type === 'checkbox' || field.type === 'toggle') {
             angularValidators.push(Validators.requiredTrue);

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { FieldConfig } from "./field.config";
+import { FieldConfig, FormRow } from "./field.config";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { DynamicFormService } from "./dynamic-form.service";
 
@@ -18,7 +18,8 @@ import { FileInputComponent } from "./fields/file-input/file-input";
 })
 
 export class DynamicFormComponent implements OnInit {
-  @Input() config: FieldConfig[] = [];
+  @Input() title: string = "Form Title";
+  @Input() config: FormRow[] = [];
   @Output() formSubmit = new EventEmitter<any>();
 
   form!: FormGroup;

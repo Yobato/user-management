@@ -1,71 +1,77 @@
-<form
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
-  class="space-y-4 bg-white p-6 rounded-2xl shadow"
+<div
+  class="w-full mx-auto bg-white rounded-2xl shadow-md border border-gray-200 p-6"
 >
-  @for (field of config; track field) {
-  <div>
-    @switch (field.type) { @case ('text') {
-    <app-text-input
-      [formControlName]="field.name"
-      [label]="field.label"
-      [placeholder]="field.placeholder || ''"
-      [validations]="field.validations || []"
-    >
-    </app-text-input>
-    } @case ('textarea') {
-    <app-textarea-input
-      [formControlName]="field.name"
-      [label]="field.label"
-      [rows]="field.rows || 3"
-      [placeholder]="field.placeholder || ''"
-      [validations]="field.validations || []"
-    >
-    </app-textarea-input>
-    } @case('select'){
-    <app-select-input
-      [formControlName]="field.name"
-      [label]="field.label"
-      [options]="field.options || []"
-      [validations]="field.validations || []"
-    >
-    </app-select-input>
-    } @case('date'){
-    <app-calendar-input
-      [formControlName]="field.name"
-      [label]="field.label"
-      [validations]="field.validations || []"
-    >
-    </app-calendar-input>
-    } @case('checkbox'){
-    <app-checkbox-input
-      [formControlName]="field.name"
-      [label]="field.label"
-      [validations]="field.validations || []"
-    >
-    </app-checkbox-input>
-    } @case('toggle'){
-    <app-toggle-input [formControlName]="field.name" [label]="field.label">
-    </app-toggle-input>
-    } @case('file'){
-    <app-file-input
-      [formControlName]="field.name"
-      [label]="field.label"
-      [validations]="field.validations || []"
-      [accept]="field.accept || ''"
-      [note]="field.note || ''"
-      [boxed]="field.boxed || false"
-      [keterangan]="field.keterangan || ''"
-    >
-    </app-file-input>
-    } }
-  </div>
-  }
-  <button
-    type="submit"
-    [disabled]="!form.valid"
-    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
-  >
-    Submit
-  </button>
-</form>
+  <h2 class="font-semibold text-xl text-black mb-6">{{ title }}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+    @for (row of config; track $index) {
+    <div class="flex flex-col md:flex-row md:gap-4">
+      @for(field of row.fields; track field.name){
+      <div class="flex-1 w-full">
+        @switch (field.type) { @case ('text') {
+        <app-text-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [placeholder]="field.placeholder || ''"
+          [validations]="field.validations || []"
+        >
+        </app-text-input>
+        } @case ('textarea') {
+        <app-textarea-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [rows]="field.rows || 3"
+          [placeholder]="field.placeholder || ''"
+          [validations]="field.validations || []"
+        >
+        </app-textarea-input>
+        } @case('select'){
+        <app-select-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [options]="field.options || []"
+          [validations]="field.validations || []"
+        >
+        </app-select-input>
+        } @case('date'){
+        <app-calendar-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [validations]="field.validations || []"
+        >
+        </app-calendar-input>
+        } @case('checkbox'){
+        <app-checkbox-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [validations]="field.validations || []"
+        >
+        </app-checkbox-input>
+        } @case('toggle'){
+        <app-toggle-input [formControlName]="field.name" [label]="field.label">
+        </app-toggle-input>
+        } @case('file'){
+        <app-file-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [validations]="field.validations || []"
+          [accept]="field.accept || ''"
+          [note]="field.note || ''"
+          [boxed]="field.boxed || false"
+          [keterangan]="field.keterangan || ''"
+        >
+        </app-file-input>
+        } }
+      </div>
+      }
+    </div>
+    }
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        class="bg-[#00A79F] text-white font-semibold px-4 py-2 rounded-4xl hover:bg-[#02827b] cursor-pointer disabled:bg-gray-400 mt-3 "
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
