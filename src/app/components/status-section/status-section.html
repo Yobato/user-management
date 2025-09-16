@@ -1,0 +1,13 @@
+<div class="w-full mx-auto bg-[#FCFBFC] rounded-2xl border border-gray-200 p-6">
+  <h5 class="font-semibold text-lg text-black mb-2">{{ data.title }}</h5>
+  <div class="flex flex-col gap-2">
+    <label for="statusInput" class="mb-1 text-sm font-medium text-gray-700">
+      {{ data.statusLabel }}
+    </label>
+    <input name="status" [value]="data.statusValue" disabled />
+    <label for="statusInput" class="mb-1 text-sm font-medium text-gray-700">
+      {{ data.reasonLabel }}
+    </label>
+    <input name="reason" [value]="data.reasonValue" disabled />
+  </div>
+</div>

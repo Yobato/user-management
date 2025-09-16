@@ -19,7 +19,8 @@ export interface FieldConfig{
   | 'checkbox'
   | 'toggle'
   | 'select'
-  | 'file';
+  | 'file'
+  | 'display';
   initialValue?: any;
   placeholder?: string;
   options?: Option[];
@@ -29,6 +30,8 @@ export interface FieldConfig{
   accept?: string;
   boxed?: boolean;
   keterangan?: string;
+  data?: any;
+  renderType?: 'status-section' | 'subtitle';
 }
 
 export interface FormRow{

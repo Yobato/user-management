@@ -17,6 +17,34 @@ export class CreatePage {
   {
     fields: [
       {
+        type: 'display',
+        name: 'reviewResultSection', // name tetap dibutuhkan untuk 'track by'
+        label: '',
+        renderType: 'status-section',
+        data: {
+          title: 'Hasil Review',
+          statusLabel: 'Status',
+          statusValue: 'Sendback',
+          reasonLabel: 'Reason',
+          reasonValue: 'Mohon lengkapi bagian deskripsi dan unggah gambar sampul dengan resolusi yang lebih tinggi.'
+        }
+      }
+    ]
+  },
+  // {
+  //   fields: [{
+  //     type: 'display',
+  //     renderType: 'subtitle',
+  //     label: '',
+  //     name: 'personalDataSubtitle',
+  //     data: {
+  //       text: 'Detail Informasi Pribadi'
+  //     }
+  //   }]
+  // },
+  {
+    fields: [
+      {
         type: 'text',
         name: 'titleArticle',
         label: 'Judul Article',
