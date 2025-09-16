@@ -16,40 +16,40 @@ export class CreatePage {
 
   // ===== COTNTOH PENGGUNAAN RENDERER CUSTOM =====
 
-  // {
-  //   fields: [
-  //     {
-  //       type: 'display',
-  //       name: 'reviewResultSection', // name tetap dibutuhkan untuk 'track by'
-  //       label: '',
-  //       renderType: 'status-section',
-  //       data: {
-  //         title: 'Hasil Review',
-  //         statusLabel: 'Status',
-  //         statusValue: 'Sendback',
-  //         reasonLabel: 'Reason',
-  //         reasonValue: 'Mohon lengkapi bagian deskripsi dan unggah gambar sampul dengan resolusi yang lebih tinggi.'
-  //       }
-  //     }
-  //   ]
-  // },
-  // {
-  //   fields: [{
-  //     type: 'display',
-  //     renderType: 'subtitle',
-  //     label: '',
-  //     name: 'personalDataSubtitle',
-  //     data: {
-  //       text: 'Detail Informasi Pribadi'
-  //     }
-  //   }]
-  // },
+  {
+    fields: [
+      {
+        type: 'display',
+        name: 'reviewResultSection', // name tetap dibutuhkan untuk 'track by'
+        label: '',
+        renderType: 'status-section',
+        data: {
+          title: 'Hasil Review',
+          statusLabel: 'Status',
+          statusValue: 'Sendback',
+          reasonLabel: 'Reason',
+          reasonValue: 'Mohon lengkapi bagian deskripsi dan unggah gambar sampul dengan resolusi yang lebih tinggi.'
+        }
+      }
+    ]
+  },
+  {
+    fields: [{
+      type: 'display',
+      renderType: 'subtitle',
+      label: '',
+      name: 'personalDataSubtitle',
+      data: {
+        text: 'Detail Informasi Pribadi'
+      }
+    }]
+  },
   {
     fields: [
       {
         type: 'text',
-        name: 'titleArticle',
-        label: 'Judul Article',
+        name: 'titleDummy',
+        label: 'Judul Dummy',
         placeholder: 'Masukkan judul article',
         // initialValue: 'Budi Santoso',
         validations: [
@@ -64,7 +64,7 @@ export class CreatePage {
       {
         type: 'textarea',
         name: 'description_article',
-        label: 'Deskripsi Article',
+        label: 'Deskripsi Dummy',
         rows: 4,
         placeholder: "Masukkan deskripsi article Anda",
         validations: [
@@ -78,35 +78,35 @@ export class CreatePage {
     fields: [
       {
         type: 'text',
-        name: 'refrenceArticle',
-        label: 'Refrensi Article',
+        name: 'refrenceDummy',
+        label: 'Refrensi Dummy',
         placeholder: 'Masukkan link refrensi article',
         validations: [
           { name: 'required', message: 'Refrensi Artikel wajib diisi.' },
           { name: 'minLength', value: 5, message: 'Link minimal 5 karakter.' }
         ],
       },
-      // {
-      //   type: 'select',
-      //   name: 'userRole',
-      //   label: 'Peran Pengguna',
-      //   options: [
-      //     { value: 'admin', label: 'Administrator' },
-      //     { value: 'editor', label: 'Editor Konten' },
-      //     { value: 'viewer', label: 'Hanya Lihat' }
-      //   ],
-      //   validations: [
-      //     { name: 'required', message: 'Peran wajib dipilih.' }
-      //   ]
-      // },
-      // {
-      //   type: 'date',
-      //   name: 'publicationDate',
-      //   label: 'Tanggal Publikasi',
-      //   validations: [
-      //     { name: 'required', message: 'Tanggal publikasi wajib diisi.' }
-      //   ]
-      // },
+      {
+        type: 'select',
+        name: 'userRole',
+        label: 'Peran Pengguna',
+        options: [
+          { value: 'admin', label: 'Administrator' },
+          { value: 'editor', label: 'Editor Konten' },
+          { value: 'viewer', label: 'Hanya Lihat' }
+        ],
+        validations: [
+          { name: 'required', message: 'Peran wajib dipilih.' }
+        ]
+      },
+      {
+        type: 'date',
+        name: 'publicationDate',
+        label: 'Tanggal Publikasi',
+        validations: [
+          { name: 'required', message: 'Tanggal publikasi wajib diisi.' }
+        ]
+      },
     ]
   },
 
@@ -122,14 +122,14 @@ export class CreatePage {
         accept: 'image/*',
         note: 'Maksimum ukuran file 2MB.'
       },
-      // {
-      //   type: 'checkbox',
-      //   name: 'acceptTerms',
-      //   label: 'Dengan ini saya menyetujui syarat dan ketentuan yang berlaku',
-      //   validations: [
-      //     { name: 'required', message: 'Anda wajib mencentang bagian ini.' }
-      //   ]
-      // }
+      {
+        type: 'checkbox',
+        name: 'acceptTerms',
+        label: 'Dengan ini saya menyetujui syarat dan ketentuan yang berlaku',
+        validations: [
+          { name: 'required', message: 'Anda wajib mencentang bagian ini.' }
+        ]
+      }
     ]
   },
 
@@ -159,57 +159,57 @@ export class CreatePage {
         name: 'isActive',
         label: 'Is active',
       },
-      // {
-      //   type: 'file',
-      //   name: 'coverImage', // Nama harus unik
-      //   label: 'Gambar Sampul (Boxed)',
-      //   validations: [
-      //     { name: 'required', message: 'Gambar harus diisi.' }
-      //   ],
-      //   accept: 'image/*',
-      //   note: 'Format yang diterima: JPG, PNG.',
-      //   boxed: true,
-      //   keterangan: 'Pastikan resolusi gambar 1920x1080'
-      // }
+      {
+        type: 'file',
+        name: 'coverImage', // Nama harus unik
+        label: 'Gambar Sampul (Boxed)',
+        validations: [
+          { name: 'required', message: 'Gambar harus diisi.' }
+        ],
+        accept: 'image/*',
+        note: 'Format yang diterima: JPG, PNG.',
+        boxed: true,
+        keterangan: 'Pastikan resolusi gambar 1920x1080'
+      }
     ]
   },
 
   // ===== CONTOH KONDISIONAL FIELD =====
-  // {
-  //   fields: [
-  //     {
-  //       type: 'select',
-  //       name: 'status',
-  //       label: 'Status Persetujuan',
-  //       options: [
-  //         { value: 'approved', label: 'Approved' },
-  //         { value: 'rejected', label: 'Rejected' },
-  //         { value: 'revision', label: 'Need Revision' }
-  //       ],
-  //       validations: [{ name: 'required', message: 'Status wajib diisi.' }]
-  //     }
-  //   ]
-  // },
+  {
+    fields: [
+      {
+        type: 'select',
+        name: 'status',
+        label: 'Status Persetujuan',
+        options: [
+          { value: 'approved', label: 'Approved' },
+          { value: 'rejected', label: 'Rejected' },
+          { value: 'revision', label: 'Need Revision' }
+        ],
+        validations: [{ name: 'required', message: 'Status wajib diisi.' }]
+      }
+    ]
+  },
 
-  // // BARIS 2: Field Alasan (KONDISIONAL)
-  // {
-  //   fields: [
-  //     {
-  //       type: 'textarea',
-  //       name: 'reason',
-  //       label: 'Alasan Penolakan/Revisi',
-  //       rows: 3,
-  //       // Aturan validasi HANYA aktif saat field ini muncul
-  //       validations: [{ name: 'required', message: 'Alasan wajib diisi.' }],
-  //       // --- ATURAN KONDISIONALNYA ---
-  //       showIf: {
-  //         fieldName: 'status',       // Pantau field 'status'
-  //         condition: 'notEquals',    // Tampil jika nilainya TIDAK SAMA DENGAN
-  //         value: 'approved'        // 'approved'
-  //       }
-  //     }
-  //   ]
-  // }
+  // BARIS 2: Field Alasan (KONDISIONAL)
+  {
+    fields: [
+      {
+        type: 'textarea',
+        name: 'reason',
+        label: 'Alasan Penolakan/Revisi',
+        rows: 3,
+        // Aturan validasi HANYA aktif saat field ini muncul
+        validations: [{ name: 'required', message: 'Alasan wajib diisi.' }],
+        // --- ATURAN KONDISIONALNYA ---
+        showIf: {
+          fieldName: 'status',       // Pantau field 'status'
+          condition: 'notEquals',    // Tampil jika nilainya TIDAK SAMA DENGAN
+          value: 'approved'        // 'approved'
+        }
+      }
+    ]
+  }
 ];
 
   onProfileUpdate(formData: any) {

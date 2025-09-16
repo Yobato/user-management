@@ -6,6 +6,8 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { HomePage } from './pages/home/home.component';
 import { UsersPage } from './pages/users/users.component';
 import { CreatePage } from './pages/home/create/create';
+import { ArticlePage } from './pages/article/article.component';
+import { CreateArticlePage } from './pages/article/create/create.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +17,8 @@ export const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomePage },
       { path: 'home/create', component: CreatePage },
+      { path: 'article', component: ArticlePage },
+      { path: 'article/create', component: CreateArticlePage},
       { path: 'users', component: UsersPage },
     ]
   },

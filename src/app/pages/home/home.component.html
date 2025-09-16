@@ -1,53 +1,61 @@
-<div class="flex w-full justify-between">
-  <breadcrums-component />
-  <app-search-table
-    placeholder="Search articles..."
-    [(value)]="query"
-  ></app-search-table>
-</div>
-<div class="card bg-white border border-[#D2D6DB] rounded-2xl mt-6">
-  <div class="card-header flex items-center justify-between p-6">
-    <div class="title">
-      <h5 class="text-xl font-semibold">Home</h5>
-      <span class="text-[#535862] text-sm"
-        >Dibawah ini merupakan list role untuk user</span
-      >
-    </div>
-    <button type="submit" class="btn-bsi btn-success-bsi">
-      <div class="flex items-center">
-        <span class="material-icons" style="font-size: large">add</span>
-        <span class="text-center text-md"> Tambah Role </span>
+<main class="bg-slate-50 min-h-screen w-full p-4 sm:p-6 lg:p-8">
+  <div class="max-w-7xl mx-auto">
+
+    <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-slate-200">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">
+          Welcome Back, Admin!
+        </h1>
+        <p class="mt-1 text-sm text-slate-600">
+          Here's a quick overview of what's happening today.
+        </p>
       </div>
-    </button>
+      <div class="mt-4 sm:mt-0">
+        <a class="flex items-center gap-2 bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" routerLink="/home/create">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+          </svg>
+          Add Widget
+        </a>
+      </div>
+    </header>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-medium text-slate-600">Total Pengguna</h3>
+        <p class="text-3xl font-bold text-slate-900 mt-2">1,250</p>
+        <p class="text-sm text-slate-500 mt-1">+15.7% from last month</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-medium text-slate-600">Pendapatan</h3>
+        <p class="text-3xl font-bold text-slate-900 mt-2">Rp 120jt</p>
+        <p class="text-sm text-slate-500 mt-1">+8.2% from last month</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-medium text-slate-600">Artikel Diterbitkan</h3>
+        <p class="text-3xl font-bold text-slate-900 mt-2">84</p>
+        <p class="text-sm text-slate-500 mt-1">+2 from yesterday</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-medium text-slate-600">Laporan Masuk</h3>
+        <p class="text-3xl font-bold text-slate-900 mt-2">5</p>
+        <p class="text-sm text-red-500 mt-1">Needs attention</p>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <div class="p-4 border-b border-slate-200">
+          <h3 class="text-lg font-semibold text-slate-900">Aktivitas Terbaru</h3>
+        </div>
+        <div class="p-4">
+          <div class="text-center py-12 px-6 bg-slate-50 rounded-lg">
+            <h4 class="font-medium text-slate-700">Tidak ada data aktivitas</h4>
+            <p class="text-sm text-slate-500 mt-1">Data aktivitas terbaru akan muncul di sini.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
-  <app-table-untitled
-    [columns]="tableCols"
-    [data]="paginatedData"
-    (sortChange)="onSortChange($event)"
-  >
-    <ng-template #tableAction let-row>
-      <div class="flex items-center gap-2">
-        @if ( row.status_approval.trim().toLowerCase() === 'pending' ||
-        row.status_approval.trim().toLowerCase() === 'rejected' ) {
-        <app-button-table size="md" variant="secondary" actionType="view">
-          Lihat
-        </app-button-table>
-        } @if (row.status_approval.trim().toLowerCase() === 'sendback') {
-        <app-button-table size="md" variant="primary" actionType="document">
-          Tinjau
-        </app-button-table>
-        } @if (row.status_approval.trim().toLowerCase() === 'approved') {
-        <app-button-table size="md" variant="primary" actionType="edit">
-          Edit
-        </app-button-table>
-        }
-      </div>
-    </ng-template>
-  </app-table-untitled>
-  <app-pagination
-    [currentPage]="page"
-    [totalPage]="totalPages"
-    (pageChange)="onPageChange($event)"
-  >
-  </app-pagination>
-</div>
+</main>
