@@ -13,24 +13,26 @@ import { BreadcrumsComponent } from '../../../components/breadcrums/breadcrums.c
 export class CreatePage {
 
   public profileFormConfig: FormRow[] = [
-  // BARIS 1: Dua Kolom (Nama Lengkap & Email)
-  {
-    fields: [
-      {
-        type: 'display',
-        name: 'reviewResultSection', // name tetap dibutuhkan untuk 'track by'
-        label: '',
-        renderType: 'status-section',
-        data: {
-          title: 'Hasil Review',
-          statusLabel: 'Status',
-          statusValue: 'Sendback',
-          reasonLabel: 'Reason',
-          reasonValue: 'Mohon lengkapi bagian deskripsi dan unggah gambar sampul dengan resolusi yang lebih tinggi.'
-        }
-      }
-    ]
-  },
+
+  // ===== COTNTOH PENGGUNAAN RENDERER CUSTOM =====
+
+  // {
+  //   fields: [
+  //     {
+  //       type: 'display',
+  //       name: 'reviewResultSection', // name tetap dibutuhkan untuk 'track by'
+  //       label: '',
+  //       renderType: 'status-section',
+  //       data: {
+  //         title: 'Hasil Review',
+  //         statusLabel: 'Status',
+  //         statusValue: 'Sendback',
+  //         reasonLabel: 'Reason',
+  //         reasonValue: 'Mohon lengkapi bagian deskripsi dan unggah gambar sampul dengan resolusi yang lebih tinggi.'
+  //       }
+  //     }
+  //   ]
+  // },
   // {
   //   fields: [{
   //     type: 'display',
@@ -64,7 +66,7 @@ export class CreatePage {
         name: 'description_article',
         label: 'Deskripsi Article',
         rows: 4,
-        placeholder: "Masukka deskripsi article Anda",
+        placeholder: "Masukkan deskripsi article Anda",
         validations: [
             { name: 'required', message: 'Deskripsi wajib diisi.' },
         ]
@@ -72,7 +74,6 @@ export class CreatePage {
     ]
   },
 
-  // BARIS 3: Dua Kolom (Peran & Tanggal)
   {
     fields: [
       {
@@ -109,7 +110,6 @@ export class CreatePage {
     ]
   },
 
-  // BARIS 4: Satu Kolom (Checkbox)
   {
     fields: [
       {
@@ -152,7 +152,6 @@ export class CreatePage {
     ]
   },
 
-  // BARIS 6: Dua Kolom (File Upload)
   {
     fields: [
       {
@@ -174,6 +173,43 @@ export class CreatePage {
       // }
     ]
   },
+
+  // ===== CONTOH KONDISIONAL FIELD =====
+  // {
+  //   fields: [
+  //     {
+  //       type: 'select',
+  //       name: 'status',
+  //       label: 'Status Persetujuan',
+  //       options: [
+  //         { value: 'approved', label: 'Approved' },
+  //         { value: 'rejected', label: 'Rejected' },
+  //         { value: 'revision', label: 'Need Revision' }
+  //       ],
+  //       validations: [{ name: 'required', message: 'Status wajib diisi.' }]
+  //     }
+  //   ]
+  // },
+
+  // // BARIS 2: Field Alasan (KONDISIONAL)
+  // {
+  //   fields: [
+  //     {
+  //       type: 'textarea',
+  //       name: 'reason',
+  //       label: 'Alasan Penolakan/Revisi',
+  //       rows: 3,
+  //       // Aturan validasi HANYA aktif saat field ini muncul
+  //       validations: [{ name: 'required', message: 'Alasan wajib diisi.' }],
+  //       // --- ATURAN KONDISIONALNYA ---
+  //       showIf: {
+  //         fieldName: 'status',       // Pantau field 'status'
+  //         condition: 'notEquals',    // Tampil jika nilainya TIDAK SAMA DENGAN
+  //         value: 'approved'        // 'approved'
+  //       }
+  //     }
+  //   ]
+  // }
 ];
 
   onProfileUpdate(formData: any) {

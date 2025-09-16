@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FieldConfig, FormRow } from "./field.config";
-import { FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { AbstractControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { DynamicFormService } from "./dynamic-form.service";
 
 import { TextInputComponent } from "./fields/text-input/text-input";
@@ -11,6 +11,7 @@ import { CheckboxInputComponent } from "./fields/checkbox-input/checkbox-input";
 import { ToggleInputComponent } from "./fields/toggle-input/toggle-input";
 import { FileInputComponent } from "./fields/file-input/file-input";
 import { StatusSection } from "../status-section/status-section";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-dynamic-form',
@@ -25,10 +26,72 @@ export class DynamicFormComponent implements OnInit {
 
   form!: FormGroup;
 
+  private subscriptions = new Subscription();
+
   constructor(private formService: DynamicFormService){}
 
   ngOnInit(): void {
       this.form = this.formService.createFormGroup(this.config);
+      this.setupContionalFields();
+      // this
+  }
+
+  private setupContionalFields(): void{
+    this.config.forEach(row => {
+      row.fields.forEach(field =>{
+        if(field.showIf){
+          const condition = field.showIf;
+          const controlToWatch = this.form.get(condition.fieldName);
+          const dependentControl = this.form.get(field.name);
+
+          if(controlToWatch && dependentControl){
+            this.toggleField(dependentControl, controlToWatch.value, condition, field);
+
+            const sub = controlToWatch.valueChanges.subscribe(value => {
+              this.toggleField(dependentControl, value, condition, field);
+            });
+            this.subscriptions.add(sub);
+          }
+        }
+      });
+    });
+  }
+
+  private toggleField(control: AbstractControl, value: any, condition: any, fieldConfig: FieldConfig){
+    let shouldShow = false;
+    if(condition.condition === 'equals'){
+      shouldShow = (value === condition.value);
+    } else if(condition.condition === 'notEquals'){
+      shouldShow = (value !== condition.value);
+    }
+    if(shouldShow){
+      const validators = this.formService.getValidators(fieldConfig);
+      control.setValidators(validators);
+    } else{
+      control.clearValidators();
+    }
+    control.updateValueAndValidity();
+  }
+
+  public isVisible(field: FieldConfig): boolean{
+    if(!field.showIf){
+      return true;
+    }
+    const condition = field.showIf;
+    const controlToWatch = this.form.get(condition.fieldName);
+
+    if(!controlToWatch) return false;
+
+    if(condition.condition === 'equals'){
+      return controlToWatch.value === condition.value;
+    } else if(condition.condition === 'notEquals'){
+      return controlToWatch.value !== condition.value;
+    }
+    return true;
+  }
+
+  ngOnDestroy(): void{
+    this.subscriptions.unsubscribe();
   }
 
   onSubmit(): void{

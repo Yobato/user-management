@@ -9,6 +9,12 @@ export interface ValidatorConfig{
   message: string;
 }
 
+export interface ConditionConfig{
+  fieldName: string;
+  condition: 'equals' | 'notEquals';
+  value: any;
+}
+
 export interface FieldConfig{
   name: string;
   label: string;
@@ -32,6 +38,7 @@ export interface FieldConfig{
   keterangan?: string;
   data?: any;
   renderType?: 'status-section' | 'subtitle';
+  showIf?: ConditionConfig;
 }
 
 export interface FormRow{

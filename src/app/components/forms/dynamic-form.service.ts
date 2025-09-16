@@ -16,7 +16,7 @@ export class DynamicFormService{
       row.fields.forEach(field => {
         const control = this.fb.control(
           field.initialValue !== undefined ? field.initialValue : '',
-          this.bindValidators(field)
+          this.getValidators(field)
         );
         group.addControl(field.name, control);
       });
@@ -24,7 +24,7 @@ export class DynamicFormService{
     return group;
   }
 
-  private bindValidators(field: FieldConfig): ValidatorFn[]{
+  public getValidators(field: FieldConfig): ValidatorFn[]{
     const angularValidators: ValidatorFn[] = [];
     const validations = field.validations || [];
       validations.forEach(validator => {
