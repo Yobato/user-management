@@ -4,7 +4,7 @@ export interface TableColumn {
   key: string;
   label: string;
   sortable?: boolean;
-  type?: 'badge' | 'text';
+  type?: 'badge' | 'text' | 'image';
   isAction?: boolean;
   customClass?: string;
   customStyle?: {[key:string]:string};
@@ -39,6 +39,8 @@ export class TableUntitledComponent {
 
     this.sortChange.emit({ key: this.sortKey, direction: this.sortDirection})
   }
+
+
 
   getBadgeClass(status: string): {[key: string]: boolean}{
     switch(status){

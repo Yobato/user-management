@@ -48,6 +48,14 @@
                 </span>
               </ng-container>
 
+              <ng-container *ngSwitchCase="col.type === 'image'">
+                <img
+                  [src]="row[col.key]"
+                  [alt]="col.label"
+                  class="w-10 h-10 rounded-full object-cover border"
+                />
+              </ng-container>
+
               <ng-container *ngSwitchCase="col.isAction">
                 <ng-container
                   *ngTemplateOutlet="tableActionTpl; context: { $implicit: row }"
@@ -56,7 +64,7 @@
 
               <ng-container *ngSwitchDefault>
                 <span class="text-gray-900">
-                   {{ row[col.key] }}
+                   {{ row[col.key] | truncate:35}}
                 </span>
               </ng-container>
             </ng-container>
