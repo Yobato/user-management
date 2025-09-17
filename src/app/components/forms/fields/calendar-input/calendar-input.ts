@@ -7,8 +7,7 @@ import { AsteriskIcon, FileIcon, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-calendar-input',
-  standalone: true,
-  imports: [ReactiveFormsModule, LucideAngularModule],
+  standalone: false,
   templateUrl: './calendar-input.html',
   styleUrl: './calendar-input.css',
   providers: [
@@ -34,7 +33,7 @@ export class CalendarInputComponent implements ControlValueAccessor, OnInit {
   }
 
   constructor(private injector: Injector){}
-  
+
   ngOnInit(): void {
     this.ngControl = this.injector.get(NgControl);
   }

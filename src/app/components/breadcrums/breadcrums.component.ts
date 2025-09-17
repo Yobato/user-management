@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute, Params, RouterLink } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute, Params} from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { navigationTree, findPathInTree, NavItem } from '../../lib/navigation';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'breadcrums-component',
   templateUrl: './breadcrums.component.html',
-  imports: [CommonModule, RouterLink],
+  standalone: false,
 })
 export class BreadcrumsComponent implements OnInit {
   // Properti untuk menyimpan item breadcrumb yang sudah diproses

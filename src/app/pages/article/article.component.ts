@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { TableColumn, TableUntitledComponent } from '../../components/table-untitled/table-untitled.component';
-import { PaginationComponent } from '../../components/pagination/pagination.component';
-import { BreadcrumsComponent } from '../../components/breadcrums/breadcrums.component';
-import { ButtonTable } from '../../components/button-table/button-table.component';
-import { SearchTable } from '../../components/search-table/search-table.component';
-import { RouterModule } from '@angular/router';
+import { TableColumn } from '../../components/table-untitled/table-untitled.component';
 
 export interface DataItem {
   id: number;
@@ -20,14 +15,7 @@ export interface DataItem {
 
 @Component({
   selector: 'app-article',
-  imports: [
-      PaginationComponent,
-      BreadcrumsComponent,
-      TableUntitledComponent,
-      ButtonTable,
-      SearchTable,
-      RouterModule
-  ],
+  standalone: false,
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })

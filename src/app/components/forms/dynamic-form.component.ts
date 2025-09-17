@@ -1,22 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FieldConfig, FormRow } from "./field.config";
-import { AbstractControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { AbstractControl, FormGroup} from "@angular/forms";
 import { DynamicFormService } from "./dynamic-form.service";
 
-import { TextInputComponent } from "./fields/text-input/text-input";
-import { TextAreaInputComponent } from "./fields/textarea-input/textarea-input";
-import { SelectInputComponent } from "./fields/select-input/select-input";
-import { CalendarInputComponent } from "./fields/calendar-input/calendar-input";
-import { CheckboxInputComponent } from "./fields/checkbox-input/checkbox-input";
-import { ToggleInputComponent } from "./fields/toggle-input/toggle-input";
-import { FileInputComponent } from "./fields/file-input/file-input";
-import { StatusSection } from "../status-section/status-section";
 import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-dynamic-form',
+  standalone: false,
   templateUrl: './dynamic-form.component.html',
-  imports: [ReactiveFormsModule, TextInputComponent, TextAreaInputComponent, SelectInputComponent, CalendarInputComponent, CheckboxInputComponent, ToggleInputComponent, FileInputComponent, StatusSection],
 })
 
 export class DynamicFormComponent implements OnInit {

@@ -7,8 +7,7 @@ import { AsteriskIcon, FileIcon, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-checkbox-input',
-  standalone: true,
-  imports: [ReactiveFormsModule, LucideAngularModule],
+  standalone: false,
   templateUrl: './checkbox-input.html',
   styleUrl: './checkbox-input.css',
   providers: [

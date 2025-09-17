@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { FormRow } from '../../../components/forms/field.config';
-import { CommonModule } from '@angular/common';
-import { DynamicFormComponent } from '../../../components/forms/dynamic-form.component';
-import { BreadcrumsComponent } from '../../../components/breadcrums/breadcrums.component';
 
 @Component({
   selector: 'app-create',
-  imports: [CommonModule, DynamicFormComponent, BreadcrumsComponent],
+  standalone: false,
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })

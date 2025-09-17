@@ -22,8 +22,6 @@ export const routes: Routes = [
       { path: 'users', component: UsersPage },
     ]
   },
-  // Jika ada halaman tanpa layout, bisa ditambahkan di luar children
-  // { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({

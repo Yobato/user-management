@@ -7,8 +7,7 @@ import { ValidatorConfig } from '../../field.config';
 
 @Component({
   selector: 'app-file-input',
-  // standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, LucideAngularModule],
+  standalone: false,
   templateUrl: './file-input.html',
   styleUrl: './file-input.css',
   providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(()=> FileInputComponent), multi: true}]

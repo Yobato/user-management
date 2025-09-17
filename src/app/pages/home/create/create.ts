@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FieldConfig, FormRow } from '../../../components/forms/field.config';
-import { DynamicFormComponent } from '../../../components/forms/dynamic-form.component';
-import { BreadcrumsComponent } from '../../../components/breadcrums/breadcrums.component';
+import { FormRow } from '../../../components/forms/field.config';
 
 @Component({
   selector: 'app-profile-settings',
-  standalone: true,
-  imports: [CommonModule, DynamicFormComponent, BreadcrumsComponent],
+  standalone: false,
   templateUrl: "./create.html"
 })
 export class CreatePage {
 
   public profileFormConfig: FormRow[] = [
 
-  // ===== COTNTOH PENGGUNAAN RENDERER CUSTOM =====
+  // ===== CONTOH PENGGUNAAN RENDERER CUSTOM =====
 
   {
     fields: [
@@ -133,7 +129,6 @@ export class CreatePage {
     ]
   },
 
-  // BARIS 5: Satu Kolom (Toggle)
   {
     fields: [
       {
@@ -190,8 +185,7 @@ export class CreatePage {
       }
     ]
   },
-
-  // BARIS 2: Field Alasan (KONDISIONAL)
+  
   {
     fields: [
       {

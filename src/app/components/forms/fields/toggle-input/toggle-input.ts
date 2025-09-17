@@ -3,9 +3,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@a
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-toggle-input', // <-- Ubah
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  selector: 'app-toggle-input',
+  standalone: false,
   templateUrl: './toggle-input.html', // <-- Ubah
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ToggleInputComponent), multi: true } // <-- Ubah

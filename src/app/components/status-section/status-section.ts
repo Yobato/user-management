@@ -11,7 +11,7 @@ export interface StatusData{
 
 @Component({
   selector: 'app-status-section',
-  imports: [],
+  standalone: false,
   templateUrl: './status-section.html',
   styleUrl: './status-section.css'
 })

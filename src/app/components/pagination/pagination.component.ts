@@ -1,12 +1,9 @@
-// pagination.component.ts
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LucideAngularModule, ArrowLeft, ArrowRight } from 'lucide-angular';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 
 @Component({
-  selector: 'app-pagination',
-  standalone: true,
-  imports: [CommonModule, LucideAngularModule], // Impor CommonModule untuk *ngFor, *ngIf, dll. dan LucideAngularModule untuk ikon
+  selector: 'app-pagination',// Impor CommonModule untuk *ngFor, *ngIf, dll. dan LucideAngularModule untuk ikon
+  standalone: false,
   templateUrl: './pagination.component.html',
 })
 export class PaginationComponent {

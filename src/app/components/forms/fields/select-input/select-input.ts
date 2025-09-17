@@ -7,8 +7,7 @@ import { AsteriskIcon, FileIcon, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-select-input',
-  standalone: true,
-  imports: [ReactiveFormsModule, LucideAngularModule],
+  standalone: false,
   templateUrl: './select-input.html',
   styleUrl: './select-input.css',
   providers: [

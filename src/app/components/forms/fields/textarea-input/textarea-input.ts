@@ -7,8 +7,7 @@ import { AsteriskIcon, FileIcon, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-textarea-input',
-  standalone: true,
-  imports: [ReactiveFormsModule, LucideAngularModule],
+  standalone: false,
   templateUrl: './textarea-input.html',
   styleUrl: './textarea-input.css',
   providers: [

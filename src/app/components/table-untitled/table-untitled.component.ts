@@ -1,4 +1,3 @@
-import { CommonModule, NgClass } from '@angular/common';
 import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 
 export interface TableColumn {
@@ -13,9 +12,9 @@ export interface TableColumn {
 
 @Component({
   selector: 'app-table-untitled',
+  standalone: false,
   templateUrl: './table-untitled.component.html',
   styleUrls: ['./table-untitled.component.css'],
-  imports: [CommonModule]
 })
 export class TableUntitledComponent {
   @ContentChild('tableAction', { static: false }) tableActionTpl!: TemplateRef<any>;
