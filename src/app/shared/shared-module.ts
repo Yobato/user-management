@@ -19,8 +19,9 @@ import { ToggleInputComponent } from '../components/forms/fields/toggle-input/to
 import { DynamicFormComponent } from '../components/forms/dynamic-form.component';
 import { DashboardLayoutComponent } from '../layouts/dashboard-layout/dashboard-layout.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LucideAngularModule, FileIcon } from 'lucide-angular';
+import { TruncatePipe } from '../pipes/truncate-pipe';
 
 const allSharedComponents = [
   BreadcrumsComponent,
@@ -42,12 +43,15 @@ const allSharedComponents = [
   ToggleInputComponent,
   DynamicFormComponent,
   // ===== Dashboard Layout =====
-  DashboardLayoutComponent
+  DashboardLayoutComponent,
+  // ===== Pipes =====
+  TruncatePipe
 ]
 
 const SharedModuleToExport = [
   CommonModule,
   RouterModule,
+  FormsModule,
   ReactiveFormsModule,
   LucideAngularModule
 ]
