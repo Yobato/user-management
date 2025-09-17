@@ -13,14 +13,7 @@ export const routes: Routes = [
   {
     path: '', // Rute utama
     component: DashboardLayoutComponent,
-    children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomePage },
-      { path: 'home/create', component: CreatePage },
-      { path: 'article', component: ArticlePage },
-      { path: 'article/create', component: CreateArticlePage},
-      { path: 'users', component: UsersPage },
-    ]
+    loadChildren: () => import ('./pages/pages-module').then(m => m.PagesModule)
   },
 ];
 
