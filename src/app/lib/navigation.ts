@@ -7,31 +7,54 @@ export interface NavItem {
 export const navigationTree: NavItem[] = [
   {
     title: "Dashboard",
-    path: "/dashboard",
+    path: "/home",
   },
   {
     title: "Content Management",
     children: [
       {
         title: "Artikel",
-        path: "/home",
+        path: "/articles",
         // Jadikan halaman lain yang berhubungan sebagai 'children' dari Artikel
         children: [
           {
             title: "Tambah Artikel",
-            path: "/artikel/add", // Pastikan path ini sesuai dengan URL Anda
+            path: "/articles/create", // Pastikan path ini sesuai dengan URL Anda
           },
           {
             title: "Edit Artikel",
-            path: "/artikel/[id]/edit",
+            path: "/articles/[id]/edit",
           },
           {
             title: "Tinjau Artikel",
-            path: "/artikel/[id]/tinjau",
+            path: "/articles/[id]/tinjau",
           },
           {
             title: "View Artikel",
-            path: "/artikel/[id]/view",
+            path: "/articles/[id]/view",
+          },
+        ],
+      },
+      {
+        title: "Produk",
+        path: "/products",
+        // Jadikan halaman lain yang berhubungan sebagai 'children' dari Artikel
+        children: [
+          {
+            title: "Tambah Artikel",
+            path: "/products/create", // Pastikan path ini sesuai dengan URL Anda
+          },
+          {
+            title: "Edit Artikel",
+            path: "/products/[id]/edit",
+          },
+          {
+            title: "Tinjau Artikel",
+            path: "/products/[id]/tinjau",
+          },
+          {
+            title: "View Artikel",
+            path: "/products/[id]/view",
           },
         ],
       },
