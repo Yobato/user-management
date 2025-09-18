@@ -37,7 +37,7 @@
           Tinjau
         </app-button-table>
         } @if (row.status_approval.trim().toLowerCase() === 'approved') {
-        <app-button-table size="md" variant="primary" actionType="edit">
+        <app-button-table size="md" variant="primary" actionType="edit" [routerLink]="['/articles/edit', row.id]">
           Edit
         </app-button-table>
         }

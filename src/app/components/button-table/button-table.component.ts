@@ -16,6 +16,7 @@ export class ButtonTable {
   @Input() disabled: boolean = false;
   @Input() fullWidth: boolean = false;
   @Input() actionType: ActionType = 'null';
+  @Input() routerLink: string | any[] | null = null;
 
   getIconForAction(type: ActionType) {
     switch (type) {
