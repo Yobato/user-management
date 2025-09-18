@@ -96,8 +96,8 @@ export class CreateArticlePage {
     },
   ];
 
-    onProfileUpdate(formData: any) {
-      console.log('Data article berhasil diupdate:', formData);
-    }
+  onProfileUpdate(formData: any) {
+    console.log('Data article berhasil diupdate:', formData);
+  }
 
 }

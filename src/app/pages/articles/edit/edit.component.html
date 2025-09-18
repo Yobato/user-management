@@ -1,1 +1,14 @@
-<p>edit works!</p>
+<div class="mb-5">
+  <breadcrums-component />
+</div>
+<div *ngIf="isDataReady; else loadingTemplate">
+  <app-dynamic-form
+    [config]="articleForm"
+    (formSubmit)="onProfileUpdate($event)"
+    title="Ubah Artikel"
+  >
+  </app-dynamic-form>
+</div>
+<ng-template #loadingTemplate>
+  <p>Loading data artikel...</p>
+</ng-template>
