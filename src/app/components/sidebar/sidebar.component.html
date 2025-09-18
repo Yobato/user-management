@@ -1,18 +1,46 @@
-<div class="content p-4 overflow-y-auto" style="height: calc(100vh - 4rem);" >
-  <div class="layout-sidebar bg-white w-64 h-full rounded-xl">
+<div class="content p-4 overflow-y-auto" style="height: calc(100vh - 4rem)">
+  <div class="layout-sidebar bg-white w-64 h-full rounded-xl px-3 py-4">
     <nav class="flex flex-col h-full">
-      <ul class="space-y-2">
-        <li>
-          <a routerLink="/home" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Home</a>
-        </li>
-        <li>
-          <a routerLink="/articles" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Artikel</a>
-        </li>
-        <li>
-          <a routerLink="/products" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Produk</a>
-        </li>
-      </ul>
+      <div *ngFor="let section of menuItems">
+        <h3
+          (click)="toggleSection(section.title)"
+          class="px-3 pt-2 pb-1 text-xs font-bold text-black uppercase tracking-wider flex justify-between items-center cursor-pointer select-none"
+        >
+          <span>
+            {{ section.title }}
+          </span>
+          <span
+            *ngIf="sectionState[section.title]"
+            class="material-icons text-base"
+            >expand_less</span
+          >
+          <span
+            *ngIf="!sectionState[section.title]"
+            class="material-icons text-base"
+            >expand_more</span
+          >
+        </h3>
+        <ul *ngIf="sectionState[section.title]" class="space-y-2">
+          <li *ngFor="let link of section.children">
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="active-link"
+              #rla="routerLinkActive"
+              class="flex text-slate-500 items-center gap-3 px-6 py-2 font-medium rounded-lg transition-colors text-sm"
+            >
+              <span
+                *ngIf="rla.isActive"
+                class="material-icons text-[#00BFB2]"
+                style="font-size: 20px"
+                >{{ link.icon }}</span
+              >
+              <span>
+                {{ link.label }}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
-
   </div>
 </div>
