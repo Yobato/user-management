@@ -73,6 +73,7 @@ export class CreateArticlePage {
           type: 'select',
           name: 'categoryProduct',
           label: 'Kategori Produk',
+          initialValue: null,
           options: [
             { value: 'reguler', label: 'BSI Griya Reguler' },
             { value: 'srimuda', label: 'BSI Griya Srimuda' },

@@ -89,7 +89,7 @@ export class EditArticlePage implements OnInit {
             { value: 'simuda', label: 'BSI Griya Srimuda' },
             { value: 'haji', label: 'BSI Griya Haji' }
           ],
-          initialValue: "simuda",
+          // initialValue: "simuda",
           validations: [
             { name: 'required', message: 'Peran wajib dipilih.' }
           ]
@@ -133,7 +133,7 @@ export class EditArticlePage implements OnInit {
     });
   }
 
-  onProfileUpdate(formData: any) {
+  onArticleUpdate(formData: any) {
     console.log('Data article berhasil diupdate:', formData);
   }
 
