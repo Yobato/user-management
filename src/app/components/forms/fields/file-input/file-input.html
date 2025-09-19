@@ -65,7 +65,7 @@
         </div>
 
         @if (displayFileName) {
-        <small class="text-gray-500 mt-1">{{ displayFileName }}</small>
+        <small class="text-gray-500 mt-1">{{ displayFileName | truncate:50 }}</small>
         } @if (ngControl.invalid && ngControl.touched) {
         <div class="text-red-500 text-xs mt-1">
           @for (validation of validations; track validation.name) { @if

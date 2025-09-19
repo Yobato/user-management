@@ -5,12 +5,14 @@ import { ArticlesRoutingModule } from './articles-routing-module';
 import { ArticlePage } from './article.component';
 import { CreateArticlePage } from './create/create.component';
 import { SharedModule } from '../../shared/shared-module';
+import { EditArticlePage } from './edit/edit.component';
 
 
 @NgModule({
   declarations: [
     ArticlePage,
-    CreateArticlePage
+    CreateArticlePage,
+    EditArticlePage
   ],
   imports: [
     CommonModule,

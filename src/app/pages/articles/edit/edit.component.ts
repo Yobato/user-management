@@ -1,19 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormRow } from '../../../components/forms/field.config';
+import { ActivatedRoute } from '@angular/router';
+import { ArticlesService, DataItem } from '../../../services/articles.service';
 
 @Component({
-  selector: 'app-create',
+  selector: 'app-edit',
   standalone: false,
-  templateUrl: './create.component.html',
-  styleUrl: './create.component.css'
+  templateUrl: './edit.component.html',
+  styleUrl: './edit.component.css'
 })
-export class CreateArticlePage {
-  public profileFormConfig: FormRow[] = [
+export class EditArticlePage implements OnInit {
+  articleId: string | null = null;
+  articleData: DataItem | undefined;
+
+  constructor(
+    private route: ActivatedRoute,
+    private articleService: ArticlesService
+  ){}
+
+  isDataReady = false;
+  public articleForm: FormRow[] = [
     {
       fields: [
         {
           type: 'text',
-          name: 'titleArticle',
+          name: 'judul',
           label: 'Judul Article',
           placeholder: 'Masukkan judul article',
           validations: [
@@ -27,7 +38,7 @@ export class CreateArticlePage {
       fields: [
         {
           type: 'textarea',
-          name: 'description_article',
+          name: 'deskripsi',
           label: 'Deskripsi Article',
           rows: 4,
           placeholder: "Masukkan deskripsi article Anda",
@@ -42,7 +53,7 @@ export class CreateArticlePage {
       fields: [
         {
           type: 'text',
-          name: 'refrenceArticle',
+          name: 'refrensi',
           label: 'Refrensi Article',
           placeholder: 'Masukkan link refrensi article',
           validations: [
@@ -57,8 +68,8 @@ export class CreateArticlePage {
       fields: [
         {
           type: 'file',
-          name: 'profilePicture', // Nama harus unik
-          label: 'Foto Profil',
+          name: 'artikel_image', // Nama harus unik
+          label: 'Gambar Artikel',
           validations: [
             { name: 'required', message: 'Gambar harus diisi.' }
           ],
@@ -71,13 +82,14 @@ export class CreateArticlePage {
       fields: [
         {
           type: 'select',
-          name: 'categoryProduct',
+          name: 'kategori',
           label: 'Kategori Produk',
           options: [
             { value: 'reguler', label: 'BSI Griya Reguler' },
-            { value: 'srimuda', label: 'BSI Griya Srimuda' },
+            { value: 'simuda', label: 'BSI Griya Srimuda' },
             { value: 'haji', label: 'BSI Griya Haji' }
           ],
+          initialValue: "simuda",
           validations: [
             { name: 'required', message: 'Peran wajib dipilih.' }
           ]
@@ -89,12 +101,37 @@ export class CreateArticlePage {
       fields: [
         {
           type: 'toggle',
-          name: 'isActive',
+          name: 'status_approval',
           label: 'Is active',
         },
       ]
     },
   ];
+
+  ngOnInit(): void {
+    this.articleId = this.route.snapshot.paramMap.get('id');
+
+    if(this.articleId){
+      this.articleData = this.articleService.getArticleById(+this.articleId);
+
+      if(this.articleData){
+        this.prepareFormConfig();
+        this.isDataReady = true;
+      } else{
+        console.log("Artikel tidak ditemukan");
+      }
+    }
+  }
+
+  prepareFormConfig(): void{
+    this.articleForm.forEach(row => {
+      row.fields.forEach(field => {
+        if(this.articleData && field.name in this.articleData){
+          field.initialValue = this.articleData[field.name as keyof DataItem]
+        }
+      });
+    });
+  }
 
   onProfileUpdate(formData: any) {
     console.log('Data article berhasil diupdate:', formData);

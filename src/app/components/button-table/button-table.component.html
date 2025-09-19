@@ -1,5 +1,5 @@
-<button
-[disabled]="disabled"
+<a
+[routerLink]="routerLink"
 [ngClass]="[
   'btn',
   'btn-' + variant,
@@ -12,4 +12,4 @@
   {{ getIconForAction(actionType) }}
 </span>
 <ng-content></ng-content>
-</button>
+</a>
