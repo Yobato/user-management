@@ -11,7 +11,6 @@ export class CreatePage {
   public profileFormConfig: FormRow[] = [
 
   // ===== CONTOH PENGGUNAAN RENDERER CUSTOM =====
-
   {
     fields: [
       {
@@ -185,7 +184,7 @@ export class CreatePage {
       }
     ]
   },
-  
+
   {
     fields: [
       {

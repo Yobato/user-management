@@ -3,8 +3,8 @@
 </div>
 <div *ngIf="isDataReady; else loadingTemplate">
   <app-dynamic-form
-    [config]="articleForm"
-    (formSubmit)="onArticleUpdate($event)"
+    [config]="productFormConfig"
+    (formSubmit)="onProductUpdate($event)"
     title="Ubah Produk"
   >
   </app-dynamic-form>

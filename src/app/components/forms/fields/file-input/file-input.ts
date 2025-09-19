@@ -93,17 +93,47 @@ export class FileInputComponent implements ControlValueAccessor, OnInit, OnDestr
     }
   }
 
-  get displayFileName(): string | undefined {
+  // Di dalam FileInputComponent
+
+  public get displayFileName(): string {
+    // Kasus 1: Nilai kosong/null
     if (!this.currentValue) {
-      return undefined;
+      return 'No file selected.';
     }
-    if(this.currentValue instanceof File){
+
+    // Kasus 2: Nilai adalah File object (pengguna baru memilih file)
+    if (this.currentValue instanceof File) {
       return `${this.currentValue.name} (${(this.currentValue.size / 1024).toFixed(1)} KB)`;
     }
-    if(typeof this.currentValue === 'string' && this.currentValue){
-      return `File tersimpan: ${this.currentValue.split('/').pop()}`;
+
+    // Kasus 3: Nilai adalah string (data awal dari database/URL)
+    if (typeof this.currentValue === 'string' && this.currentValue) {
+      let finalName = '';
+
+      // Pola untuk mendeteksi ekstensi file gambar yang umum
+      const imageExtensionsRegex = /\.(jpeg|jpg|png|gif|webp|svg)$/i;
+
+      try {
+        // Cek apakah URL diakhiri dengan ekstensi gambar
+        if (imageExtensionsRegex.test(this.currentValue)) {
+          // Jika YA, ambil nama filenya (contoh: pexels-photo-106399.jpeg)
+          const urlParts = this.currentValue.split('/');
+          finalName = urlParts[urlParts.length - 1].split('?')[0]; // Ambil nama file & hapus query params
+        } else {
+          // Jika TIDAK (seperti URL picsum), ambil nama domainnya sebagai fallback
+          finalName = new URL(this.currentValue).hostname; // Contoh: picsum.photos
+        }
+      } catch (e) {
+        // Jika string bukan URL valid, tampilkan apa adanya
+        finalName = this.currentValue;
+      }
+
+      // Tambahkan prefix "File tersimpan:" untuk semua kasus string
+      return `File tersimpan: ${finalName}`;
     }
-    return undefined;
+
+    // Fallback terakhir jika tipe data tidak dikenali
+    return 'Invalid file data.';
   }
 
   isRequired(): boolean{

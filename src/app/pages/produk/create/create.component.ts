@@ -29,6 +29,7 @@ export class CreateProdukPage {
           type: 'select',
           name: 'jenisProduct',
           label: 'Jenis Produk',
+          initialValue: null,
           options: [
             { value: 'griya', label: 'Griya' },
             { value: 'griya_subsidi', label: 'Griya Subsidi' }
@@ -45,6 +46,7 @@ export class CreateProdukPage {
           type: 'select',
           name: 'categoryProduct',
           label: 'Kategori Produk',
+          initialValue: null,
           options: [
             { value: 'reguler', label: 'BSI Griya Reguler' },
             { value: 'srimuda', label: 'BSI Griya Srimuda' },
