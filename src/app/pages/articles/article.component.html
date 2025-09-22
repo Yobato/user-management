@@ -29,7 +29,12 @@
       <div class="flex items-center gap-2">
         @if ( row.status_approval.trim().toLowerCase() === 'pending' ||
         row.status_approval.trim().toLowerCase() === 'rejected' ) {
-        <app-button-table size="md" variant="secondary" actionType="view">
+        <app-button-table
+          size="md"
+          variant="secondary"
+          actionType="view"
+          [routerLink]="['/articles/view', row.id]"
+        >
           Lihat
         </app-button-table>
         } @if (row.status_approval.trim().toLowerCase() === 'sendback') {
@@ -37,7 +42,12 @@
           Tinjau
         </app-button-table>
         } @if (row.status_approval.trim().toLowerCase() === 'approved') {
-        <app-button-table size="md" variant="primary" actionType="edit" [routerLink]="['/articles/edit', row.id]">
+        <app-button-table
+          size="md"
+          variant="primary"
+          actionType="edit"
+          [routerLink]="['/articles/edit', row.id]"
+        >
           Edit
         </app-button-table>
         }

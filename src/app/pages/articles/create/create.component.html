@@ -1,9 +1,13 @@
 <div class="mb-5">
   <breadcrums-component />
 </div>
+@if (vm) {
 <app-dynamic-form
-  [config]="profileFormConfig"
-  (formSubmit)="onProfileUpdate($event)"
-  title="Buat Artikel"
+  [config]="vm.config"
+  (formSubmit)="onSubmit($event)"
+  [title]="vm.formTitle"
+  [showSubmitButton]="vm.showSubmitButton"
+  (close)="navigateBack()"
 >
 </app-dynamic-form>
+}

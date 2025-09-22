@@ -39,6 +39,7 @@ export interface FieldConfig{
   data?: any;
   renderType?: 'status-section' | 'subtitle';
   showIf?: ConditionConfig;
+  disabled?: boolean;
 }
 
 export interface FormRow{

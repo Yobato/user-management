@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormRow } from '../../../components/forms/field.config';
+import { ArticlesService } from '../../../services/articles.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormViewModel, getArticlesForm } from '../article.form';
 
 @Component({
   selector: 'app-create',
@@ -7,98 +10,28 @@ import { FormRow } from '../../../components/forms/field.config';
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })
-export class CreateArticlePage {
-  public profileFormConfig: FormRow[] = [
-    {
-      fields: [
-        {
-          type: 'text',
-          name: 'titleArticle',
-          label: 'Judul Article',
-          placeholder: 'Masukkan judul article',
-          validations: [
-            { name: 'required', message: 'Nama Lengkap wajib diisi.' },
-            { name: 'minLength', value: 3, message: 'Nama harus lebih dari 2 karakter.' }
-          ],
-        },
-      ]
-    },
-    {
-      fields: [
-        {
-          type: 'textarea',
-          name: 'description_article',
-          label: 'Deskripsi Article',
-          rows: 4,
-          placeholder: "Masukkan deskripsi article Anda",
-          validations: [
-              { name: 'required', message: 'Deskripsi wajib diisi.' },
-          ]
-        }
-      ]
-    },
+export class CreateArticlePage implements OnInit {
+  vm: FormViewModel | null = null;
 
-    {
-      fields: [
-        {
-          type: 'text',
-          name: 'refrenceArticle',
-          label: 'Refrensi Article',
-          placeholder: 'Masukkan link refrensi article',
-          validations: [
-            { name: 'required', message: 'Refrensi Artikel wajib diisi.' },
-            { name: 'minLength', value: 5, message: 'Link minimal 5 karakter.' }
-          ],
-        },
-      ]
-    },
+  constructor(
+    // === Untuk fungsi create article nanti ===
+    private articleService: ArticlesService,
+    private route: ActivatedRoute,
+    private router: Router
+  ){ }
 
-    {
-      fields: [
-        {
-          type: 'file',
-          name: 'profilePicture', // Nama harus unik
-          label: 'Foto Profil',
-          validations: [
-            { name: 'required', message: 'Gambar harus diisi.' }
-          ],
-          accept: 'image/*',
-          note: 'Maksimum ukuran file 2MB.'
-        },
-      ]
-    },
-    {
-      fields: [
-        {
-          type: 'select',
-          name: 'categoryProduct',
-          label: 'Kategori Produk',
-          initialValue: null,
-          options: [
-            { value: 'reguler', label: 'BSI Griya Reguler' },
-            { value: 'srimuda', label: 'BSI Griya Srimuda' },
-            { value: 'haji', label: 'BSI Griya Haji' }
-          ],
-          validations: [
-            { name: 'required', message: 'Peran wajib dipilih.' }
-          ]
-        },
-      ]
-    },
+  ngOnInit(): void {
+    this.vm = getArticlesForm({mode: 'create'});
+  }
 
-    {
-      fields: [
-        {
-          type: 'toggle',
-          name: 'isActive',
-          label: 'Is active',
-        },
-      ]
-    },
-  ];
+  onSubmit(formData: any): void {
+    console.log('Data baru yang akan disimpan:', formData);
+    alert('Artikel baru berhasil dibuat!');
+    this.router.navigate(['/articles']);
+  }
 
-  onProfileUpdate(formData: any) {
-    console.log('Data article berhasil diupdate:', formData);
+  navigateBack(): void{
+    this.router.navigate(['/articles']);
   }
 
 }

@@ -23,15 +23,15 @@ export const navigationTree: NavItem[] = [
           },
           {
             title: "Edit Artikel",
-            path: "/articles/[id]/edit",
+            path: "/articles/edit/:id",
           },
           {
             title: "Tinjau Artikel",
-            path: "/articles/[id]/tinjau",
+            path: "/articles/tinjau/:id",
           },
           {
             title: "View Artikel",
-            path: "/articles/[id]/view",
+            path: "/articles/view/:id",
           },
         ],
       },

@@ -1,14 +1,19 @@
 <div class="mb-5">
   <breadcrums-component />
 </div>
-<div *ngIf="isDataReady; else loadingTemplate">
+@if (isDataReady && vm) {
+<div>
   <app-dynamic-form
-    [config]="articleForm"
+    [config]="vm.config"
+    [title]="vm.formTitle"
+    [showSubmitButton]="vm.showSubmitButton"
+    (close)="navigateBack()"
     (formSubmit)="onArticleUpdate($event)"
-    title="Ubah Produk"
   >
   </app-dynamic-form>
 </div>
+} @else {
 <ng-template #loadingTemplate>
   <p>Loading data artikel...</p>
 </ng-template>
+}

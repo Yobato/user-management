@@ -20,6 +20,7 @@
     (input)="onInputChange($event)"
     (blur)="onTouched()"
     [rows]="rows"
+    [ngClass]="{ 'bg-gray-100 cursor-not-allowed': disabled }"
   >
   </textarea>
   @if (ngControl.invalid && ngControl.touched) {

@@ -17,6 +17,7 @@
     [disabled]="disabled"
     (change)="onSelectChange($event)"
     (blur)="onTouched()"
+    [ngClass]="{ 'bg-gray-100 cursor-not-allowed': disabled }"
   >
   <option [ngValue]="null" hidden selected>Pilih {{ label }}</option>
 

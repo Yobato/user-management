@@ -6,13 +6,15 @@ import { ArticlePage } from './article.component';
 import { CreateArticlePage } from './create/create.component';
 import { SharedModule } from '../../shared/shared-module';
 import { EditArticlePage } from './edit/edit.component';
+import { ViewArticlePage } from './view/view.component';
 
 
 @NgModule({
   declarations: [
     ArticlePage,
     CreateArticlePage,
-    EditArticlePage
+    EditArticlePage,
+    ViewArticlePage
   ],
   imports: [
     CommonModule,

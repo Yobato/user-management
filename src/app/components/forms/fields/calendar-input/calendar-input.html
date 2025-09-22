@@ -20,6 +20,7 @@
     [disabled]="disabled"
     (input)="onInputChange($event)"
     (blur)="onTouched()"
+    [ngClass]="{ 'bg-gray-100 cursor-not-allowed': disabled }"
   />
   @if (ngControl.invalid && ngControl.touched) {
   <div class="text-red-500 text-xs mt-1">
