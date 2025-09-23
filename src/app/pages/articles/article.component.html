@@ -38,7 +38,12 @@
           Lihat
         </app-button-table>
         } @if (row.status_approval.trim().toLowerCase() === 'sendback') {
-        <app-button-table size="md" variant="primary" actionType="document">
+        <app-button-table
+          size="md"
+          variant="primary"
+          actionType="document"
+          [routerLink]="['/articles/tinjau', row.id]"
+        >
           Tinjau
         </app-button-table>
         } @if (row.status_approval.trim().toLowerCase() === 'approved') {

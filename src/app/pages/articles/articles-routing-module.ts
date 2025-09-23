@@ -4,6 +4,7 @@ import { ArticlePage } from './article.component';
 import { CreateArticlePage } from './create/create.component';
 import { EditArticlePage } from './edit/edit.component';
 import { ViewArticlePage } from './view/view.component';
+import { TinjauArticlePage } from './tinjau/tinjau.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: ViewArticlePage
+  },
+  {
+    path: 'tinjau/:id',
+    component: TinjauArticlePage
   }
 ];
 

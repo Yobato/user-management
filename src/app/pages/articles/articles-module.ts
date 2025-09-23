@@ -7,6 +7,7 @@ import { CreateArticlePage } from './create/create.component';
 import { SharedModule } from '../../shared/shared-module';
 import { EditArticlePage } from './edit/edit.component';
 import { ViewArticlePage } from './view/view.component';
+import { TinjauArticlePage } from './tinjau/tinjau.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ViewArticlePage } from './view/view.component';
     ArticlePage,
     CreateArticlePage,
     EditArticlePage,
-    ViewArticlePage
+    ViewArticlePage,
+    TinjauArticlePage
   ],
   imports: [
     CommonModule,
