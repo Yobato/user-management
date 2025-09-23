@@ -41,20 +41,20 @@ export const navigationTree: NavItem[] = [
         // Jadikan halaman lain yang berhubungan sebagai 'children' dari Artikel
         children: [
           {
-            title: "Tambah Artikel",
+            title: "Tambah Produk",
             path: "/products/create", // Pastikan path ini sesuai dengan URL Anda
           },
           {
-            title: "Edit Artikel",
-            path: "/products/[id]/edit",
+            title: "Edit Produk",
+            path: "/products/edit/:id",
           },
           {
-            title: "Tinjau Artikel",
-            path: "/products/[id]/tinjau",
+            title: "Tinjau Produk",
+            path: "/products/tinjau/:id",
           },
           {
-            title: "View Artikel",
-            path: "/products/[id]/view",
+            title: "View Produk",
+            path: "/products/view/:id",
           },
         ],
       },
@@ -64,6 +64,19 @@ export const navigationTree: NavItem[] = [
   },
 ];
 
+function pathsMatch(url: string, pattern: string): boolean{
+  const urlSegments = url.split('/').filter(s => s);
+  const patterSegments = pattern.split('/').filter(s => s);
+
+  if(urlSegments.length !== patterSegments.length){
+    return false;
+  }
+
+  return patterSegments.every((patterSegments, i) =>{
+    return patterSegments.startsWith(':') || patterSegments === urlSegments[i];
+  })
+}
+
 export function findPathInTree(
   tree: NavItem[],
   targetPath: string,
@@ -72,9 +85,7 @@ export function findPathInTree(
   for (const item of tree) {
     const newPath = [...currentPath, item];
 
-    // Cek jika path-nya cocok (termasuk menangani path dinamis)
-    const regexPath = item.path?.replace(/\[.*?\]/g, ".*") || "";
-    if (item.path && new RegExp(`^${regexPath}$`).test(targetPath)) {
+    if (item.path && pathsMatch(targetPath, item.path)) {
       return newPath;
     }
 
