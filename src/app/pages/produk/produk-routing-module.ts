@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProdukPage } from './produk.component';
-import { CreateProdukPage } from './create/create.component';
-import { EditProdukPage } from './edit/edit.component';
+import { ProdukFormPage } from './produk-form/produk-form.component';
 
 const routes: Routes = [
   {
@@ -11,11 +10,23 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: CreateProdukPage,
+    component: ProdukFormPage,
+    data: {mode: 'create'}
   },
   {
     path: 'edit/:id',
-    component: EditProdukPage,
+    component: ProdukFormPage,
+    data: {mode: 'edit'}
+  },
+  {
+    path: 'view/:id',
+    component: ProdukFormPage,
+    data: {mode: 'view'}
+  },
+  {
+    path: 'tinjau/:id',
+    component: ProdukFormPage,
+    data: {mode: 'tinjau'}
   }
 ];
 
