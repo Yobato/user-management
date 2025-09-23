@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ToggleInputComponent implements ControlValueAccessor { // <-- Ubah
   @Input() label: string = '';
+  @Input() note: string = '';
 
   value: boolean = false;
   disabled: boolean = false;

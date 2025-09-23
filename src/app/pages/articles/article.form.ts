@@ -107,7 +107,7 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
           initialValue: null,
           validations: [
             { name: 'required', message: 'Peran wajib dipilih.' }
-          ]
+          ],
         },
       ]
     },
@@ -116,7 +116,8 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
         {
           type: 'toggle',
           name: 'highlight',
-          label: 'Highlight',
+          label: 'Jadikan Artikel Sorotan',
+          note: 'Artikel ini akan ditampilkan di bagian utama halaman Artikel.'
         },
       ]
     },
@@ -149,7 +150,8 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
       {
         type: 'toggle',
         name: 'visibility',
-        label: 'Visibility',
+        label: 'Visibilitas',
+        note: 'Tampilkan item ini di dalam list Artikel'
       },
     ]
   }
