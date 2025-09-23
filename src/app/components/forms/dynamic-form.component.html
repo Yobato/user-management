@@ -47,7 +47,7 @@
         >
         </app-checkbox-input>
         } @case('toggle'){
-        <app-toggle-input [formControlName]="field.name" [label]="field.label">
+        <app-toggle-input [formControlName]="field.name" [label]="field.label" [note]="field.note || ''">
         </app-toggle-input>
         } @case('file'){
         <app-file-input
