@@ -8,7 +8,7 @@ export interface DataItem  {
   kategori: string;
   approver: string;
   update_date: string;
-  highlight: string;
+  highlight: boolean;
   artikel_image: File | string;
   status_approval: string;
   status_fung: string;
@@ -29,7 +29,7 @@ export class ArticlesService {
       kategori: "reguler",
       approver: "Budi Santoso",
       update_date: "2025-09-02",
-      highlight: "NO",
+      highlight: false,
       artikel_image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Approved",
       status_fung: "Active",
@@ -42,7 +42,7 @@ export class ArticlesService {
       kategori: "simuda",
       approver: "Sari Dewi",
       update_date: "2025-09-01",
-      highlight: "YES",
+      highlight: true,
       artikel_image: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Pending",
       status_fung: "Active",
@@ -55,7 +55,7 @@ export class ArticlesService {
       kategori: "haji",
       approver: "Rimba Ananta",
       update_date: "2025-08-30",
-      highlight: "NO",
+      highlight: false,
       artikel_image: "https://images.pexels.com/photos/7578857/pexels-photo-7578857.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Approved",
       status_fung: "Inactive",
@@ -68,7 +68,7 @@ export class ArticlesService {
       kategori: "reguler",
       approver: "Budi Santoso",
       update_date: "2025-08-28",
-      highlight: "NO",
+      highlight: false,
       artikel_image: "https://images.pexels.com/photos/8089255/pexels-photo-8089255.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Rejected",
       status_fung: "Inactive",
@@ -81,7 +81,7 @@ export class ArticlesService {
       kategori: "reguler",
       approver: "Lulu Prameswari",
       update_date: "2025-08-25",
-      highlight: "YES",
+      highlight: true,
       artikel_image: "https://images.pexels.com/photos/5849574/pexels-photo-5849574.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Approved",
       status_fung: "Active",
@@ -94,7 +94,7 @@ export class ArticlesService {
       kategori: "simuda",
       approver: "Sari Dewi",
       update_date: "2025-08-22",
-      highlight: "NO",
+      highlight: false,
       artikel_image: "https://images.pexels.com/photos/1029606/pexels-photo-1029606.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Sendback",
       status_fung: "Pending",

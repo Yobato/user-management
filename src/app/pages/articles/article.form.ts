@@ -22,6 +22,7 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
 
   const isViewMode = mode === 'view';
   const isReviewMode = mode === 'tinjau';
+  const isEditMode = mode === 'edit';
   const isCreateOrEdit = mode === 'create' || mode === 'edit';
 
   const fieldShouldBeDisabled = isViewMode;
@@ -114,8 +115,8 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
       fields: [
         {
           type: 'toggle',
-          name: 'status_approval',
-          label: 'Is active',
+          name: 'highlight',
+          label: 'Highlight',
         },
       ]
     },
@@ -141,6 +142,20 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
         };
       })
     }));
+  }
+
+  const visibilityField: FormRow = {
+    fields: [
+      {
+        type: 'toggle',
+        name: 'visibility',
+        label: 'Visibility',
+      },
+    ]
+  }
+
+  if(isEditMode && data){
+    finalConfig = [...finalConfig, visibilityField];
   }
 
   if(showReviewSection && data){
