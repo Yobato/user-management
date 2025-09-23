@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticlePage } from './article.component';
-import { CreateArticlePage } from './create/create.component';
-import { EditArticlePage } from './edit/edit.component';
-import { ViewArticlePage } from './view/view.component';
-import { TinjauArticlePage } from './tinjau/tinjau.component';
+import { ArticleFormPage } from './article-form/article-form.component';
 
 const routes: Routes = [
   {
@@ -13,19 +10,23 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: CreateArticlePage
+    component: ArticleFormPage,
+    data: {mode: 'create'}
   },
   {
     path: 'edit/:id',
-    component: EditArticlePage
+    component: ArticleFormPage,
+    data: {mode: 'edit'}
   },
   {
     path: 'view/:id',
-    component: ViewArticlePage
+    component: ArticleFormPage,
+    data: {mode: 'view'}
   },
   {
     path: 'tinjau/:id',
-    component: TinjauArticlePage
+    component: ArticleFormPage,
+    data: {mode: 'tinjau'}
   }
 ];
 

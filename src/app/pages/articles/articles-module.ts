@@ -3,20 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { ArticlesRoutingModule } from './articles-routing-module';
 import { ArticlePage } from './article.component';
-import { CreateArticlePage } from './create/create.component';
 import { SharedModule } from '../../shared/shared-module';
-import { EditArticlePage } from './edit/edit.component';
-import { ViewArticlePage } from './view/view.component';
-import { TinjauArticlePage } from './tinjau/tinjau.component';
+import { ArticleFormPage } from './article-form/article-form.component';
 
 
 @NgModule({
   declarations: [
     ArticlePage,
-    CreateArticlePage,
-    EditArticlePage,
-    ViewArticlePage,
-    TinjauArticlePage
+    ArticleFormPage
   ],
   imports: [
     CommonModule,

@@ -3,11 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Import komponen yang Anda buat
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
-import { HomePage } from './pages/home/home.component';
-import { UsersPage } from './pages/users/users.component';
-import { CreatePage } from './pages/home/create/create';
-import { ArticlePage } from './pages/articles/article.component';
-import { CreateArticlePage } from './pages/articles/create/create.component';
 
 export const routes: Routes = [
   {
