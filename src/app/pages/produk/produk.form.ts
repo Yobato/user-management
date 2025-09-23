@@ -1,9 +1,9 @@
 import { FormRow } from "../../components/forms/field.config";
-import { DataItem } from "../../services/articles.service";
+import { DataItem } from "../../services/produk.service";
 
 export type FormMode = 'create' | 'edit' | 'view' | 'tinjau';
 
-export interface FormFactoryOptions {
+export interface FormFactoryOptions{
   mode: FormMode;
   data?: DataItem;
 }
@@ -15,14 +15,13 @@ export interface FormViewModel{
   showCloseButton: boolean;
 }
 
-export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
+export function getProdukForm(options: FormFactoryOptions): FormViewModel{
 
   const {mode, data} = options;
   const status = data?.status_approval;
 
   const isViewMode = mode === 'view';
   const isReviewMode = mode === 'tinjau';
-  const isEditMode = mode === 'edit';
   const isCreateOrEdit = mode === 'create' || mode === 'edit';
 
   const fieldShouldBeDisabled = isViewMode;
@@ -30,20 +29,20 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
   const showReviewSection = isReviewMode || (isViewMode && (status === 'Rejected' || status === 'Sendback'));
   const showSubmitButton = isCreateOrEdit || isReviewMode;
 
-  const formTitle = mode === 'create' ? 'Buat Artikel Baru' :
-                    mode === 'edit' ? 'Ubah Artikel' :
-                    mode === 'tinjau' ? 'Tinjau Artikel' : 'Lihat Artikel';
+  const formTitle = mode === 'create' ? 'Buat Produk Baru' :
+                    mode === 'edit' ? 'Ubah Produk' :
+                    mode === 'tinjau' ? 'Tinjau Produk' : 'Lihat Produk';
 
-  let baseConfig: FormRow[] = [
+  let baseConfigProduk: FormRow[] = [
     {
       fields: [
         {
           type: 'text',
-          name: 'judul',
-          label: 'Judul Article',
-          placeholder: 'Masukkan judul article',
+          name: 'nama_produk',
+          label: 'Nama Produk',
+          placeholder: 'Masukkan nama produk',
           validations: [
-            { name: 'required', message: 'Nama Lengkap wajib diisi.' },
+            { name: 'required', message: 'Nama Produk wajib diisi.' },
             { name: 'minLength', value: 3, message: 'Nama harus lebih dari 2 karakter.' }
           ],
         },
@@ -52,44 +51,17 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
     {
       fields: [
         {
-          type: 'textarea',
-          name: 'deskripsi',
-          label: 'Deskripsi Article',
-          rows: 4,
-          placeholder: "Masukkan deskripsi article Anda",
+          type: 'select',
+          name: 'jenis_produk',
+          label: 'Jenis Produk',
+          options: [
+            { value: 'griya', label: 'Griya' },
+            { value: 'griya_subsidi', label: 'Griya Subsidi' }
+          ],
+          initialValue: null,
           validations: [
-              { name: 'required', message: 'Deskripsi wajib diisi.' },
+            { name: 'required', message: 'Peran wajib dipilih.' }
           ]
-        }
-      ]
-    },
-
-    {
-      fields: [
-        {
-          type: 'text',
-          name: 'refrensi',
-          label: 'Refrensi Article',
-          placeholder: 'Masukkan link refrensi article',
-          validations: [
-            { name: 'required', message: 'Refrensi Artikel wajib diisi.' },
-            { name: 'minLength', value: 5, message: 'Link minimal 5 karakter.' }
-          ],
-        },
-      ]
-    },
-
-    {
-      fields: [
-        {
-          type: 'file',
-          name: 'artikel_image', // Nama harus unik
-          label: 'Gambar Artikel',
-          validations: [
-            { name: 'required', message: 'Gambar harus diisi.' }
-          ],
-          accept: 'image/*',
-          note: 'Maksimum ukuran file 2MB.'
         },
       ]
     },
@@ -101,7 +73,7 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
           label: 'Kategori Produk',
           options: [
             { value: 'reguler', label: 'BSI Griya Reguler' },
-            { value: 'simuda', label: 'BSI Griya Srimuda' },
+            { value: 'srimuda', label: 'BSI Griya Srimuda' },
             { value: 'haji', label: 'BSI Griya Haji' }
           ],
           initialValue: null,
@@ -114,17 +86,37 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
     {
       fields: [
         {
-          type: 'toggle',
-          name: 'highlight',
-          label: 'Highlight',
+          type: 'textarea',
+          name: 'detail',
+          label: 'Detail Produk',
+          rows: 4,
+          placeholder: "Masukkan detail produk Anda",
+          validations: [
+              { name: 'required', message: 'Deskripsi wajib diisi.' },
+          ]
+        }
+      ]
+    },
+    {
+      fields: [
+        {
+          type: 'file',
+          name: 'produk_image', // Nama harus unik
+          label: 'Foto Produk',
+          validations: [
+            { name: 'required', message: 'Gambar harus diisi.' }
+          ],
+          accept: 'image/*',
+          note: 'Maksimum ukuran file 2MB.'
         },
       ]
     },
+
   ];
 
-  let finalConfig = baseConfig;
+  let finalConfigProduk = baseConfigProduk;
   if(data){
-    finalConfig = finalConfig.map(row => ({
+    finalConfigProduk = finalConfigProduk.map(row => ({
       ...row,
       fields: row.fields.map(field =>{
         if(field.type === 'file'){
@@ -144,20 +136,6 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
     }));
   }
 
-  const visibilityField: FormRow = {
-    fields: [
-      {
-        type: 'toggle',
-        name: 'visibility',
-        label: 'Visibility',
-      },
-    ]
-  }
-
-  if(isEditMode && data){
-    finalConfig = [...finalConfig, visibilityField];
-  }
-
   if(showReviewSection && data){
     const reviewSection: FormRow = {
       fields: [{
@@ -170,18 +148,17 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
           statusLabel: 'Status',
           statusValue: data.status_approval,
           reasonLabel: 'Catatan Review',
-          reasonValue: 'Mohon periksa kembali kelengkapan data.' // Ganti dengan data asli jika ada
+          reasonValue: 'Nama Produk belum syariah brodie.' // Ganti dengan data asli jika ada
         }
       }]
     };
-    finalConfig.unshift(reviewSection);
+    finalConfigProduk.unshift(reviewSection);
   }
 
   return{
-    config: finalConfig,
+    config: finalConfigProduk,
     formTitle: formTitle,
     showSubmitButton: showSubmitButton,
     showCloseButton: isViewMode,
-  };
+  }
 }
-

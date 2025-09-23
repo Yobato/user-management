@@ -1,0 +1,19 @@
+<div class="mb-5">
+  <breadcrums-component/>
+</div>
+
+<div *ngIf="isDataReady && vm; else loadingTemplate">
+  <app-dynamic-form
+    [config]="vm.config"
+    [title]="vm.formTitle"
+    [showSubmitButton]="vm.showSubmitButton"
+    [showCloseButton]="vm.showCloseButton"
+    (formSubmit)="onSubmit($event)"
+    (close)="onClose()"
+  >
+  </app-dynamic-form>
+</div>
+
+<ng-template #loadingTemplate>
+  <p>Loading data...</p>
+</ng-template>

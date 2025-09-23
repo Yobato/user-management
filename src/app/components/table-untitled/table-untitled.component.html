@@ -1,7 +1,10 @@
-<div class="not-prose relative bg-white border border-gray-200 rounded-lg overflow-x-auto">
-
+<div
+  class="not-prose relative bg-white border border-gray-200 rounded-lg overflow-x-auto"
+>
   <table class="w-full text-sm text-left text-gray-500">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200 ">
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200"
+    >
       <tr>
         <th
           *ngFor="let col of columns"
@@ -10,7 +13,7 @@
           [class.cursor-pointer]="col.sortable"
           [ngClass]="col.customClass"
           (click)="onSort(col)"
-          [ngStyle] = "col.customStyle"
+          [ngStyle]="col.customStyle"
         >
           <div class="flex items-center gap-1">
             {{ col.label }}
@@ -35,16 +38,20 @@
           *ngFor="let col of columns"
           class="px-6 py-4"
           [ngClass]="col.customClass"
-          [ngStyle] = "col.customStyle"
+          [ngStyle]="col.customStyle"
         >
           <div class="whitespace-nowrap">
-             <ng-container [ngSwitch]="true">
+            <ng-container [ngSwitch]="true">
               <ng-container *ngSwitchCase="col.type === 'badge'">
                 <span
                   class="px-2 py-1 text-xs font-medium border rounded-full"
                   [ngClass]="getBadgeClass(row[col.key])"
                 >
+                  @if(col.key === 'highlight'){
+                  {{ row[col.key] | yesNo }}
+                  } @else{
                   {{ row[col.key] }}
+                  }
                 </span>
               </ng-container>
 
@@ -58,13 +65,16 @@
 
               <ng-container *ngSwitchCase="col.isAction">
                 <ng-container
-                  *ngTemplateOutlet="tableActionTpl; context: { $implicit: row }"
+                  *ngTemplateOutlet="
+                    tableActionTpl;
+                    context: { $implicit: row }
+                  "
                 ></ng-container>
               </ng-container>
 
               <ng-container *ngSwitchDefault>
                 <span class="text-gray-900">
-                   {{ row[col.key] | truncate:35}}
+                  {{ row[col.key] | truncate : 35 }}
                 </span>
               </ng-container>
             </ng-container>

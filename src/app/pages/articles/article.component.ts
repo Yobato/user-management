@@ -58,7 +58,7 @@ export class ArticlePage {
           row.kategori.toLowerCase().includes(queryLower) ||
           row.approver.toLowerCase().includes(queryLower) ||
           row.update_date.toLowerCase().includes(queryLower) ||
-          row.highlight.toLowerCase().includes(queryLower) ||
+          // row.highlight.toLowerCase().includes(queryLower) ||
           row.status_approval.toLowerCase().includes(queryLower) ||
           row.status_fung.toLowerCase().includes(queryLower)
       );
