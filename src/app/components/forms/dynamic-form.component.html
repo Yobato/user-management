@@ -5,82 +5,97 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
     @for (row of config; track $index) {
     <div class="flex flex-col md:flex-row md:gap-4">
-      @for(field of row.fields; track field.name){
-        @if (isVisible(field)) {
-          <div class="flex-1 w-full">
-            @switch (field.type) { @case ('text') {
-            <app-text-input
-              [formControlName]="field.name"
-              [label]="field.label"
-              [placeholder]="field.placeholder || ''"
-              [validations]="field.validations || []"
-            >
-            </app-text-input>
-            } @case ('textarea') {
-            <app-textarea-input
-              [formControlName]="field.name"
-              [label]="field.label"
-              [rows]="field.rows || 3"
-              [placeholder]="field.placeholder || ''"
-              [validations]="field.validations || []"
-            >
-            </app-textarea-input>
-            } @case('select'){
-            <app-select-input
-              [formControlName]="field.name"
-              [label]="field.label"
-              [options]="field.options || []"
-              [validations]="field.validations || []"
-            >
-            </app-select-input>
-            } @case('date'){
-            <app-calendar-input
-              [formControlName]="field.name"
-              [label]="field.label"
-              [validations]="field.validations || []"
-            >
-            </app-calendar-input>
-            } @case('checkbox'){
-            <app-checkbox-input
-              [formControlName]="field.name"
-              [label]="field.label"
-              [validations]="field.validations || []"
-            >
-            </app-checkbox-input>
-            } @case('toggle'){
-            <app-toggle-input [formControlName]="field.name" [label]="field.label">
-            </app-toggle-input>
-            } @case('file'){
-            <app-file-input
-              [formControlName]="field.name"
-              [label]="field.label"
-              [validations]="field.validations || []"
-              [accept]="field.accept || ''"
-              [note]="field.note || ''"
-              [boxed]="field.boxed || false"
-              [keterangan]="field.keterangan || ''"
-            >
-            </app-file-input>
-            } @case('display') { @switch (field.renderType) { @case
-            ('status-section') {
-            <app-status-section [data]="field.data"> </app-status-section>
-            } @case ('subtitle') {
-            <h2 class="font-semibold text-lg text-black border-b pb-2 mb-4 mt-2">
-              {{ field.data.text }}
-            </h2>
-            } } } }
-          </div>
-        }
-      }
+      @for(field of row.fields; track field.name){ @if (isVisible(field)) {
+      <div class="flex-1 w-full">
+        @switch (field.type) { @case ('text') {
+        <app-text-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [placeholder]="field.placeholder || ''"
+          [validations]="field.validations || []"
+        >
+        </app-text-input>
+        } @case ('textarea') {
+        <app-textarea-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [rows]="field.rows || 3"
+          [placeholder]="field.placeholder || ''"
+          [validations]="field.validations || []"
+        >
+        </app-textarea-input>
+        } @case('select'){
+        <app-select-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [options]="field.options || []"
+          [validations]="field.validations || []"
+        >
+        </app-select-input>
+        } @case('date'){
+        <app-calendar-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [validations]="field.validations || []"
+        >
+        </app-calendar-input>
+        } @case('checkbox'){
+        <app-checkbox-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [validations]="field.validations || []"
+        >
+        </app-checkbox-input>
+        } @case('toggle'){
+        <app-toggle-input [formControlName]="field.name" [label]="field.label">
+        </app-toggle-input>
+        } @case('file'){
+        <app-file-input
+          [formControlName]="field.name"
+          [label]="field.label"
+          [validations]="field.validations || []"
+          [accept]="field.accept || ''"
+          [note]="field.note || ''"
+          [boxed]="field.boxed || false"
+          [keterangan]="field.keterangan || ''"
+        >
+        </app-file-input>
+        } @case('display') { @switch (field.renderType) { @case
+        ('status-section') {
+        <app-status-section [data]="field.data"> </app-status-section>
+        } @case ('subtitle') {
+        <h2 class="font-semibold text-lg text-black border-b pb-2 mb-4 mt-2">
+          {{ field.data.text }}
+        </h2>
+        } } } }
+      </div>
+      } }
     </div>
     }
-    <div class="flex justify-end">
+    <div class="flex justify-end gap-3">
+      @if (showCloseButton) {
+      <button
+        type="button"
+        (click)="onCloseClick()"
+        class="bg-white text-black font-semibold px-4 py-2 rounded-4xl hover:bg-[#ebeff4] cursor-pointer border border-[#D2D6DB] disabled:bg-gray-400 mt-3"
+      >
+        Close
+      </button>
+      } @else {
+      <button
+        type="button"
+        (click)="onCloseClick()"
+        class="bg-white text-black font-semibold px-4 py-2 rounded-4xl hover:bg-[#ebeff4] cursor-pointer border border-[#D2D6DB] disabled:bg-gray-400 mt-3"
+      >
+        Close
+      </button>
       <button
         type="submit"
         class="bg-[#00A79F] text-white font-semibold px-4 py-2 rounded-4xl hover:bg-[#02827b] cursor-pointer disabled:bg-gray-400 mt-3"
       >
         Submit
       </button>
+      }
     </div>
   </form>
 </div>

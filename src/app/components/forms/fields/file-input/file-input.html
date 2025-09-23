@@ -1,6 +1,6 @@
 <div
   [ngClass]="{
-    'border border-[#D2D6DB] bg-[#F3F4F6] rounded-xl p-3 flex flex-col': boxed
+    'border border-[#D2D6DB] bg-[#F3F4F6] rounded-xl p-3 flex flex-col': boxed,
   }"
 >
   @if (boxed) {
@@ -43,6 +43,7 @@
               [class.border-red-500]="ngControl.invalid && ngControl.touched"
               [class.bg-gray-100]="disabled"
               [class.bg-white]="boxed"
+              [ngClass]="{'cursor-not-allowed': disabled}"
             />
           </div>
 
@@ -54,18 +55,22 @@
               class="cursor-pointer text-gray-500 hover:text-gray-700"
               (click)="handleViewFile()"
             ></lucide-icon>
+            @if (allowClear && currentValue && !disabled) {
             <lucide-icon
               [img]="XIcon"
               [size]="18"
               class="cursor-pointer text-gray-500 hover:text-gray-700"
               (click)="handleClearFile()"
             ></lucide-icon>
+            }
           </div>
           }
         </div>
 
         @if (displayFileName) {
-        <small class="text-gray-500 mt-1">{{ displayFileName | truncate:50 }}</small>
+        <small class="text-gray-500 mt-1"
+          >{{ displayFileName | truncate:50 }}</small
+        >
         } @if (ngControl.invalid && ngControl.touched) {
         <div class="text-red-500 text-xs mt-1">
           @for (validation of validations; track validation.name) { @if

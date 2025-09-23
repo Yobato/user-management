@@ -12,9 +12,12 @@ import { Subscription } from "rxjs";
 })
 
 export class DynamicFormComponent implements OnInit {
-  @Input() title: string = "Form Title";
   @Input() config: FormRow[] = [];
+  @Input() title: string = "";
+  @Input() showSubmitButton: boolean = true;
+  @Input() showCloseButton: boolean = false;
   @Output() formSubmit = new EventEmitter<any>();
+  @Output() close = new EventEmitter<void>();
 
   form!: FormGroup;
 
@@ -95,4 +98,7 @@ export class DynamicFormComponent implements OnInit {
     }
   }
 
+  onCloseClick(): void{
+    this.close.emit();
+  }
 }

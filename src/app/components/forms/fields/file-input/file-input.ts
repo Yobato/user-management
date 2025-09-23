@@ -14,6 +14,7 @@ import { ValidatorConfig } from '../../field.config';
 })
 
 export class FileInputComponent implements ControlValueAccessor, OnInit, OnDestroy {
+  @Input() allowClear: boolean = true;
   @Input() label: string = '';
   @Input() validations: ValidatorConfig[] = [];
   @Input() note: string = '';

@@ -15,7 +15,10 @@ export class DynamicFormService{
     config.forEach(row=>{
       row.fields.forEach(field => {
         const control = this.fb.control(
-          field.initialValue !== undefined ? field.initialValue : '',
+          {
+            value: field.initialValue !== undefined ? field.initialValue : '',
+            disabled: field.disabled === true
+          },
           this.getValidators(field)
         );
         group.addControl(field.name, control);
