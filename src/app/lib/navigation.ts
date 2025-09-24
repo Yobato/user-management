@@ -83,6 +83,24 @@ export const navigationTree: NavItem[] = [
           },
         ],
       },
+      {
+        title: "FAQ",
+        path: "/informasi/faq",
+        children: [
+          {
+            title: "Edit FAQ",
+            path: "informasi/faq/edit/:id",
+          },
+          {
+            title: "Tinjau FAQ",
+            path: "informasi/faq/tinjau/:id",
+          },
+          {
+            title: "View FAQ",
+            path: "informasi/faq/view/:id",
+          },
+        ],
+      },
       // Jika ada menu lain yang sejajar dengan Artikel, letakkan di sini
       // { title: "Kategori", path: "/kategori" },
     ],

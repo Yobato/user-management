@@ -7,6 +7,7 @@ export interface DataItem {
   kategori: string;
   visibility: boolean;
   status_approval: string;
+  approver: string;
   reason: string;
   updated_at: Date;
 }
@@ -25,6 +26,7 @@ export class FaqService {
       kategori: "Akad & Prinsip Syariah",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Konten sudah diverifikasi oleh tim syariah.",
       updated_at: new Date("2025-09-20T10:00:00")
     },
@@ -35,6 +37,7 @@ export class FaqService {
       kategori: "Akad & Prinsip Syariah",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Informasi akurat dan jelas.",
       updated_at: new Date("2025-09-19T11:00:00")
     },
@@ -47,6 +50,7 @@ export class FaqService {
       kategori: "Proses Pengajuan",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Sesuai SLA internal.",
       updated_at: new Date("2025-09-18T14:30:00")
     },
@@ -57,6 +61,7 @@ export class FaqService {
       kategori: "Proses Pengajuan",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Lengkap dan informatif.",
       updated_at: new Date("2025-09-17T16:00:00")
     },
@@ -67,6 +72,7 @@ export class FaqService {
       kategori: "Proses Pengajuan",
       visibility: false,
       status_approval: "Pending",
+      approver: "Admin Utama",
       reason: "Menunggu approval dari tim produk.",
       updated_at: new Date("2025-09-22T09:00:00")
     },
@@ -79,6 +85,7 @@ export class FaqService {
       kategori: "Produk & Skema",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Deskripsi produk akurat.",
       updated_at: new Date("2025-08-10T08:00:00")
     },
@@ -89,6 +96,7 @@ export class FaqService {
       kategori: "Produk & Skema",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Informasi sudah valid.",
       updated_at: new Date("2025-08-05T13:00:00")
     },
@@ -101,6 +109,7 @@ export class FaqService {
       kategori: "Biaya & Angsuran",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "OK.",
       updated_at: new Date("2025-07-28T17:00:00")
     },
@@ -111,6 +120,7 @@ export class FaqService {
       kategori: "Biaya & Angsuran",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Sesuai kebijakan.",
       updated_at: new Date("2025-07-25T10:00:00")
     },
@@ -121,6 +131,7 @@ export class FaqService {
       kategori: "Biaya & Angsuran",
       visibility: false,
       status_approval: "Sendback",
+      approver: "Admin Utama",
       reason: "Perlu ditambahkan detail tentang biaya materai dan APHT.",
       updated_at: new Date("2025-09-21T15:00:00")
     },
@@ -133,6 +144,7 @@ export class FaqService {
       kategori: "Akad & Prinsip Syariah",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Penjelasan denda sudah benar.",
       updated_at: new Date("2025-06-30T12:00:00")
     },
@@ -143,6 +155,7 @@ export class FaqService {
       kategori: "Proses Pengajuan",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "OK",
       updated_at: new Date("2025-06-15T11:00:00")
     },
@@ -153,6 +166,7 @@ export class FaqService {
       kategori: "Produk & Skema",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "Jelas dan akurat.",
       updated_at: new Date("2025-06-10T16:00:00")
     },
@@ -163,6 +177,7 @@ export class FaqService {
       kategori: "Produk & Skema",
       visibility: false,
       status_approval: "Rejected",
+      approver: "Admin Utama",
       reason: "Pertanyaan ini terlalu umum dan tidak spesifik ke produk BSI.",
       updated_at: new Date("2025-09-23T10:00:00")
     },
@@ -173,6 +188,7 @@ export class FaqService {
       kategori: "Biaya & Angsuran",
       visibility: true,
       status_approval: "Approved",
+      approver: "Admin Utama",
       reason: "OK.",
       updated_at: new Date("2025-05-20T14:00:00")
     },
