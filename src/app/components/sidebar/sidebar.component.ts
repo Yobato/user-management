@@ -80,7 +80,7 @@ export class SidebarComponent implements OnInit {
         {
           "path": "/informasi/about-us",
           "label": "About Us",
-          "icon": "file_open"
+          "icon": "badge"
         },
         {
           "path": "/informasi/banner",
