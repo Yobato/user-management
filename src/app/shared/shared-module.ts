@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LucideAngularModule, FileIcon } from 'lucide-angular';
 import { TruncatePipe } from '../pipes/truncate-pipe';
 import { YesNoPipe } from '../pipes/yes-no-pipe';
+import { ActiveInactivePipe } from '../pipes/active-inactive-pipe';
 
 const allSharedComponents = [
   BreadcrumsComponent,
@@ -47,7 +48,8 @@ const allSharedComponents = [
   DashboardLayoutComponent,
   // ===== Pipes =====
   TruncatePipe,
-  YesNoPipe
+  YesNoPipe,
+  ActiveInactivePipe
 ]
 
 const SharedModuleToExport = [

@@ -17,6 +17,10 @@ export const routes: Routes = [
         loadChildren: () => import('./pages/articles/articles-module').then(m => m.ArticlesModule)
       },
       {
+        path: 'informasi', // Jika URL adalah '/articles'
+        loadChildren: () => import('./pages/information-management/information-management-module').then(m => m.InformationManagementModule)
+      },
+      {
         path: 'products', // Jika URL adalah '/users'
         loadChildren: () => import('./pages/produk/produk-module').then(m => m.ProdukModule)
       },

@@ -62,6 +62,31 @@ export const navigationTree: NavItem[] = [
       // { title: "Kategori", path: "/kategori" },
     ],
   },
+  {
+    title: "Information Management",
+    children: [
+      {
+        title: "About Us",
+        path: "/informasi/about-us",
+        children: [
+          {
+            title: "Edit About Us",
+            path: "informasi/about-us/edit/",
+          },
+          {
+            title: "Tinjau About Us",
+            path: "informasi/about-us/tinjau/",
+          },
+          {
+            title: "View About Us",
+            path: "informasi/about-us/view/",
+          },
+        ],
+      },
+      // Jika ada menu lain yang sejajar dengan Artikel, letakkan di sini
+      // { title: "Kategori", path: "/kategori" },
+    ],
+  },
 ];
 
 function pathsMatch(url: string, pattern: string): boolean{
