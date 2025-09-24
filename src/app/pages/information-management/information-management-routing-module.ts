@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsPage } from './about-us/about-us.component';
 import { AboutUsFormPage } from './about-us/about-us-form/about-us-form.component';
+import { FaqPage } from './faq/faq.component';
 
 const routes: Routes = [
   // About Us
@@ -23,9 +24,13 @@ const routes: Routes = [
     path: 'about-us/tinjau',
     component: AboutUsFormPage,
     data: { mode: 'review' }
-  }
+  },
 
   // FAQ
+  {
+    path: 'faq',
+    component: FaqPage
+  },
 ];
 
 @NgModule({

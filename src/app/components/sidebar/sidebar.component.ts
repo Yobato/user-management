@@ -83,7 +83,7 @@ export class SidebarComponent implements OnInit {
           "icon": "badge"
         },
         {
-          "path": "/informasi/banner",
+          "path": "/informasi/faq",
           "label": "FAQ",
           "icon": "image"
         },

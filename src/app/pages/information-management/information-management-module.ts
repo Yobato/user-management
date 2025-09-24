@@ -4,13 +4,15 @@ import { AboutUsPage } from './about-us/about-us.component';
 import { AboutUsFormPage } from './about-us/about-us-form/about-us-form.component';
 import { SharedModule } from '../../shared/shared-module';
 import { InformationManagementRoutingModule } from './information-management-routing-module';
+import { FaqPage } from './faq/faq.component';
 
 
 
 @NgModule({
   declarations: [
     AboutUsPage,
-    AboutUsFormPage
+    AboutUsFormPage,
+    FaqPage
   ],
   imports: [
     CommonModule,
