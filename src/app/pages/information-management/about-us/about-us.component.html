@@ -1,0 +1,45 @@
+<div class="flex w-full justify-between">
+  <breadcrums-component />
+</div>
+<div class="card bg-white border border-[#D2D6DB] rounded-2xl mt-6">
+  <div class="card-header flex items-center justify-self-start p-6">
+    <div class="title">
+      <h4 class="text-xl font-semibold">Manajemen About Us</h4>
+    </div>
+  </div>
+  <app-table-untitled [columns]="tableCols" [data]="tableData">
+    <ng-template #tableAction let-row>
+      <div class="flex items-center gap-2">
+        @if (row.status_approval.trim().toLowerCase() === 'pending') {
+        <app-button-table
+          size="md"
+          variant="secondary"
+          actionType="view"
+          [routerLink]="['/informasi/about-us/view']"
+        >
+          Lihat
+        </app-button-table>
+        } @if (row.status_approval.trim().toLowerCase() === 'sendback') {
+        <app-button-table
+          size="md"
+          variant="primary"
+          actionType="document"
+          [routerLink]="['/informasi/about-us/tinjau']"
+        >
+          Tinjau
+        </app-button-table>
+        } @if (row.status_approval.trim().toLowerCase() === 'approved' ||
+        row.status_approval.trim().toLowerCase() === 'rejected' ) {
+        <app-button-table
+          size="md"
+          variant="primary"
+          actionType="edit"
+          [routerLink]="['/informasi/about-us/edit']"
+        >
+          Edit
+        </app-button-table>
+        }
+      </div>
+    </ng-template>
+  </app-table-untitled>
+</div>

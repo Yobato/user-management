@@ -73,6 +73,36 @@ export class SidebarComponent implements OnInit {
           "icon": "menu"
         }
       ]
+    },
+    {
+      "title": "Information Management",
+      "children": [
+        {
+          "path": "/informasi/about-us",
+          "label": "About Us",
+          "icon": "badge"
+        },
+        {
+          "path": "/informasi/banner",
+          "label": "FAQ",
+          "icon": "image"
+        },
+        {
+          "path": "/informasi/consent-letter",
+          "label": "Consent Letter",
+          "icon": "inventory_2"
+        },
+        {
+          "path": "/informasi/privacy-setting",
+          "label": "Kebijakan Privasi",
+          "icon": "percent"
+        },
+        {
+          "path": "/informasi/eula",
+          "label": "Syarat dan Ketentuan",
+          "icon": "menu"
+        }
+      ]
     }
   ]
 }

@@ -4,7 +4,7 @@ export interface TableColumn {
   key: string;
   label: string;
   sortable?: boolean;
-  type?: 'badge' | 'text' | 'image';
+  type?: 'badge' | 'text' | 'image' | 'date';
   isAction?: boolean;
   customClass?: string;
   customStyle?: {[key:string]:string};
@@ -42,10 +42,11 @@ export class TableUntitledComponent {
 
 
 
-  getBadgeClass(status: string): {[key: string]: boolean}{
+  getBadgeClass(status: string | boolean): {[key: string]: boolean}{
     switch(status){
       case 'Active':
         case 'Approved':
+          case true:
           return {
             'bg-[#ECFDF3]': true,
             'border-[#ABEFC6]': true,
@@ -54,6 +55,7 @@ export class TableUntitledComponent {
 
       case 'Inactive':
         case 'Rejected':
+          case false:
           return {
             'bg-[#FEF3F2]': true,
             'border-[#FECDCA]': true,

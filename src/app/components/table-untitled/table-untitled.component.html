@@ -49,6 +49,8 @@
                 >
                   @if(col.key === 'highlight'){
                   {{ row[col.key] | yesNo }}
+                  } @else if(col.key === 'status_fung' || col.key === 'visibility'){
+                  {{ row[col.key] | activeInactive }}
                   } @else{
                   {{ row[col.key] }}
                   }
@@ -74,7 +76,14 @@
 
               <ng-container *ngSwitchDefault>
                 <span class="text-gray-900">
-                  {{ row[col.key] | truncate : 35 }}
+                  <ng-container [ngSwitch]="col.type">
+                    <ng-container *ngSwitchCase="'date'">
+                      {{ row[col.key] | date : "dd MMM yyyy" }}
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                      {{ row[col.key] | truncate : 25 }}
+                    </ng-container>
+                  </ng-container>
                 </span>
               </ng-container>
             </ng-container>
