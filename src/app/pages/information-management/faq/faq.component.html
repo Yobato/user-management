@@ -13,7 +13,7 @@
         >Di bawah ini merupakan article</span
       > -->
     </div>
-    <a class="btn-bsi btn-success-bsi" routerLink="/faq/create">
+    <a class="btn-bsi btn-success-bsi" routerLink="/informasi/faq/create">
       <div class="flex items-center">
         <span class="material-icons" style="font-size: large">add</span>
         <span class="text-center text-md"> Tambah FAQ </span>
@@ -33,7 +33,7 @@
           size="md"
           variant="secondary"
           actionType="view"
-          [routerLink]="['/faq/view', row.id]"
+          [routerLink]="['/informasi/faq/view', row.id]"
         >
           Lihat
         </app-button-table>
@@ -42,7 +42,7 @@
           size="md"
           variant="primary"
           actionType="document"
-          [routerLink]="['/faq/tinjau', row.id]"
+          [routerLink]="['/informasi/faq/tinjau', row.id]"
         >
           Tinjau
         </app-button-table>
@@ -51,7 +51,7 @@
           size="md"
           variant="primary"
           actionType="edit"
-          [routerLink]="['/faq/edit', row.id]"
+          [routerLink]="['/informasi/faq/edit', row.id]"
         >
           Edit
         </app-button-table>

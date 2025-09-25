@@ -43,8 +43,8 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
           label: 'Judul Article',
           placeholder: 'Masukkan judul article',
           validations: [
-            { name: 'required', message: 'Nama Lengkap wajib diisi.' },
-            { name: 'minLength', value: 3, message: 'Nama harus lebih dari 2 karakter.' }
+            { name: 'required', message: 'Judul Article wajib diisi.' },
+            { name: 'minLength', value: 3, message: 'Judul harus lebih dari 2 karakter.' }
           ],
         },
       ]
@@ -106,7 +106,7 @@ export function getArticlesForm(options: FormFactoryOptions): FormViewModel{
           ],
           initialValue: null,
           validations: [
-            { name: 'required', message: 'Peran wajib dipilih.' }
+            { name: 'required', message: 'Kategori wajib dipilih.' }
           ],
         },
       ]
