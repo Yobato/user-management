@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataItem, FaqService } from '../../../services/faq.service';
 import { TableColumn } from '../../../components/table-untitled/table-untitled.component';
+import { BaseTablePageComponent } from '../../base-table.page';
 
 @Component({
   selector: 'app-faq',
@@ -8,23 +9,7 @@ import { TableColumn } from '../../../components/table-untitled/table-untitled.c
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.css'
 })
-export class FaqPage {
-  public tableData: DataItem[] = [];
-
-  constructor(
-    private faqService: FaqService
-  ){}
-
-  ngOnInit(): void{
-    this.tableData = this.faqService.getAllFaq();
-  }
-
-  // Pagination
-  public page: number = 1;
-  public query: string = '';
-  public itemsPerPage: number = 6;
-
-  disabled = false;
+export class FaqPage extends BaseTablePageComponent<DataItem> {
 
   tableCols: TableColumn[] = [
     {key: 'question', label: 'Pertanyaan', sortable: true},
@@ -35,86 +20,19 @@ export class FaqPage {
     {key: 'status_approval', label: 'Status Approval', type:'badge', sortable: true },
     {key: 'visibility', label: 'Status Fungsional', type: 'badge', sortable: true},
     {key: 'actions', label: 'Actions', isAction: true}
+  ];
+
+  override filterableKeys: (keyof DataItem)[] = [
+    'question', 'answer', 'kategori', 'approver', 'updated_at', 'status_approval', 'visibility'
   ]
 
-  onSortChange(e: { key: string; direction: 'asc' | 'desc' }) {
-    const key = e.key as keyof DataItem;
-    const directionMultiplier = e.direction === 'asc' ? 1 : -1;
-
-    this.tableData = [...this.tableData].sort((a, b) => {
-      const valA = a[key];
-      const valB = b[key];
-
-      // Tangani nilai null atau undefined terlebih dahulu
-      if (valA == null && valB == null) return 0;
-      if (valA == null) return -1 * directionMultiplier;
-      if (valB == null) return 1 * directionMultiplier;
-
-      // --- LOGIKA BARU UNTUK TIPE DATA BERBEDA ---
-      // Jika datanya adalah object Date, bandingkan timestamp-nya
-      if (valA instanceof Date && valB instanceof Date) {
-        if (valA.getTime() < valB.getTime()) return -1 * directionMultiplier;
-        if (valA.getTime() > valB.getTime()) return 1 * directionMultiplier;
-        return 0;
-      }
-
-      // Jika datanya adalah boolean, konversi ke angka (true=1, false=0)
-      if (typeof valA === 'boolean' && typeof valB === 'boolean') {
-        if (valA < valB) return -1 * directionMultiplier;
-        if (valA > valB) return 1 * directionMultiplier;
-        return 0;
-      }
-      // --- AKHIR LOGIKA BARU ---
-
-      // Fallback untuk string dan number
-      if (valA < valB) {
-        return -1 * directionMultiplier;
-      }
-      if (valA > valB) {
-        return 1 * directionMultiplier;
-      }
-      return 0;
-      }
-    );
+  constructor(private faqService: FaqService){
+    super();
   }
 
-  public get filteredData(): DataItem[] {
-    if (!this.query) {
-      return this.tableData;
-    }
-    const queryLower = this.query.toLowerCase();
-
-    return this.tableData.filter(
-      (row) =>
-        row.question.toLowerCase().includes(queryLower) ||
-        row.answer.toLowerCase().includes(queryLower) ||
-        row.kategori.toLowerCase().includes(queryLower) ||
-        row.reason.toLowerCase().includes(queryLower) ||
-        row.updated_at.toLocaleDateString('id-ID').toLowerCase().includes(queryLower) ||
-        String(row.visibility).toLowerCase().includes(queryLower) ||
-        row.status_approval.toLowerCase().includes(queryLower)
-    );
-  }
-
-  // 2. Getter untuk menghitung total halaman
-  public get totalPages(): number {
-    return Math.ceil(this.filteredData.length / this.itemsPerPage);
-  }
-
-
-  // 3. Getter untuk mengambil data sesuai halaman saat ini
-  public get paginatedData(): DataItem[] {
-    console.log("Total Page", this.totalPages);
-    console.log("Sekarang di Page", this.page);
-    const startIndex = (this.page - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    return this.filteredData.slice(startIndex, endIndex);
-  }
-
-  // --- EVENT HANDLER ---
-  public onPageChange(newPage: number): void {
-    this.page = newPage;
-
+  override ngOnInit(): void {
+      this.allData = this.faqService.getAllFaq();
+      this.tableData = [...this.allData];
   }
 
 }
