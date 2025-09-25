@@ -5,6 +5,7 @@ import { AboutUsFormPage } from './about-us/about-us-form/about-us-form.componen
 import { SharedModule } from '../../shared/shared-module';
 import { InformationManagementRoutingModule } from './information-management-routing-module';
 import { FaqPage } from './faq/faq.component';
+import { FaqFormPage } from './faq/faq-form/faq-form.component';
 
 
 
@@ -12,7 +13,8 @@ import { FaqPage } from './faq/faq.component';
   declarations: [
     AboutUsPage,
     AboutUsFormPage,
-    FaqPage
+    FaqPage,
+    FaqFormPage
   ],
   imports: [
     CommonModule,
