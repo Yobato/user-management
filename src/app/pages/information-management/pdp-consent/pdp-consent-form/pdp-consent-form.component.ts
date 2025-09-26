@@ -1,27 +1,26 @@
 import { Component } from '@angular/core';
-import { FormMode, FormViewModel, getFaqForm } from '../faq.form';
-import { DataItem, FaqService } from '../../../../services/faq.service';
+import { FormMode, FormViewModel, getPdpConsentForm } from '../pdp-consent.form';
+import { DataItem, PdpConsentService } from '../../../../services/pdp-consent.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-faq-form',
+  selector: 'app-pdp-consent-form',
   standalone: false,
-  templateUrl: './faq-form.component.html',
-  styleUrl: './faq-form.component.css'
+  templateUrl: './pdp-consent-form.component.html',
+  styleUrl: './pdp-consent-form.component.css'
 })
-export class FaqFormPage {
-
+export class PdpConsentFormPage {
   public vm: FormViewModel | null = null;
   public isDataReady = false;
 
   private mode: FormMode = 'create';
   private id: string | null = null;
-  private faqData: DataItem | undefined;
+  private pdpConsentData: DataItem | undefined;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private faqService: FaqService
+    private pdpConsentService: PdpConsentService
   ){}
 
   ngOnInit(): void{
@@ -32,13 +31,13 @@ export class FaqFormPage {
 
   private loadDataAndBuildForm(): void{
     if(this.id){
-      this.faqData = this.faqService.getFaqById(+this.id);
-      if(!this.faqData){
-        console.log('FAQ tidak ditemukan');
+      this.pdpConsentData = this.pdpConsentService.getPdpConsentById(+this.id);
+      if(!this.pdpConsentData){
+        console.log('PDP Consent tidak ditemukan');
         return;
       }
     }
-    this.vm = getFaqForm({mode: this.mode, data: this.faqData});
+    this.vm = getPdpConsentForm({mode: this.mode, data: this.pdpConsentData});
     this. isDataReady = true
   }
 
@@ -46,18 +45,21 @@ export class FaqFormPage {
     console.log('Form disubmit dengan mode:', this.mode, formData);
 
     if(this.mode === 'create'){
-      alert('FAQ baru berhasil dibuat!');
+      alert('PDP Consent baru berhasil dibuat!');
     } else if(this.mode === 'edit' || this.mode === 'tinjau'){
       if(this.id){
-        alert(`FAQ dengan ID ${this.id} berhasil diupdate!`);
+        alert(`PDP Consent dengan ID ${this.id} berhasil diupdate!`);
       }
     }
 
-    this.router.navigate(['/informasi/faq']);
+    this.router.navigate(['/informasi/pdp-consent']);
   }
 
   onClose(): void {
-  this.router.navigate(['/informasi/faq']);
+  this.router.navigate(['/informasi/pdp-consent']);
   }
+
+
+
 
 }

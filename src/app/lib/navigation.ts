@@ -105,6 +105,24 @@ export const navigationTree: NavItem[] = [
           },
         ],
       },
+      {
+        title: "PDP Consent",
+        path: "/informasi/pdp-consent",
+        children: [
+          {
+            title: "Edit PDP Consent",
+            path: "informasi/pdp-consent/edit/:id",
+          },
+          {
+            title: "Tinjau PDP Consent",
+            path: "informasi/pdp-consent/tinjau/:id",
+          },
+          {
+            title: "View PDP Consent",
+            path: "informasi/pdp-consent/view/:id",
+          },
+        ],
+      },
       // Jika ada menu lain yang sejajar dengan Artikel, letakkan di sini
       // { title: "Kategori", path: "/kategori" },
     ],

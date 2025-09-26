@@ -41,52 +41,49 @@
           [ngStyle]="col.customStyle"
         >
           <div class="whitespace-nowrap">
-            <ng-container [ngSwitch]="true">
-              <ng-container *ngSwitchCase="col.type === 'badge'">
-                <span
-                  class="px-2 py-1 text-xs font-medium border rounded-full"
-                  [ngClass]="getBadgeClass(row[col.key])"
-                >
-                  @if(col.key === 'highlight'){
-                  {{ row[col.key] | yesNo }}
-                  } @else if(col.key === 'status_fung' || col.key === 'visibility'){
-                  {{ row[col.key] | activeInactive }}
-                  } @else{
-                  {{ row[col.key] }}
-                  }
-                </span>
-              </ng-container>
+            @if (col.isAction) {
+            <ng-container
+              *ngTemplateOutlet="tableActionTpl; context: { $implicit: row }"
+            ></ng-container>
+            } @else {
+            @switch (col.type) {
 
-              <ng-container *ngSwitchCase="col.type === 'image'">
-                <img
-                  [src]="row[col.key]"
-                  [alt]="col.label"
-                  class="w-10 h-10 rounded-full object-cover border"
-                />
-              </ng-container>
-
-              <ng-container *ngSwitchCase="col.isAction">
-                <ng-container
-                  *ngTemplateOutlet="
-                    tableActionTpl;
-                    context: { $implicit: row }
-                  "
-                ></ng-container>
-              </ng-container>
-
-              <ng-container *ngSwitchDefault>
-                <span class="text-gray-900">
-                  <ng-container [ngSwitch]="col.type">
-                    <ng-container *ngSwitchCase="'date'">
-                      {{ row[col.key] | date : "dd MMM yyyy" }}
-                    </ng-container>
-                    <ng-container *ngSwitchDefault>
-                      {{ row[col.key] | truncate : 25 }}
-                    </ng-container>
-                  </ng-container>
-                </span>
-              </ng-container>
-            </ng-container>
+            @case ('badge') {
+            <span
+              class="px-2 py-1 text-xs font-medium border rounded-full"
+              [ngClass]="getBadgeClass(row[col.key])"
+            >
+              @if (col.key === 'highlight') {
+              {{ row[col.key] | yesNo }}
+              } @else if (col.key === 'status_fung' || col.key === 'visibility'
+              || col.key === 'is_visible') {
+              {{ row[col.key] | activeInactive }}
+              } @else {
+              {{ row[col.key] }}
+              }
+            </span>
+            }
+            @case ('image') {
+            <img
+              [src]="row[col.key]"
+              [alt]="col.label"
+              class="w-10 h-10 rounded-full object-cover border"
+            />
+            }
+            @case ('date') {
+            <span class="text-gray-900" [title]="row[col.key]">
+              {{ row[col.key] | date : "dd MMM yyyy" }}
+            </span>
+            }
+            @default {
+            <span class="text-gray-900" [title]="row[col.key]">
+              @if (col.key === 'is_mandatory') {
+              {{ row[col.key] | mandatory }}
+              } @else {
+              {{ row[col.key] | truncate : 25 }}
+              }
+            </span>
+            } } }
           </div>
         </td>
       </tr>
