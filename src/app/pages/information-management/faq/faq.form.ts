@@ -1,23 +1,10 @@
 import { FormRow } from "../../../components/forms/field.config";
 import { DataItem } from "../../../services/faq.service";
 
-
-export type FormMode = 'create' | 'edit' | 'view' | 'tinjau';
-
-export interface FormFactoryOptions {
-  mode: FormMode;
-  data?: DataItem;
-}
+import { FormFactoryOptions, FormViewModel } from '../../base-form.page';
 
 
-export interface FormViewModel{
-  config: FormRow[];
-  formTitle: string;
-  showSubmitButton: boolean;
-  showCloseButton: boolean;
-}
-
-export function getFaqForm(options: FormFactoryOptions): FormViewModel{
+export function getFaqForm(options: FormFactoryOptions<DataItem>): FormViewModel{
 
   const {mode, data} = options;
   const status = data?.status_approval;
@@ -76,7 +63,7 @@ export function getFaqForm(options: FormFactoryOptions): FormViewModel{
             { value: 'Biaya & Angsuran', label: 'Biaya & Angsuran' },
             { value: 'Produk & Skema', label: 'Produk & Skema' },
             { value: 'Proses Pengajuan', label: 'Proses Pengajuan' },
-            
+
           ],
           initialValue: null,
           validations: [

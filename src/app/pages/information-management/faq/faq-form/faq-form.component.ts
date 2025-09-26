@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormMode, FormViewModel, getFaqForm } from '../faq.form';
+import { getFaqForm } from '../faq.form';
 import { DataItem, FaqService } from '../../../../services/faq.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BaseFormComponent } from '../../../base-form.page';
 
 @Component({
   selector: 'app-faq-form',
@@ -9,55 +10,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './faq-form.component.html',
   styleUrl: './faq-form.component.css'
 })
-export class FaqFormPage {
+export class FaqFormPage extends BaseFormComponent<DataItem, FaqService> {
 
-  public vm: FormViewModel | null = null;
-  public isDataReady = false;
-
-  private mode: FormMode = 'create';
-  private id: string | null = null;
-  private faqData: DataItem | undefined;
+  formFactory = getFaqForm;
+  listPath = '/informasi/faq';
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private faqService: FaqService
-  ){}
-
-  ngOnInit(): void{
-    this.mode = this.route.snapshot.data['mode'] as FormMode;
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.loadDataAndBuildForm();
+    router: Router,
+    route: ActivatedRoute,
+    faqService: FaqService
+  ){
+    super(router, route, faqService)
   }
-
-  private loadDataAndBuildForm(): void{
-    if(this.id){
-      this.faqData = this.faqService.getFaqById(+this.id);
-      if(!this.faqData){
-        console.log('FAQ tidak ditemukan');
-        return;
-      }
-    }
-    this.vm = getFaqForm({mode: this.mode, data: this.faqData});
-    this. isDataReady = true
-  }
-
-  onSubmit(formData: any): void{
-    console.log('Form disubmit dengan mode:', this.mode, formData);
-
-    if(this.mode === 'create'){
-      alert('FAQ baru berhasil dibuat!');
-    } else if(this.mode === 'edit' || this.mode === 'tinjau'){
-      if(this.id){
-        alert(`FAQ dengan ID ${this.id} berhasil diupdate!`);
-      }
-    }
-
-    this.router.navigate(['/informasi/faq']);
-  }
-
-  onClose(): void {
-  this.router.navigate(['/informasi/faq']);
-  }
-
 }

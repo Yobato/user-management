@@ -51,9 +51,13 @@ export class ProdukService {
 
 
 
-  getProductById(id: number): DataItem | undefined {
+  getById(id: number): DataItem | undefined {
     return this.allProducts.find(item => item.id === id);
   }
+
+  create(data: Partial<DataItem>): void { /* ... */ }
+
+  update(id: number, data: Partial<DataItem>): void { /* ... */ }
 
   getAllProducts(): DataItem[] {
     return this.allProducts;
