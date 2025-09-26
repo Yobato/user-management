@@ -15,11 +15,10 @@ export const navigationTree: NavItem[] = [
       {
         title: "Artikel",
         path: "/articles",
-        // Jadikan halaman lain yang berhubungan sebagai 'children' dari Artikel
         children: [
           {
             title: "Tambah Artikel",
-            path: "/articles/create", // Pastikan path ini sesuai dengan URL Anda
+            path: "/articles/create",
           },
           {
             title: "Edit Artikel",
@@ -38,11 +37,10 @@ export const navigationTree: NavItem[] = [
       {
         title: "Produk",
         path: "/products",
-        // Jadikan halaman lain yang berhubungan sebagai 'children' dari Artikel
         children: [
           {
             title: "Tambah Produk",
-            path: "/products/create", // Pastikan path ini sesuai dengan URL Anda
+            path: "/products/create",
           },
           {
             title: "Edit Produk",
@@ -62,8 +60,6 @@ export const navigationTree: NavItem[] = [
         title: "Promo",
         path: "/promo",
       },
-      // Jika ada menu lain yang sejajar dengan Artikel, letakkan di sini
-      // { title: "Kategori", path: "/kategori" },
     ],
   },
   {
@@ -92,6 +88,10 @@ export const navigationTree: NavItem[] = [
         path: "/informasi/faq",
         children: [
           {
+            title: "Tambah FAQ",
+            path: "informasi/faq/create",
+          },
+          {
             title: "Edit FAQ",
             path: "informasi/faq/edit/:id",
           },
@@ -110,6 +110,10 @@ export const navigationTree: NavItem[] = [
         path: "/informasi/pdp-consent",
         children: [
           {
+            title: "Tambah PDP Consent",
+            path: "informasi/pdp-consent/create",
+          },
+          {
             title: "Edit PDP Consent",
             path: "informasi/pdp-consent/edit/:id",
           },
@@ -123,8 +127,6 @@ export const navigationTree: NavItem[] = [
           },
         ],
       },
-      // Jika ada menu lain yang sejajar dengan Artikel, letakkan di sini
-      // { title: "Kategori", path: "/kategori" },
     ],
   },
 ];
