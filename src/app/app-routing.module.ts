@@ -28,6 +28,10 @@ export const routes: Routes = [
         path: 'home', // Jika URL adalah '/home'
         loadChildren: () => import('./pages/home/home-module').then(m => m.HomeModule)
       },
+      {
+        path: 'promo', // Jika URL adalah '/promo'
+        loadChildren: () => import('./pages/promo/promo-module').then(m => m.PromoModule)
+      },
     ]
   },
 ];

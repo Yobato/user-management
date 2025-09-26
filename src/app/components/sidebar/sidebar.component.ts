@@ -63,7 +63,7 @@ export class SidebarComponent implements OnInit {
           "icon": "inventory_2"
         },
         {
-          "path": "/promos",
+          "path": "/promo",
           "label": "Promo",
           "icon": "percent"
         },
