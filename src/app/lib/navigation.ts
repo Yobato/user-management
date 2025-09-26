@@ -58,6 +58,10 @@ export const navigationTree: NavItem[] = [
           },
         ],
       },
+      {
+        title: "Promo",
+        path: "/promo",
+      },
       // Jika ada menu lain yang sejajar dengan Artikel, letakkan di sini
       // { title: "Kategori", path: "/kategori" },
     ],
