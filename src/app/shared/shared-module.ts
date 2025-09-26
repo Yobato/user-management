@@ -24,6 +24,7 @@ import { LucideAngularModule, FileIcon } from 'lucide-angular';
 import { TruncatePipe } from '../pipes/truncate-pipe';
 import { YesNoPipe } from '../pipes/yes-no-pipe';
 import { ActiveInactivePipe } from '../pipes/active-inactive-pipe';
+import { MandatoryPipe } from '../pipes/mandatory-pipe';
 
 const allSharedComponents = [
   BreadcrumsComponent,
@@ -49,7 +50,8 @@ const allSharedComponents = [
   // ===== Pipes =====
   TruncatePipe,
   YesNoPipe,
-  ActiveInactivePipe
+  ActiveInactivePipe,
+  MandatoryPipe
 ]
 
 const SharedModuleToExport = [

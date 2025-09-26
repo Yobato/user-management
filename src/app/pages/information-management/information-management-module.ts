@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared-module';
 import { InformationManagementRoutingModule } from './information-management-routing-module';
 import { FaqPage } from './faq/faq.component';
 import { FaqFormPage } from './faq/faq-form/faq-form.component';
+import { PdpConsentPage } from './pdp-consent/pdp-consent.component';
 
 
 
@@ -14,7 +15,8 @@ import { FaqFormPage } from './faq/faq-form/faq-form.component';
     AboutUsPage,
     AboutUsFormPage,
     FaqPage,
-    FaqFormPage
+    FaqFormPage,
+    PdpConsentPage
   ],
   imports: [
     CommonModule,

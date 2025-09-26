@@ -88,8 +88,8 @@ export class SidebarComponent implements OnInit {
           "icon": "image"
         },
         {
-          "path": "/informasi/consent-letter",
-          "label": "Consent Letter",
+          "path": "/informasi/pdp-consent",
+          "label": "PDP Consent",
           "icon": "inventory_2"
         },
         {
