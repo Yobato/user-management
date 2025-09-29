@@ -1,5 +1,6 @@
 import { FormRow } from "../../../components/forms/field.config";
 import { DataItem } from "../../../services/pdp-consent.service";
+import { calculateFormState, createReviewSection, generateFormTitle, populateInitialValues } from "../../../utils/form.helpers";
 
 import { FormFactoryOptions, FormViewModel } from '../../base-form.page';
 
@@ -7,20 +8,9 @@ import { FormFactoryOptions, FormViewModel } from '../../base-form.page';
 export function getPdpConsentForm(options: FormFactoryOptions<DataItem>): FormViewModel{
 
   const {mode, data} = options;
-  const status = data?.status_approval;
 
-  const isViewMode = mode === 'view';
-  const isReviewMode = mode === 'tinjau';
-  const isEditMode = mode === 'edit';
-  const isCreateOrEdit = mode === 'create' || mode === 'edit';
+  const state = calculateFormState(mode, data?.status_approval);
 
-  const fieldShouldBeDisabled = isViewMode;
-  const showReviewSection = isReviewMode || (isViewMode && (status === 'Rejected' || status === 'Sendback'));
-  const showSubmitButton = isCreateOrEdit || isReviewMode;
-
-  const formTitle = mode === 'create' ? 'Buat PDP Consent Baru' :
-                    mode === 'edit' ? 'Ubah PDP Consent' :
-                    mode === 'tinjau' ? 'Tinjau PDP Consent' : 'Lihat PDP Consent';
 
   const pdpConfig: FormRow[] = [
     {
@@ -49,19 +39,6 @@ export function getPdpConsentForm(options: FormFactoryOptions<DataItem>): FormVi
     },
   ];
 
-  let finalConfig = pdpConfig;
-  if(data){
-    finalConfig = finalConfig.map(row => ({
-      ...row,
-      fields: row.fields.map(field =>{
-        return{
-          ...field,
-          initialValue: data[field.name as keyof DataItem],
-          disabled: fieldShouldBeDisabled,
-        };
-      })
-    }));
-  }
 
   const visibilityField: FormRow = {
     fields: [
@@ -74,34 +51,22 @@ export function getPdpConsentForm(options: FormFactoryOptions<DataItem>): FormVi
     ]
   }
 
-  if(isEditMode && data){
-    finalConfig = [...finalConfig, visibilityField];
-  }
+  let finalConfig = pdpConfig;
+    if(data){
+      const processedConfig = populateInitialValues(pdpConfig, data, state.fieldShouldBeDisabled);
 
-  if(showReviewSection && data){
-    const reviewSection: FormRow = {
-      fields: [{
-        type: 'display',
-        name: 'reviewResultSection',
-        renderType: 'status-section',
-        label: '',
-        data: {
-          title: 'Hasil Review',
-          statusLabel: 'Status',
-          statusValue: data.status_approval,
-          reasonLabel: 'Catatan Review',
-          reasonValue: data.reason
-        }
-      }]
-    };
-    finalConfig.unshift(reviewSection);
-  }
+      finalConfig = [
+        ...(state.showReviewSection ? [createReviewSection(data)]: []),
+        ...processedConfig,
+        ...(state.isEditMode ? [visibilityField] :[])
+      ]
+    }
 
   return{
     config: finalConfig,
-    formTitle: formTitle,
-    showSubmitButton: showSubmitButton,
-    showCloseButton: isViewMode,
+    formTitle: generateFormTitle(mode, 'PDP Consent'),
+    showSubmitButton: state.showSubmitButton,
+    showCloseButton: state.showCloseButton,
   };
 
 }

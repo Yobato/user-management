@@ -31,7 +31,7 @@ export function getTermsConditionFormConfig(options: FormFactoryOptions<DataItem
 
     const visibilityField: FormRow = {
       fields: [
-        { name: 'is_visible', label: 'Visibilitas', type: 'toggle', initialValue: data.is_visible, disabled: visibilityToggleShouldBeDisabled }
+        { name: 'is_visible', label: 'Visibilitas', type: 'toggle', initialValue: data.is_visible, disabled: visibilityToggleShouldBeDisabled, note: 'Tampilkan item ini di Terms & Condition' }
       ]
     };
 
