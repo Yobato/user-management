@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ISingletonDataService } from './isingleton-data';
 
 export interface DataItem {
   id: number;
@@ -19,7 +20,7 @@ export interface DataItem {
   providedIn: 'root'
 })
 
-export class AboutUsService {
+export class AboutUsService implements ISingletonDataService<DataItem>{
 
   private aboutUsData: DataItem =
     {
@@ -30,18 +31,18 @@ export class AboutUsService {
       visi: "Menjadi mitra teknologi paling tepercaya di Asia Tenggara.",
       misi: "1. Menyediakan produk software berkualitas tinggi.\n2. Memberikan layanan pelanggan yang luar biasa.\n3. Menciptakan lingkungan kerja yang positif dan kolaboratif.", // \n untuk baris baru
       image_structure: "https://via.placeholder.com/600x400/DEE2E6/495057?text=Struktur+Organisasi",
-      status_approval: "Rejected",
+      status_approval: "Sendback",
       reason: "Data sudah lengkap dan diverifikasi.",
       visibility: true,
       updated_by: "Admin Utama",
       updated_at: new Date("2025-09-23T14:30:00"),
     }
 
-  getAboutUs(): DataItem{
+  get(): DataItem{
     return this.aboutUsData;
   }
 
-  updateAboutUs(updatedData: DataItem): void{
+  update(updatedData: DataItem): void{
     this.aboutUsData = {...this.aboutUsData, ...updatedData};
     console.log("Data About Us berhasil diperbarui:", this.aboutUsData);
   }
