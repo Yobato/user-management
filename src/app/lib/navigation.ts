@@ -133,15 +133,15 @@ export const navigationTree: NavItem[] = [
         children: [
           {
             title: "Edit Terms & Condition",
-            path: "informasi/terms-condition/edit/:id",
+            path: "informasi/terms-condition/edit",
           },
           {
             title: "Tinjau Terms & Condition",
-            path: "informasi/terms-condition/tinjau/:id",
+            path: "informasi/terms-condition/tinjau",
           },
           {
             title: "View Terms & Condition",
-            path: "informasi/terms-condition/view/:id",
+            path: "informasi/terms-condition/view",
           },
         ],
       },

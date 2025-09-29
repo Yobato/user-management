@@ -1,30 +1,27 @@
 import { FormRow } from "../../../components/forms/field.config";
-import { DataItem } from "../../../services/about-us.service";
+import { DataItem } from "../../../services/terms-condition.service";
 import { FormFactoryOptions, FormViewModel } from "../../base-form-singleton.page";
 
-export function getAboutUsFormConfig(options: FormFactoryOptions<DataItem>): FormViewModel {
-  const { mode, data } = options;
 
+export function getTermsConditionFormConfig(options: FormFactoryOptions<DataItem>): FormViewModel {
+  const { mode, data } = options;
   const isEditMode = mode === 'edit';
   const isReviewMode = mode === 'tinjau';
   const isViewMode = mode === 'view';
 
-  const formTitle = isEditMode ? 'Ubah About Us' :
-                    isReviewMode ? 'Tinjau About Us' : 'Lihat About Us';
+  const formTitle = isEditMode ? 'Ubah Terms and Condition' :
+                    isReviewMode ? 'Tinjau Terms and Condition' : 'Lihat Terms and Condition';
 
   const showSubmitButton = isEditMode || isReviewMode;
 
   const baseConfig: FormRow[] = [
     { fields: [{ name: 'label_name', label: 'Nama Label', type: 'text' }] },
-    { fields: [{ name: 'image_logo', label: 'Logo Perusahaan', type: 'file', note: 'Ukuran maks. 500KB' }] },
-    { fields: [{ name: 'deskripsi', label: 'Deskripsi', type: 'textarea', rows: 5 }] },
-    { fields: [{ name: 'visi', label: 'Visi', type: 'textarea', rows: 4 }, { name: 'misi', label: 'Misi', type: 'textarea', rows: 4 }] },
-    { fields: [{ name: 'image_structure', label: 'Gambar Struktur Organisasi', type: 'file' }] }
-  ];
+    { fields: [{ name: 'deskripsi', label: 'Deskripsi', type: 'textarea', rows: 5}]},
+  ]
 
   let finalConfig = baseConfig;
 
-  if (data) {
+  if(data){
     const status = data.status_approval;
     const isRejected = status === 'Rejected';
 
@@ -34,7 +31,7 @@ export function getAboutUsFormConfig(options: FormFactoryOptions<DataItem>): For
 
     const visibilityField: FormRow = {
       fields: [
-        { name: 'visibility', label: 'Visibilitas', type: 'toggle', initialValue: data.visibility, disabled: visibilityToggleShouldBeDisabled }
+        { name: 'is_visible', label: 'Visibilitas', type: 'toggle', initialValue: data.is_visible, disabled: visibilityToggleShouldBeDisabled }
       ]
     };
 
@@ -62,12 +59,12 @@ export function getAboutUsFormConfig(options: FormFactoryOptions<DataItem>): For
       ...processedConfig,
       ...(isEditMode ? [visibilityField] : [])
     ];
-  }
+  };
 
-  return {
+  return{
     config: finalConfig,
     formTitle: formTitle,
     showSubmitButton: showSubmitButton,
     showCloseButton: isViewMode
-  };
+  }
 }

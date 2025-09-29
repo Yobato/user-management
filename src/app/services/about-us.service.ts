@@ -31,7 +31,7 @@ export class AboutUsService implements ISingletonDataService<DataItem>{
       visi: "Menjadi mitra teknologi paling tepercaya di Asia Tenggara.",
       misi: "1. Menyediakan produk software berkualitas tinggi.\n2. Memberikan layanan pelanggan yang luar biasa.\n3. Menciptakan lingkungan kerja yang positif dan kolaboratif.", // \n untuk baris baru
       image_structure: "https://via.placeholder.com/600x400/DEE2E6/495057?text=Struktur+Organisasi",
-      status_approval: "Sendback",
+      status_approval: "Pending",
       reason: "Data sudah lengkap dan diverifikasi.",
       visibility: true,
       updated_by: "Admin Utama",

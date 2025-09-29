@@ -24,7 +24,7 @@ export class TermsConditionService implements ISingletonDataService<DataItem> {
       deskripsi: "Lorem ipsum color donor sit amet wakuazcad qpoialx azasd manzxcaq kasdiqpojf zaolqwo hasjdl",
       approver: "Admin Utama",
       updated_at: new Date("2025-09-26T10:00:00"),
-      status_approval: "Approved",
+      status_approval: "Rejected",
       reason: "Konten sudah baik dan sesuai SOP",
       is_visible: true,
     }
