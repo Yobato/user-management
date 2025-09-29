@@ -1,70 +1,42 @@
 import { FormRow } from "../../../components/forms/field.config";
 import { DataItem } from "../../../services/terms-condition.service";
+import { calculateFormState, createReviewSection, generateFormTitle, populateInitialValues } from "../../../utils/form.helpers";
 import { FormFactoryOptions, FormViewModel } from "../../base-form-singleton.page";
 
 
 export function getTermsConditionFormConfig(options: FormFactoryOptions<DataItem>): FormViewModel {
   const { mode, data } = options;
-  const isEditMode = mode === 'edit';
-  const isReviewMode = mode === 'tinjau';
-  const isViewMode = mode === 'view';
 
-  const formTitle = isEditMode ? 'Ubah Terms and Condition' :
-                    isReviewMode ? 'Tinjau Terms and Condition' : 'Lihat Terms and Condition';
-
-  const showSubmitButton = isEditMode || isReviewMode;
+    const state = calculateFormState(mode, data?.status_approval);
 
   const baseConfig: FormRow[] = [
-    { fields: [{ name: 'label_name', label: 'Nama Label', type: 'text' }] },
-    { fields: [{ name: 'deskripsi', label: 'Deskripsi', type: 'textarea', rows: 5}]},
+    { fields: [{ name: 'label_name', label: 'Nama Label', type: 'text', validations: [{ name: 'required', message: 'Nama Label wajib diisi.' }] }] },
+    { fields: [{ name: 'deskripsi', label: 'Deskripsi', type: 'textarea', rows: 5, validations: [{ name: 'required', message: 'Deskripsi wajib diisi.'}]}]},
   ]
 
-  let finalConfig = baseConfig;
-
-  if(data){
-    const status = data.status_approval;
-    const isRejected = status === 'Rejected';
-
-    const fieldsShouldBeDisabled = isViewMode;
-    const showReviewSection = isReviewMode || (isViewMode && isRejected);
-    const visibilityToggleShouldBeDisabled = isReviewMode;
-
-    const visibilityField: FormRow = {
+  const visibilityField: FormRow = {
       fields: [
-        { name: 'is_visible', label: 'Visibilitas', type: 'toggle', initialValue: data.is_visible, disabled: visibilityToggleShouldBeDisabled, note: 'Tampilkan item ini di Terms & Condition' }
+        { name: 'is_visible', label: 'Visibilitas', initialValue:data?.is_visible, type: 'toggle', note:"Tampilkan di halaman Terms and Condition" }
       ]
     };
 
-    const reviewSection: FormRow = {
-      fields: [{
-        type: 'display', name: 'reviewResultSection', renderType: 'status-section', label: '',
-        data: {
-          title: 'Hasil Review', statusLabel: 'Status', statusValue: status,
-          reasonLabel: 'Catatan Review', reasonValue: data.reason
-        }
-      }]
-    };
-
-    const processedConfig = baseConfig.map(row => ({
-      ...row,
-      fields: row.fields.map(field => ({
-        ...field,
-        initialValue: data[field.name as keyof DataItem],
-        disabled: fieldsShouldBeDisabled
-      }))
-    }));
+  let finalConfig = baseConfig;
+  if (data) {
+    const processedConfig = populateInitialValues(baseConfig, data, state.fieldShouldBeDisabled);
 
     finalConfig = [
-      ...(showReviewSection ? [reviewSection] : []),
+      ...(state.showReviewSection ? [createReviewSection(data)] : []),
       ...processedConfig,
-      ...(isEditMode ? [visibilityField] : [])
+      ...(state.isEditMode ? [visibilityField] : [])
     ];
-  };
+  }
+
+
 
   return{
     config: finalConfig,
-    formTitle: formTitle,
-    showSubmitButton: showSubmitButton,
-    showCloseButton: isViewMode
+    formTitle: generateFormTitle(mode, 'Terms and Condition'),
+    showSubmitButton: state.showSubmitButton,
+    showCloseButton: state.showCloseButton
   }
 }

@@ -105,6 +105,7 @@ export function getArticlesForm(options: FormFactoryOptions<DataItem>): FormView
         type: 'toggle',
         name: 'visibility',
         label: 'Visibilitas',
+        initialValue:data?.status_fung,
         note: 'Tampilkan item ini di dalam list Artikel'
       },
     ]

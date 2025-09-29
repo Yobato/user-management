@@ -96,6 +96,7 @@ export function getProdukForm(options: FormFactoryOptions<DataItem>): FormViewMo
         type: 'toggle',
         name: 'is_visible',
         label: 'Visibilitas',
+        initialValue:data?.is_visible,
         note: 'Tampilkan item ini di dalam list Product'
       },
     ]

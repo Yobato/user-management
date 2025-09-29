@@ -68,6 +68,7 @@ export function getFaqForm(options: FormFactoryOptions<DataItem>): FormViewModel
         type: 'toggle',
         name: 'visibility',
         label: 'Visibilitas',
+        initialValue:data?.visibility,
         note: 'Tampilkan item ini di dalam list Artikel'
       },
     ]
