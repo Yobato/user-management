@@ -6,6 +6,7 @@ import { FaqPage } from './faq/faq.component';
 import { FaqFormPage } from './faq/faq-form/faq-form.component';
 import { PdpConsentPage } from './pdp-consent/pdp-consent.component';
 import { PdpConsentFormPage } from './pdp-consent/pdp-consent-form/pdp-consent-form.component';
+import { TermsConditionPage } from './terms-condition/terms-condition';
 
 const routes: Routes = [
   // About Us
@@ -80,6 +81,12 @@ const routes: Routes = [
     component: PdpConsentFormPage,
     data: { mode: 'tinjau' }
   },
+
+  // Terms and Condition
+  {
+    path: 'terms-condition',
+    component: TermsConditionPage
+  }
 ];
 
 @NgModule({

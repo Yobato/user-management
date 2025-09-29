@@ -127,6 +127,24 @@ export const navigationTree: NavItem[] = [
           },
         ],
       },
+      {
+        title: "Terms & Condition",
+        path: "/informasi/terms-condition",
+        children: [
+          {
+            title: "Edit Terms & Condition",
+            path: "informasi/terms-condition/edit/:id",
+          },
+          {
+            title: "Tinjau Terms & Condition",
+            path: "informasi/terms-condition/tinjau/:id",
+          },
+          {
+            title: "View Terms & Condition",
+            path: "informasi/terms-condition/view/:id",
+          },
+        ],
+      },
     ],
   },
 ];
