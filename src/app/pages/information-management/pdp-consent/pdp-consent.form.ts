@@ -1,21 +1,10 @@
 import { FormRow } from "../../../components/forms/field.config";
 import { DataItem } from "../../../services/pdp-consent.service";
 
-export type FormMode = 'create' | 'edit' | 'view' | 'tinjau';
+import { FormFactoryOptions, FormViewModel } from '../../base-form.page';
 
-export interface FormFactoryOptions {
-  mode: FormMode;
-  data?: DataItem;
-}
 
-export interface FormViewModel{
-  config: FormRow[];
-  formTitle: string;
-  showSubmitButton: boolean;
-  showCloseButton: boolean;
-}
-
-export function getPdpConsentForm(options: FormFactoryOptions): FormViewModel{
+export function getPdpConsentForm(options: FormFactoryOptions<DataItem>): FormViewModel{
 
   const {mode, data} = options;
   const status = data?.status_approval;

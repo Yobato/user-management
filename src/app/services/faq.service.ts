@@ -194,9 +194,13 @@ export class FaqService {
     },
   ];
 
-  getFaqById(id: number): DataItem | undefined{
+  getById(id: number): DataItem | undefined{
     return this.faqData.find(item => item.id === id);
   }
+
+  create(data: Partial<DataItem>): void { /* ... */ }
+
+  update(id: number, data: Partial<DataItem>): void { /* ... */ }
 
   getAllFaq(): DataItem[]{
     return this.faqData

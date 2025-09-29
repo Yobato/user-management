@@ -14,7 +14,7 @@ export class AboutUsPage {
   constructor(private aboutUsService: AboutUsService){}
 
   ngOnInit(): void{
-    const singleItem = this.aboutUsService.getAboutUs();
+    const singleItem = this.aboutUsService.get();
 
     if(singleItem){
       this.tableData = [singleItem];

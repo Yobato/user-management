@@ -59,11 +59,16 @@ export class PdpConsentService {
     },
   ]
 
-  getPdpConsentById(id: number): DataItem | undefined{
-      return this.pdpConsentData.find(item => item.id === id);
-    }
+  getById(id: number): DataItem | undefined{
+    return this.pdpConsentData.find(item => item.id === id);
+  }
 
-    getAllPdpConsent(): DataItem[]{
-      return this.pdpConsentData
-    }
+  create(data: Partial<DataItem>): void { /* ... */ }
+
+  update(id: number, data: Partial<DataItem>): void { /* ... */ }
+
+
+  getAllPdpConsent(): DataItem[]{
+    return this.pdpConsentData
+  }
 }

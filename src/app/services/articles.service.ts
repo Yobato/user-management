@@ -102,9 +102,13 @@ export class ArticlesService {
     },
   ]
 
-  getArticleById(id: number): DataItem | undefined {
+  getById(id: number): DataItem | undefined {
     return this.allArticles.find(item => item.id === id);
   }
+
+  create(data: Partial<DataItem>): void { /* ... */ }
+
+  update(id: number, data: Partial<DataItem>): void { /* ... */ }
 
   getAllArticles(): DataItem[] {
     return this.allArticles;
