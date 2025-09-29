@@ -1,5 +1,6 @@
 import { FormRow } from "../../../components/forms/field.config";
 import { DataItem } from "../../../services/faq.service";
+import { calculateFormState, createReviewSection, generateFormTitle, populateInitialValues } from "../../../utils/form.helpers";
 
 import { FormFactoryOptions, FormViewModel } from '../../base-form.page';
 
@@ -7,21 +8,8 @@ import { FormFactoryOptions, FormViewModel } from '../../base-form.page';
 export function getFaqForm(options: FormFactoryOptions<DataItem>): FormViewModel{
 
   const {mode, data} = options;
-  const status = data?.status_approval;
 
-  const isViewMode = mode === 'view';
-  const isReviewMode = mode === 'tinjau';
-  const isEditMode = mode === 'edit';
-  const isCreateOrEdit = mode === 'create' || mode === 'edit';
-
-  const fieldShouldBeDisabled = isViewMode;
-  const allowFileClear = !isViewMode;
-  const showReviewSection = isReviewMode || (isViewMode && (status === 'Rejected' || status === 'Sendback'));
-  const showSubmitButton = isCreateOrEdit || isReviewMode;
-
-  const formTitle = mode === 'create' ? 'Buat FAQ Baru' :
-                    mode === 'edit' ? 'Ubah FAQ' :
-                    mode === 'tinjau' ? 'Tinjau FAQ' : 'Lihat FAQ';
+  const state = calculateFormState(mode, data?.status_approval);
 
   let faqConfig: FormRow[] = [
     {
@@ -74,66 +62,34 @@ export function getFaqForm(options: FormFactoryOptions<DataItem>): FormViewModel
     },
   ]
 
+  const visibilityField: FormRow = {
+    fields: [
+      {
+        type: 'toggle',
+        name: 'visibility',
+        label: 'Visibilitas',
+        initialValue:data?.visibility,
+        note: 'Tampilkan item ini di dalam list Artikel'
+      },
+    ]
+  }
+
   let finalConfig = faqConfig;
     if(data){
-      finalConfig = finalConfig.map(row => ({
-        ...row,
-        fields: row.fields.map(field =>{
-          if(field.type === 'file'){
-            return{
-              ...field,
-              initialValue: data[field.name as keyof DataItem],
-              disabled: fieldShouldBeDisabled,
-              allowClear: allowFileClear
-            };
-          }
-          return{
-            ...field,
-            initialValue: data[field.name as keyof DataItem],
-            disabled: fieldShouldBeDisabled,
-          };
-        })
-      }));
-    }
+      const processedConfig = populateInitialValues(faqConfig, data, state.fieldShouldBeDisabled);
 
-    const visibilityField: FormRow = {
-      fields: [
-        {
-          type: 'toggle',
-          name: 'visibility',
-          label: 'Visibilitas',
-          note: 'Tampilkan item ini di dalam list Artikel'
-        },
+      finalConfig = [
+        ...(state.showReviewSection ? [createReviewSection(data)]: []),
+        ...processedConfig,
+        ...(state.isEditMode ? [visibilityField] :[])
       ]
     }
 
-    if(isEditMode && data){
-      finalConfig = [...finalConfig, visibilityField];
-    }
 
-    if(showReviewSection && data){
-      const reviewSection: FormRow = {
-        fields: [{
-          type: 'display',
-          name: 'reviewResultSection',
-          renderType: 'status-section',
-          label: '',
-          data: {
-            title: 'Hasil Review',
-            statusLabel: 'Status',
-            statusValue: data.status_approval,
-            reasonLabel: 'Catatan Review',
-            reasonValue: 'Mohon periksa kembali kelengkapan data.' // Ganti dengan data asli jika ada
-          }
-        }]
-      };
-      finalConfig.unshift(reviewSection);
-    }
-
-    return{
-      config: finalConfig,
-      formTitle: formTitle,
-      showSubmitButton: showSubmitButton,
-      showCloseButton: isViewMode,
-    };
+  return{
+    config: finalConfig,
+    formTitle: generateFormTitle(mode, 'FAQ'),
+    showSubmitButton: state.showSubmitButton,
+    showCloseButton: state.showCloseButton,
+  };
 }

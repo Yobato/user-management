@@ -13,6 +13,7 @@ export interface DataItem  {
   status_approval: string;
   status_fung: string;
   refrensi: string;
+  reason: string;
 }
 
 @Injectable({
@@ -32,6 +33,7 @@ export class ArticlesService {
       highlight: false,
       artikel_image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Approved",
+      reason: "Hasil sesuai dengan standar yang telah diterapkan",
       status_fung: "Active",
       refrensi: "https://www.ojk.go.id/panduan/kpr-syariah"
     },
@@ -45,6 +47,7 @@ export class ArticlesService {
       highlight: true,
       artikel_image: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Pending",
+      reason: "Hasil sesuai dengan standar yang telah diterapkan",
       status_fung: "Active",
       refrensi: "https://www.archdaily.com/tag/small-kitchen"
     },
@@ -58,6 +61,7 @@ export class ArticlesService {
       highlight: false,
       artikel_image: "https://images.pexels.com/photos/7578857/pexels-photo-7578857.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Approved",
+      reason: "Hasil sesuai dengan standar yang telah diterapkan",
       status_fung: "Inactive",
       refrensi: "https://pajak.go.id/artikel/apa-itu-njop"
     },
@@ -71,6 +75,7 @@ export class ArticlesService {
       highlight: false,
       artikel_image: "https://images.pexels.com/photos/8089255/pexels-photo-8089255.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Rejected",
+      reason: "Hasil sesuai dengan standar yang telah diterapkan",
       status_fung: "Inactive",
       refrensi: "https://www.atrbpn.go.id/layanan-pertanahan/sertipikat-tanah"
     },
@@ -84,6 +89,7 @@ export class ArticlesService {
       highlight: true,
       artikel_image: "https://images.pexels.com/photos/5849574/pexels-photo-5849574.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Approved",
+      reason: "Hasil sesuai dengan standar yang telah diterapkan",
       status_fung: "Active",
       refrensi: "https://sikapiuangmu.ojk.go.id/FrontEnd/CMS/Article/30591"
     },
@@ -97,6 +103,7 @@ export class ArticlesService {
       highlight: false,
       artikel_image: "https://images.pexels.com/photos/1029606/pexels-photo-1029606.jpeg?auto=compress&cs=tinysrgb&w=400",
       status_approval: "Sendback",
+      reason: "Hasil sesuai dengan standar yang telah diterapkan",
       status_fung: "Pending",
       refrensi: "https://www.housebeautiful.com/lifestyle/gardening/g2313/vertical-gardening-ideas/"
     },

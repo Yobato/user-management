@@ -14,7 +14,7 @@ export class ProdukPage extends BaseTablePageComponent<DataItem> {
     // component.ts
     tableCols: TableColumn[] = [
       { key: 'nama_produk', label: 'Nama Produk', sortable: true },
-      { key: 'jenis_produk', label: 'Jenis', sortable: true },
+      // { key: 'jenis_produk', label: 'Jenis', sortable: true },
       { key: 'kategori', label: 'Kategori', sortable: true },
       { key: 'detail', label: 'Detail', sortable: true },
       { key: 'uploader', label: 'Pengunggah', sortable: true },
@@ -22,13 +22,13 @@ export class ProdukPage extends BaseTablePageComponent<DataItem> {
       { key: 'update_date', label: 'Tanggal Update', sortable: true },
       { key: 'produk_image', label: 'Image', sortable: false, type: 'image' },
       { key: 'status_approval', label: 'Status', type: 'badge', sortable: true },
-      { key: 'status_fung', label: 'Fungsi', type: 'badge', sortable: true },
-      { key: 'highlight', label: 'Highlight', sortable: true },
+      { key: 'is_visible', label: 'Fungsi', type: 'badge', sortable: true },
+      // { key: 'highlight', label: 'Highlight', sortable: true },
       { key: 'actions', label: 'Actions', isAction: true }
     ];
 
     override filterableKeys: (keyof DataItem)[] = [
-      'nama_produk', 'jenis_produk', 'kategori', 'detail', 'uploader', 'approver', 'update_date', 'produk_image', 'status_approval', 'status_fung', 'highlight'
+      'nama_produk', 'jenis_produk', 'kategori', 'detail', 'uploader', 'approver', 'update_date', 'produk_image', 'status_approval', 'is_visible', 'highlight'
     ];
 
     constructor(private produkService: ProdukService){

@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: 'about-us/tinjau',
     component: AboutUsFormPage,
-    data: { mode: 'review' }
+    data: { mode: 'tinjau' }
   },
 
   // FAQ

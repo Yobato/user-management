@@ -1,25 +1,14 @@
 import { FormRow } from "../../components/forms/field.config";
 import { DataItem } from "../../services/produk.service";
+import { calculateFormState, createReviewSection, generateFormTitle, populateInitialValues } from "../../utils/form.helpers";
 
 import { FormFactoryOptions, FormViewModel } from '../base-form.page';
 
 export function getProdukForm(options: FormFactoryOptions<DataItem>): FormViewModel{
 
   const {mode, data} = options;
-  const status = data?.status_approval;
 
-  const isViewMode = mode === 'view';
-  const isReviewMode = mode === 'tinjau';
-  const isCreateOrEdit = mode === 'create' || mode === 'edit';
-
-  const fieldShouldBeDisabled = isViewMode;
-  const allowFileClear = !isViewMode;
-  const showReviewSection = isReviewMode || (isViewMode && (status === 'Rejected' || status === 'Sendback'));
-  const showSubmitButton = isCreateOrEdit || isReviewMode;
-
-  const formTitle = mode === 'create' ? 'Buat Produk Baru' :
-                    mode === 'edit' ? 'Ubah Produk' :
-                    mode === 'tinjau' ? 'Tinjau Produk' : 'Lihat Produk';
+  const state = calculateFormState(mode, data?.status_approval);
 
   let baseConfigProduk: FormRow[] = [
     {
@@ -99,54 +88,35 @@ export function getProdukForm(options: FormFactoryOptions<DataItem>): FormViewMo
         },
       ]
     },
-
   ];
 
-  let finalConfigProduk = baseConfigProduk;
-  if(data){
-    finalConfigProduk = finalConfigProduk.map(row => ({
-      ...row,
-      fields: row.fields.map(field =>{
-        if(field.type === 'file'){
-          return{
-            ...field,
-            initialValue: data[field.name as keyof DataItem],
-            disabled: fieldShouldBeDisabled,
-            allowClear: allowFileClear
-          };
-        }
-        return{
-          ...field,
-          initialValue: data[field.name as keyof DataItem],
-          disabled: fieldShouldBeDisabled,
-        };
-      })
-    }));
+  const visibilityField: FormRow = {
+    fields: [
+      {
+        type: 'toggle',
+        name: 'is_visible',
+        label: 'Visibilitas',
+        initialValue:data?.is_visible,
+        note: 'Tampilkan item ini di dalam list Product'
+      },
+    ]
   }
 
-  if(showReviewSection && data){
-    const reviewSection: FormRow = {
-      fields: [{
-        type: 'display',
-        name: 'reviewResultSection',
-        renderType: 'status-section',
-        label: '',
-        data: {
-          title: 'Hasil Review',
-          statusLabel: 'Status',
-          statusValue: data.status_approval,
-          reasonLabel: 'Catatan Review',
-          reasonValue: 'Nama Produk belum syariah brodie.' // Ganti dengan data asli jika ada
-        }
-      }]
-    };
-    finalConfigProduk.unshift(reviewSection);
+  let finalConfig = baseConfigProduk;
+  if(data){
+    const processedConfig = populateInitialValues(baseConfigProduk, data, state.fieldShouldBeDisabled);
+
+    finalConfig = [
+      ...(state.showReviewSection ? [createReviewSection(data)]: []),
+      ...processedConfig,
+      ...(state.isEditMode ? [visibilityField] :[])
+    ]
   }
 
   return{
-    config: finalConfigProduk,
-    formTitle: formTitle,
-    showSubmitButton: showSubmitButton,
-    showCloseButton: isViewMode,
+    config: finalConfig,
+    formTitle: generateFormTitle(mode, 'Produk'),
+    showSubmitButton: state.showSubmitButton,
+    showCloseButton: state.showCloseButton,
   }
 }
