@@ -98,7 +98,7 @@ export class SidebarComponent implements OnInit {
           "icon": "percent"
         },
         {
-          "path": "/informasi/eula",
+          "path": "/informasi/terms-condition",
           "label": "Syarat dan Ketentuan",
           "icon": "menu"
         }

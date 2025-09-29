@@ -6,6 +6,8 @@ import { FaqPage } from './faq/faq.component';
 import { FaqFormPage } from './faq/faq-form/faq-form.component';
 import { PdpConsentPage } from './pdp-consent/pdp-consent.component';
 import { PdpConsentFormPage } from './pdp-consent/pdp-consent-form/pdp-consent-form.component';
+import { TermsConditionPage } from './terms-condition/terms-condition';
+import { TermsConditionFormPage } from './terms-condition/terms-condition-form/terms-condition-form';
 
 const routes: Routes = [
   // About Us
@@ -78,6 +80,27 @@ const routes: Routes = [
   {
     path: 'pdp-consent/tinjau/:id',
     component: PdpConsentFormPage,
+    data: { mode: 'tinjau' }
+  },
+
+  // Terms and Condition
+  {
+    path: 'terms-condition',
+    component: TermsConditionPage
+  },
+  {
+    path: 'terms-condition/edit',
+    component: TermsConditionFormPage,
+    data: { mode: 'edit' }
+  },
+  {
+    path: 'terms-condition/view',
+    component: TermsConditionFormPage,
+    data: { mode: 'view' }
+  },
+  {
+    path: 'terms-condition/tinjau',
+    component: TermsConditionFormPage,
     data: { mode: 'tinjau' }
   },
 ];

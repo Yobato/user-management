@@ -8,6 +8,8 @@ import { FaqPage } from './faq/faq.component';
 import { FaqFormPage } from './faq/faq-form/faq-form.component';
 import { PdpConsentPage } from './pdp-consent/pdp-consent.component';
 import { PdpConsentFormPage } from './pdp-consent/pdp-consent-form/pdp-consent-form.component';
+import { TermsConditionPage } from './terms-condition/terms-condition';
+import { TermsConditionFormPage } from './terms-condition/terms-condition-form/terms-condition-form';
 
 
 
@@ -18,7 +20,9 @@ import { PdpConsentFormPage } from './pdp-consent/pdp-consent-form/pdp-consent-f
     FaqPage,
     FaqFormPage,
     PdpConsentPage,
-    PdpConsentFormPage
+    PdpConsentFormPage,
+    TermsConditionPage,
+    TermsConditionFormPage
   ],
   imports: [
     CommonModule,
