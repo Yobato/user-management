@@ -6,6 +6,26 @@ const routes: Routes = [
   {
     path: '',
     component: PromoPage
+  },
+  {
+    path: 'create',
+    component: PromoPage,
+    data: {mode: 'create'}
+  },
+  {
+    path: 'edit/:id',
+    component: PromoPage,
+    data: {mode: 'edit'}
+  },
+  {
+    path: 'view/:id',
+    component: PromoPage,
+    data: {mode: 'view'}
+  },
+  {
+    path: 'tinjau/:id',
+    component: PromoPage,
+    data: {mode: 'tinjau'}
   }
 ];
 
