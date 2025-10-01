@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared-module';
 import { MasterManagementRoutingModule } from './master-management-routing-module';
 import { ProductMasterPage } from './product-master/product-master';
+import { ProductMasterFormPage } from './product-master/product-master-form/product-master-form';
 
 
 
 @NgModule({
   declarations: [
-    ProductMasterPage
+    ProductMasterPage,
+    ProductMasterFormPage
   ],
   imports: [
     CommonModule,
