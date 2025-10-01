@@ -130,6 +130,14 @@ export class PromoService {
     },
   ];
 
+  getById(id: number): DataItem | undefined {
+    return this.allData.find(item => item.id === id);
+  }
+
+  create(data: Partial<DataItem>): void { /* ... */ }
+  
+  update(id: number, data: Partial<DataItem>): void { /* ... */ }
+
   getPromoData(): DataItem[] {
     return this.allData;
   }

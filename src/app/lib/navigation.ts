@@ -59,6 +59,24 @@ export const navigationTree: NavItem[] = [
       {
         title: "Promo",
         path: "/promo",
+        children: [
+          {
+            title: "Tambah Promo",
+            path: "/promo/create", // Pastikan path ini sesuai dengan URL Anda
+          },
+          {
+            title: "Edit Promo",
+            path: "/promo/edit/:id",
+          },
+          {
+            title: "Tinjau Promo",
+            path: "/promo/tinjau/:id",
+          },
+          {
+            title: "View Promo",
+            path: "/promo/view/:id",
+          },
+        ],
       },
     ],
   },

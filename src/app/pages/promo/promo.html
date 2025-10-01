@@ -1,5 +1,3 @@
-<!-- <p>promo works!</p> -->
-
 <div class="flex w-full justify-between">
   <breadcrums-component />
   <app-search-table
@@ -15,7 +13,7 @@
         >Di bawah ini merupakan article</span
       > -->
     </div>
-    <a class="btn-bsi btn-success-bsi" routerLink="/article/create">
+    <a class="btn-bsi btn-success-bsi" routerLink="/promo/create">
       <div class="flex items-center">
         <span class="material-icons" style="font-size: large">add</span>
         <span class="text-center text-md"> Tambah Promo </span>
@@ -31,20 +29,33 @@
       <div class="flex items-center gap-2">
         @if ( row.status_approval.trim().toLowerCase() === 'pending' ||
         row.status_approval.trim().toLowerCase() === 'rejected' ) {
-        <app-button-table size="md" variant="secondary" actionType="view">
+        <app-button-table 
+          size="md" 
+          variant="secondary" 
+          actionType="view"
+          [routerLink]="['/promo/view', row.id]">
           Lihat
         </app-button-table>
         } @if (row.status_approval.trim().toLowerCase() === 'sendback') {
-        <app-button-table size="md" variant="primary" actionType="document">
+        <app-button-table 
+          size="md" 
+          variant="primary" 
+          actionType="document"
+          [routerLink]="['/promo/tinjau', row.id]">
           Tinjau
         </app-button-table>
         } @if (row.status_approval.trim().toLowerCase() === 'approved') {
-        <app-button-table size="md" variant="primary" actionType="edit">
+        <app-button-table 
+          size="md" 
+          variant="primary" 
+          actionType="edit"
+          [routerLink]="['/promo/edit', row.id]">
           Edit
         </app-button-table>
         }
       </div>
     </ng-template>
+
   </app-table-untitled>
   <app-pagination
     [currentPage]="page"
