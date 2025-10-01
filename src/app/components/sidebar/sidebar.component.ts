@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 
 export interface NavLink{
   path: string;
@@ -18,13 +18,35 @@ export interface NavSection{
   styleUrl: './sidebar.component.css'
 })
 
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, AfterViewInit {
+
+  public showTopFade: boolean = false;
+  public showBottomFade: boolean = true;
+
+  @ViewChild('scrollContainer') private scrollContainer!: ElementRef<HTMLElement>;
 
   ngOnInit(): void {
     this.menuItems.forEach(section => {
       this.sectionState[section.title] = true;
     })
 
+  }
+
+  ngAfterViewInit(): void {
+      setTimeout(()=> this.checkScroll(), 0)
+  }
+
+  onScroll(): void {
+    this.checkScroll();
+  }
+
+  private checkScroll(): void{
+    const element = this.scrollContainer.nativeElement;
+    const scrollTop = element.scrollTop;
+    const scrollHeight = element.scrollHeight;
+    const clientHeight = element.clientHeight;
+    this.showTopFade = scrollTop > 5;
+    this.showBottomFade = scrollTop + clientHeight < scrollHeight - 5;
   }
 
   public sectionState: {[key: string]: boolean} = {};
