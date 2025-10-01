@@ -147,6 +147,33 @@ export const navigationTree: NavItem[] = [
       },
     ],
   },
+  {
+    title: "Master Management",
+    children: [
+      {
+        title: "Product Master",
+        path: "/master/product-master",
+        children: [
+          {
+            title: "Tambah Product Master",
+            path: "master/product-master/create",
+          },
+          {
+            title: "Edit Product Master",
+            path: "master/product-master/edit/:id",
+          },
+          {
+            title: "Tinjau Product Master",
+            path: "master/product-master/tinjau/:id",
+          },
+          {
+            title: "View Product Master",
+            path: "master/product-master/view/:id",
+          },
+        ]
+      }
+    ]
+  }
 ];
 
 function pathsMatch(url: string, pattern: string): boolean{
