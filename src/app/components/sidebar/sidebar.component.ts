@@ -103,6 +103,42 @@ export class SidebarComponent implements OnInit {
           "icon": "menu"
         }
       ]
+    },
+    {
+      "title": "Master Management",
+      "children": [
+        {
+          "path": "/master/product-master",
+          "label": "Master Produk",
+          "icon": "dns"
+
+        },
+        {
+          "path": "/master/product-category",
+          "label": "Kategori Produk",
+          "icon": "view_list"
+        },
+        {
+          "path": "/master/pricing",
+          "label": "Pricing",
+          "icon": "paid"
+        },
+        {
+          "path": "/master/marital-status",
+          "label": "Status Perkawinan",
+          "icon": "family_restroom"
+        },
+        {
+          "path": "/master/property-type",
+          "label": "Tipe properti",
+          "icon": "foundation"
+        },
+        {
+          "path": "/master/property-condition",
+          "label": "Kondisi properti",
+          "icon": "gite"
+        }
+      ]
     }
   ]
 }
