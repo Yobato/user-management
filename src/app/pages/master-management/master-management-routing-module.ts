@@ -6,6 +6,8 @@ import { ProductCategoryPage } from './product-category/product-category';
 import { ProductCategoryFormPage } from './product-category/product-category-form/product-category-form';
 import { PricingPage } from './pricing/pricing';
 import { PricingFormPage } from './pricing/pricing-form/pricing-form';
+import { MaritalStatusPage } from './marital-status/marital-status';
+import { MaritalStatusFormPage } from './marital-status/marital-status-form/marital-status-form';
 
 const routes: Routes = [
   // PRODUK MASTER
@@ -83,6 +85,32 @@ const routes: Routes = [
   {
     path: 'pricing/tinjau/:id',
     component: PricingFormPage,
+    data: { mode: 'tinjau' }
+  },
+
+  // MARITAL STATUS
+  {
+    path: 'marital-status',
+    component: MaritalStatusPage
+  },
+  {
+    path: 'marital-status/create',
+    component: MaritalStatusFormPage,
+    data: { mode: 'create' }
+  },
+  {
+    path: 'marital-status/view/:id',
+    component: MaritalStatusFormPage,
+    data: { mode: 'view' }
+  },
+  {
+    path: 'marital-status/edit/:id',
+    component: MaritalStatusFormPage,
+    data: { mode: 'edit' }
+  },
+  {
+    path: 'marital-status/tinjau/:id',
+    component: MaritalStatusFormPage,
     data: { mode: 'tinjau' }
   },
 ];

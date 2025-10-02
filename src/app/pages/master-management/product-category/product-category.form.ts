@@ -64,7 +64,7 @@ export function getProductCategoryForm(options: FormFactoryOptions<DataItem>) : 
           name: 'visibility',
           label: 'Visibilitas',
           initialValue:data?.is_visible,
-          note: 'Tampilkan item ini di dalam list Product Master'
+          note: 'Tampilkan item ini di dalam list Product Category'
         },
       ]
     }
