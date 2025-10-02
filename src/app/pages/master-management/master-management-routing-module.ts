@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductMasterPage } from './product-master/product-master';
 import { ProductMasterFormPage } from './product-master/product-master-form/product-master-form';
+import { ProductCategoryPage } from './product-category/product-category';
+import { ProductCategoryFormPage } from './product-category/product-category-form/product-category-form';
 
 const routes: Routes = [
-  // FAQ
+  // PRODUK MASTER
   {
     path: 'product-master',
     component: ProductMasterPage
@@ -29,6 +31,32 @@ const routes: Routes = [
     component: ProductMasterFormPage,
     data: { mode: 'tinjau' }
   },
+
+  // PRODUK KATEGORI
+  {
+    path: 'product-category',
+    component: ProductCategoryPage
+  },
+  {
+    path: 'product-category/create',
+    component: ProductCategoryFormPage,
+    data: { mode: 'create' }
+  },
+  {
+    path: 'product-category/view/:id',
+    component: ProductCategoryFormPage,
+    data: { mode: 'view' }
+  },
+  {
+    path: 'product-category/edit/:id',
+    component: ProductCategoryFormPage,
+    data: { mode: 'edit' }
+  },
+  {
+    path: 'product-category/tinjau/:id',
+    component: ProductCategoryFormPage,
+    data: { mode: 'tinjau' }
+  }
 ];
 
 @NgModule({

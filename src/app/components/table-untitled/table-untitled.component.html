@@ -80,7 +80,11 @@
               @if (col.key === 'is_mandatory') {
               {{ row[col.key] | mandatory }}
               } @else {
-              {{ row[col.key] | truncate : 25 }}
+                @if(col.key.includes('.')){
+                  {{ row[col.key.split('.')[0]]?.[col.key.split('.')[1]] | truncate: 25}}
+                } @else {
+                  {{ row[col.key] | truncate : 25 }}
+                }
               }
             </span>
             } } }
