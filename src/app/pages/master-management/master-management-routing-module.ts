@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductMasterPage } from './product-master/product-master';
 import { ProductMasterFormPage } from './product-master/product-master-form/product-master-form';
 import { ProductCategoryPage } from './product-category/product-category';
+import { ProductCategoryFormPage } from './product-category/product-category-form/product-category-form';
 
 const routes: Routes = [
   // PRODUK MASTER
@@ -36,6 +37,26 @@ const routes: Routes = [
     path: 'product-category',
     component: ProductCategoryPage
   },
+  {
+    path: 'product-category/create',
+    component: ProductCategoryFormPage,
+    data: { mode: 'create' }
+  },
+  {
+    path: 'product-category/view/:id',
+    component: ProductCategoryFormPage,
+    data: { mode: 'view' }
+  },
+  {
+    path: 'product-category/edit/:id',
+    component: ProductCategoryFormPage,
+    data: { mode: 'edit' }
+  },
+  {
+    path: 'product-category/tinjau/:id',
+    component: ProductCategoryFormPage,
+    data: { mode: 'tinjau' }
+  }
 ];
 
 @NgModule({

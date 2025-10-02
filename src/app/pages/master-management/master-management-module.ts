@@ -5,6 +5,7 @@ import { MasterManagementRoutingModule } from './master-management-routing-modul
 import { ProductMasterPage } from './product-master/product-master';
 import { ProductMasterFormPage } from './product-master/product-master-form/product-master-form';
 import { ProductCategoryPage } from './product-category/product-category';
+import { ProductCategoryFormPage } from './product-category/product-category-form/product-category-form';
 
 
 
@@ -12,7 +13,8 @@ import { ProductCategoryPage } from './product-category/product-category';
   declarations: [
     ProductMasterPage,
     ProductMasterFormPage,
-    ProductCategoryPage
+    ProductCategoryPage,
+    ProductCategoryFormPage
   ],
   imports: [
     CommonModule,

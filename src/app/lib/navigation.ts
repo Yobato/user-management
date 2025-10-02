@@ -189,6 +189,28 @@ export const navigationTree: NavItem[] = [
             path: "master/product-master/view/:id",
           },
         ]
+      },
+      {
+        title: "Product Category",
+        path: "/master/product-category",
+        children: [
+          {
+            title: "Tambah Product Category",
+            path: "master/product-category/create",
+          },
+          {
+            title: "Edit Product Category",
+            path: "master/product-category/edit/:id",
+          },
+          {
+            title: "Tinjau Product Category",
+            path: "master/product-category/tinjau/:id",
+          },
+          {
+            title: "View Product Category",
+            path: "master/product-category/view/:id",
+          },
+        ]
       }
     ]
   }

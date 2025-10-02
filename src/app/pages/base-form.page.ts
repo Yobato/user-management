@@ -8,6 +8,7 @@ export type FormMode = 'create' | 'edit' | 'view' | 'tinjau';
 export interface FormFactoryOptions<T> {
   mode: FormMode;
   data?: T;
+  dependencies?: any;
 }
 
 export interface FormViewModel{
@@ -60,6 +61,7 @@ export abstract class BaseFormComponent<
     if (this.mode === 'create') {
       this.dataService.create(formData);
       alert('Data baru berhasil dibuat!');
+      console.log('Data yang dikirim:', formData);
     } else if (this.mode === 'edit' || this.mode === 'tinjau') { // 'tinjau' diganti 'review' agar konsisten
       if (this.id) {
         this.dataService.update(+this.id, formData);
