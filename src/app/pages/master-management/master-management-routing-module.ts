@@ -5,6 +5,7 @@ import { ProductMasterFormPage } from './product-master/product-master-form/prod
 import { ProductCategoryPage } from './product-category/product-category';
 import { ProductCategoryFormPage } from './product-category/product-category-form/product-category-form';
 import { PricingPage } from './pricing/pricing';
+import { PricingFormPage } from './pricing/pricing-form/pricing-form';
 
 const routes: Routes = [
   // PRODUK MASTER
@@ -63,6 +64,26 @@ const routes: Routes = [
   {
     path: 'pricing',
     component: PricingPage
+  },
+  {
+    path: 'pricing/create',
+    component: PricingFormPage,
+    data: { mode: 'create' }
+  },
+  {
+    path: 'pricing/view/:id',
+    component: PricingFormPage,
+    data: { mode: 'view' }
+  },
+  {
+    path: 'pricing/edit/:id',
+    component: PricingFormPage,
+    data: { mode: 'edit' }
+  },
+  {
+    path: 'pricing/tinjau/:id',
+    component: PricingFormPage,
+    data: { mode: 'tinjau' }
   },
 ];
 
