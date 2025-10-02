@@ -162,4 +162,17 @@ export class PricingService {
       is_visible: false,
     }
   ]
+
+  getById(id: number): DataItem | undefined{
+    return this.pricingData.find(item => item.id === id);
+  }
+
+  create(data: Partial<DataItem>): void { /* ... */ }
+
+  update(id: number, data: Partial<DataItem>): void { /* ... */ }
+
+
+  getAllPricingData(): DataItem[]{
+    return this.pricingData
+  }
 }

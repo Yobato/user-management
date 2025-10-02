@@ -6,6 +6,7 @@ import { ProductMasterPage } from './product-master/product-master';
 import { ProductMasterFormPage } from './product-master/product-master-form/product-master-form';
 import { ProductCategoryPage } from './product-category/product-category';
 import { ProductCategoryFormPage } from './product-category/product-category-form/product-category-form';
+import { PricingPage } from './pricing/pricing';
 
 
 
@@ -14,7 +15,8 @@ import { ProductCategoryFormPage } from './product-category/product-category-for
     ProductMasterPage,
     ProductMasterFormPage,
     ProductCategoryPage,
-    ProductCategoryFormPage
+    ProductCategoryFormPage,
+    PricingPage
   ],
   imports: [
     CommonModule,

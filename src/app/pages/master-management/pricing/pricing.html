@@ -1,0 +1,65 @@
+<div class="flex w-full justify-between">
+  <breadcrums-component />
+  <app-search-table
+    placeholder="Search Pricing..."
+    [(value)]="query"
+  ></app-search-table>
+</div>
+<div class="card bg-white border border-[#D2D6DB] rounded-2xl mt-6">
+  <div class="card-header flex items-center justify-between p-6">
+    <div class="title">
+      <h4 class="text-xl font-semibold">Pricing Management</h4>
+    </div>
+    <a class="btn-bsi btn-success-bsi" routerLink="/master/pricing/create">
+      <div class="flex items-center">
+        <span class="material-icons" style="font-size: large">add</span>
+        <span class="text-center text-md"> Tambah Pricing </span>
+      </div>
+    </a>
+  </div>
+  <app-table-untitled
+    [columns]="tableCols"
+    [data]="paginatedData"
+    (sortChange)="onSortChange($event)"
+  >
+    <ng-template #tableAction let-row>
+      <div class="flex items-center gap-2">
+        @if ( row.status_approval.trim().toLowerCase() === 'pending' ||
+        row.status_approval.trim().toLowerCase() === 'rejected' ) {
+        <app-button-table
+          size="md"
+          variant="secondary"
+          actionType="view"
+          [routerLink]="['/master/pricing/view', row.id]"
+        >
+          Lihat
+        </app-button-table>
+        } @if (row.status_approval.trim().toLowerCase() === 'sendback') {
+        <app-button-table
+          size="md"
+          variant="primary"
+          actionType="document"
+          [routerLink]="['/master/pricing/tinjau', row.id]"
+        >
+          Tinjau
+        </app-button-table>
+        } @if (row.status_approval.trim().toLowerCase() === 'approved') {
+        <app-button-table
+          size="md"
+          variant="primary"
+          actionType="edit"
+          [routerLink]="['/master/pricing/edit', row.id]"
+        >
+          Edit
+        </app-button-table>
+        }
+      </div>
+    </ng-template>
+  </app-table-untitled>
+  <app-pagination
+    [currentPage]="page"
+    [totalPage]="totalPages"
+    (pageChange)="onPageChange($event)"
+  >
+  </app-pagination>
+</div>

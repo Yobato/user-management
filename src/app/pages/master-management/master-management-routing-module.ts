@@ -4,6 +4,7 @@ import { ProductMasterPage } from './product-master/product-master';
 import { ProductMasterFormPage } from './product-master/product-master-form/product-master-form';
 import { ProductCategoryPage } from './product-category/product-category';
 import { ProductCategoryFormPage } from './product-category/product-category-form/product-category-form';
+import { PricingPage } from './pricing/pricing';
 
 const routes: Routes = [
   // PRODUK MASTER
@@ -56,7 +57,13 @@ const routes: Routes = [
     path: 'product-category/tinjau/:id',
     component: ProductCategoryFormPage,
     data: { mode: 'tinjau' }
-  }
+  },
+
+  // PRICING
+  {
+    path: 'pricing',
+    component: PricingPage
+  },
 ];
 
 @NgModule({
