@@ -10,6 +10,7 @@ import { MaritalStatusPage } from './marital-status/marital-status';
 import { MaritalStatusFormPage } from './marital-status/marital-status-form/marital-status-form';
 import { PropertyTypePage } from './property-type/property-type';
 import { PropertyTypeFormPage } from './property-type/property-type-form/property-type-form';
+import { PropertyConditionPage } from './property-condition/property-condition';
 
 const routes: Routes = [
   // PRODUK MASTER
@@ -116,7 +117,7 @@ const routes: Routes = [
     data: { mode: 'tinjau' }
   },
 
-  // MARITAL STATUS
+  // PROPERTY TYPE
   {
     path: 'property-type',
     component: PropertyTypePage
@@ -138,6 +139,32 @@ const routes: Routes = [
   },
   {
     path: 'property-type/tinjau/:id',
+    component: PropertyTypeFormPage,
+    data: { mode: 'tinjau' }
+  },
+
+  // PROPERTY CONDITION
+  {
+    path: 'property-condition',
+    component: PropertyConditionPage
+  },
+  {
+    path: 'property-condition/create',
+    component: PropertyTypeFormPage,
+    data: { mode: 'create' }
+  },
+  {
+    path: 'property-condition/view/:id',
+    component: PropertyTypeFormPage,
+    data: { mode: 'view' }
+  },
+  {
+    path: 'property-condition/edit/:id',
+    component: PropertyTypeFormPage,
+    data: { mode: 'edit' }
+  },
+  {
+    path: 'property-condition/tinjau/:id',
     component: PropertyTypeFormPage,
     data: { mode: 'tinjau' }
   },

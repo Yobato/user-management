@@ -277,6 +277,28 @@ export const navigationTree: NavItem[] = [
             path: "master/property-type/view/:id",
           },
         ]
+      },
+      {
+        title: "Property Condition",
+        path: "/master/property-condition",
+        children: [
+          {
+            title: "Tambah Property Condition",
+            path: "master/property-condition/create",
+          },
+          {
+            title: "Edit Property Condition",
+            path: "master/property-condition/edit/:id",
+          },
+          {
+            title: "Tinjau Property Condition",
+            path: "master/property-condition/tinjau/:id",
+          },
+          {
+            title: "View Property Condition",
+            path: "master/property-condition/view/:id",
+          },
+        ]
       }
     ]
   }

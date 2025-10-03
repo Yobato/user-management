@@ -12,8 +12,8 @@ import { TableColumn } from '../../../components/table-untitled/table-untitled.c
 export class PropertyTypePage extends BaseTablePageComponent<DataItem> {
 
   tableCols: TableColumn[] = [
-    {key: 'nama_property_type', label: 'Jenis Marital Status', sortable: true},
-    {key: 'deskripsi_property_type', label: 'Kode', sortable: true},
+    {key: 'nama_property_type', label: 'Tipe Properti', sortable: true},
+    {key: 'deskripsi_property_type', label: 'Deskripsi', sortable: true},
     {key: 'created_by', label: 'Created by', sortable: true},
     {key: 'updated_by', label: 'Updated by', sortable: true},
     {key: 'status_approval', label: 'Status Approval', type:'badge', sortable: true },

@@ -12,6 +12,8 @@ import { MaritalStatusPage } from './marital-status/marital-status';
 import { MaritalStatusFormPage } from './marital-status/marital-status-form/marital-status-form';
 import { PropertyTypePage } from './property-type/property-type';
 import { PropertyTypeFormPage } from './property-type/property-type-form/property-type-form';
+import { PropertyConditionService } from '../../services/property-condition.service';
+import { PropertyConditionPage } from './property-condition/property-condition';
 
 
 
@@ -26,7 +28,8 @@ import { PropertyTypeFormPage } from './property-type/property-type-form/propert
     MaritalStatusPage,
     MaritalStatusFormPage,
     PropertyTypePage,
-    PropertyTypeFormPage
+    PropertyTypeFormPage,
+    PropertyConditionPage
   ],
   imports: [
     CommonModule,
