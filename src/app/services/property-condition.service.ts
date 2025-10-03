@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 export interface DataItem{
   id: number;
-  nama_property_type: string;
-  deskripsi_property_type: string;
+  nama_property_condition: string;
+  deskripsi_property_condition: string;
   created_at: Date;
   created_by: string;
   updated_at: Date;
@@ -12,18 +12,17 @@ export interface DataItem{
   approver: string;
   reason: string;
   is_visible: boolean;
-
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class PropertyTypeService {
-  typePropertyData: DataItem[] = [
+export class PropertyConditionService {
+  conditionPropertyData: DataItem[] = [
     {
       id: 1,
-      nama_property_type: "Rumah",
-      deskripsi_property_type: "Rumah tinggal milik pribadi",
+      nama_property_condition: "Rumah",
+      deskripsi_property_condition: "Rumah huni",
       created_at: new Date("2025-09-15T10:00:00"),
       created_by: "Andi Pratama",
       updated_at: new Date("2025-09-28T14:30:00"),
@@ -35,8 +34,8 @@ export class PropertyTypeService {
     },
     {
       id: 2,
-      nama_property_type: "Tanah",
-      deskripsi_property_type: "Tanah siap bangun",
+      nama_property_condition: "Tanah",
+      deskripsi_property_condition: "Tanah hak milik",
       created_at: new Date("2025-09-15T10:00:00"),
       created_by: "Andi Pratama",
       updated_at: new Date("2025-09-28T14:30:00"),
@@ -48,8 +47,8 @@ export class PropertyTypeService {
     },
     {
       id: 3,
-      nama_property_type: "Apartement",
-      deskripsi_property_type: "Apartement di hatimu",
+      nama_property_condition: "Apartement",
+      deskripsi_property_condition: "Apartement pribadi",
       created_at: new Date("2025-09-15T10:00:00"),
       created_by: "Andi Pratama",
       updated_at: new Date("2025-09-28T14:30:00"),
@@ -61,8 +60,8 @@ export class PropertyTypeService {
     },
     {
       id: 4,
-      nama_property_type: "Ruko",
-      deskripsi_property_type: "Ruko dengan sewa bulanan",
+      nama_property_condition: "Ruko",
+      deskripsi_property_condition: "Ruko kontrakan minimal 3 tahun",
       created_at: new Date("2025-09-15T10:00:00"),
       created_by: "Andi Pratama",
       updated_at: new Date("2025-09-28T14:30:00"),
@@ -75,7 +74,7 @@ export class PropertyTypeService {
   ];
 
   getById(id: number): DataItem | undefined{
-    return this.typePropertyData.find(item => item.id === id);
+    return this.conditionPropertyData.find(item => item.id === id);
   }
 
   create(data: Partial<DataItem>): void { /* ... */ }
@@ -83,7 +82,7 @@ export class PropertyTypeService {
   update(id: number, data: Partial<DataItem>): void { /* ... */ }
 
 
-  getAllPropertyTypeData(): DataItem[]{
-    return this.typePropertyData
+  getAllPropertyConditionData(): DataItem[]{
+    return this.conditionPropertyData
   }
 }

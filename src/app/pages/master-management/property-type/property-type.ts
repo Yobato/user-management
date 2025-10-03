@@ -30,7 +30,7 @@ export class PropertyTypePage extends BaseTablePageComponent<DataItem> {
   }
 
   override ngOnInit(): void {
-    this.allData = this.propertyTypeService.getAllMaritalStatusData();
+    this.allData = this.propertyTypeService.getAllPropertyTypeData();
     this.tableData = [...this.allData];
   }
 
