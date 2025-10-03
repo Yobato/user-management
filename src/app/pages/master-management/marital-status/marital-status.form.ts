@@ -8,7 +8,7 @@ export function getMaritalStatusForm(options: FormFactoryOptions<DataItem>): For
 
   const state = calculateFormState(mode, data?.status_approval);
 
-  let productMasterConfig: FormRow[] = [
+  let maritalStatusConfig: FormRow[] = [
     {
       fields: [
         {
@@ -51,9 +51,9 @@ export function getMaritalStatusForm(options: FormFactoryOptions<DataItem>): For
     ]
   }
 
-  let finalConfig = productMasterConfig;
+  let finalConfig = maritalStatusConfig;
     if(data){
-      const processedConfig = populateInitialValues(productMasterConfig, data, state.fieldShouldBeDisabled);
+      const processedConfig = populateInitialValues(maritalStatusConfig, data, state.fieldShouldBeDisabled);
 
       finalConfig = [
         ...(state.showReviewSection ? [createReviewSection(data)]: []),

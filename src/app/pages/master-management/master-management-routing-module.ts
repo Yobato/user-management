@@ -9,6 +9,7 @@ import { PricingFormPage } from './pricing/pricing-form/pricing-form';
 import { MaritalStatusPage } from './marital-status/marital-status';
 import { MaritalStatusFormPage } from './marital-status/marital-status-form/marital-status-form';
 import { PropertyTypePage } from './property-type/property-type';
+import { PropertyTypeFormPage } from './property-type/property-type-form/property-type-form';
 
 const routes: Routes = [
   // PRODUK MASTER
@@ -122,22 +123,22 @@ const routes: Routes = [
   },
   {
     path: 'property-type/create',
-    component: MaritalStatusFormPage,
+    component: PropertyTypeFormPage,
     data: { mode: 'create' }
   },
   {
     path: 'property-type/view/:id',
-    component: MaritalStatusFormPage,
+    component: PropertyTypeFormPage,
     data: { mode: 'view' }
   },
   {
     path: 'property-type/edit/:id',
-    component: MaritalStatusFormPage,
+    component: PropertyTypeFormPage,
     data: { mode: 'edit' }
   },
   {
     path: 'property-type/tinjau/:id',
-    component: MaritalStatusFormPage,
+    component: PropertyTypeFormPage,
     data: { mode: 'tinjau' }
   },
 ];

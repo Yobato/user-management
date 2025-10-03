@@ -11,6 +11,7 @@ import { PricingFormPage } from './pricing/pricing-form/pricing-form';
 import { MaritalStatusPage } from './marital-status/marital-status';
 import { MaritalStatusFormPage } from './marital-status/marital-status-form/marital-status-form';
 import { PropertyTypePage } from './property-type/property-type';
+import { PropertyTypeFormPage } from './property-type/property-type-form/property-type-form';
 
 
 
@@ -24,7 +25,8 @@ import { PropertyTypePage } from './property-type/property-type';
     PricingFormPage,
     MaritalStatusPage,
     MaritalStatusFormPage,
-    PropertyTypePage
+    PropertyTypePage,
+    PropertyTypeFormPage
   ],
   imports: [
     CommonModule,
