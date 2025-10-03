@@ -255,6 +255,28 @@ export const navigationTree: NavItem[] = [
             path: "master/marital-status/view/:id",
           },
         ]
+      },
+      {
+        title: "Property Type",
+        path: "/master/property-type",
+        children: [
+          {
+            title: "Tambah Property Type",
+            path: "master/property-type/create",
+          },
+          {
+            title: "Edit Property Type",
+            path: "master/property-type/edit/:id",
+          },
+          {
+            title: "Tinjau Property Type",
+            path: "master/property-type/tinjau/:id",
+          },
+          {
+            title: "View Property Type",
+            path: "master/property-type/view/:id",
+          },
+        ]
       }
     ]
   }

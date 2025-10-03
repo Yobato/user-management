@@ -1,0 +1,65 @@
+<div class="flex w-full justify-between">
+  <breadcrums-component />
+  <app-search-table
+    placeholder="Search Property Type..."
+    [(value)]="query"
+  ></app-search-table>
+</div>
+<div class="card bg-white border border-[#D2D6DB] rounded-2xl mt-6">
+  <div class="card-header flex items-center justify-between p-6">
+    <div class="title">
+      <h4 class="text-xl font-semibold">Property Type Management</h4>
+    </div>
+    <a class="btn-bsi btn-success-bsi" routerLink="/master/property-type/create">
+      <div class="flex items-center">
+        <span class="material-icons" style="font-size: large">add</span>
+        <span class="text-center text-md"> Tambah Property Type </span>
+      </div>
+    </a>
+  </div>
+  <app-table-untitled
+    [columns]="tableCols"
+    [data]="paginatedData"
+    (sortChange)="onSortChange($event)"
+  >
+    <ng-template #tableAction let-row>
+      <div class="flex items-center gap-2">
+        @if ( row.status_approval.trim().toLowerCase() === 'pending' ||
+        row.status_approval.trim().toLowerCase() === 'rejected' ) {
+        <app-button-table
+          size="md"
+          variant="secondary"
+          actionType="view"
+          [routerLink]="['/master/property-type/view', row.id]"
+        >
+          Lihat
+        </app-button-table>
+        } @if (row.status_approval.trim().toLowerCase() === 'sendback') {
+        <app-button-table
+          size="md"
+          variant="primary"
+          actionType="document"
+          [routerLink]="['/master/property-type/tinjau', row.id]"
+        >
+          Tinjau
+        </app-button-table>
+        } @if (row.status_approval.trim().toLowerCase() === 'approved') {
+        <app-button-table
+          size="md"
+          variant="primary"
+          actionType="edit"
+          [routerLink]="['/master/property-type/edit', row.id]"
+        >
+          Edit
+        </app-button-table>
+        }
+      </div>
+    </ng-template>
+  </app-table-untitled>
+  <app-pagination
+    [currentPage]="page"
+    [totalPage]="totalPages"
+    (pageChange)="onPageChange($event)"
+  >
+  </app-pagination>
+</div>

@@ -10,6 +10,7 @@ import { PricingPage } from './pricing/pricing';
 import { PricingFormPage } from './pricing/pricing-form/pricing-form';
 import { MaritalStatusPage } from './marital-status/marital-status';
 import { MaritalStatusFormPage } from './marital-status/marital-status-form/marital-status-form';
+import { PropertyTypePage } from './property-type/property-type';
 
 
 
@@ -22,7 +23,8 @@ import { MaritalStatusFormPage } from './marital-status/marital-status-form/mari
     PricingPage,
     PricingFormPage,
     MaritalStatusPage,
-    MaritalStatusFormPage
+    MaritalStatusFormPage,
+    PropertyTypePage
   ],
   imports: [
     CommonModule,
