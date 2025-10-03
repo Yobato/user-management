@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PricingFormPage } from './pricing-form';
+import { PropertyTypeForm } from './property-type-form';
 
-describe('PricingFormPage', () => {
-  let component: PricingFormPage;
-  let fixture: ComponentFixture<PricingFormPage>;
+describe('PropertyTypeForm', () => {
+  let component: PropertyTypeForm;
+  let fixture: ComponentFixture<PropertyTypeForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PricingFormPage]
+      imports: [PropertyTypeForm]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PricingFormPage);
+    fixture = TestBed.createComponent(PropertyTypeForm);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

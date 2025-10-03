@@ -8,6 +8,10 @@ import { ProductCategoryPage } from './product-category/product-category';
 import { ProductCategoryFormPage } from './product-category/product-category-form/product-category-form';
 import { PricingPage } from './pricing/pricing';
 import { PricingFormPage } from './pricing/pricing-form/pricing-form';
+import { MaritalStatusPage } from './marital-status/marital-status';
+import { MaritalStatusFormPage } from './marital-status/marital-status-form/marital-status-form';
+import { PropertyTypePage } from './property-type/property-type';
+import { PropertyTypeFormPage } from './property-type/property-type-form/property-type-form';
 
 
 
@@ -18,7 +22,11 @@ import { PricingFormPage } from './pricing/pricing-form/pricing-form';
     ProductCategoryPage,
     ProductCategoryFormPage,
     PricingPage,
-    PricingFormPage
+    PricingFormPage,
+    MaritalStatusPage,
+    MaritalStatusFormPage,
+    PropertyTypePage,
+    PropertyTypeFormPage
   ],
   imports: [
     CommonModule,

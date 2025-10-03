@@ -233,6 +233,50 @@ export const navigationTree: NavItem[] = [
             path: "master/pricing/view/:id",
           },
         ]
+      },
+      {
+        title: "Marital Status",
+        path: "/master/marital-status",
+        children: [
+          {
+            title: "Tambah Marital Status",
+            path: "master/marital-status/create",
+          },
+          {
+            title: "Edit Marital Status",
+            path: "master/marital-status/edit/:id",
+          },
+          {
+            title: "Tinjau Marital Status",
+            path: "master/marital-status/tinjau/:id",
+          },
+          {
+            title: "View Marital Status",
+            path: "master/marital-status/view/:id",
+          },
+        ]
+      },
+      {
+        title: "Property Type",
+        path: "/master/property-type",
+        children: [
+          {
+            title: "Tambah Property Type",
+            path: "master/property-type/create",
+          },
+          {
+            title: "Edit Property Type",
+            path: "master/property-type/edit/:id",
+          },
+          {
+            title: "Tinjau Property Type",
+            path: "master/property-type/tinjau/:id",
+          },
+          {
+            title: "View Property Type",
+            path: "master/property-type/view/:id",
+          },
+        ]
       }
     ]
   }
